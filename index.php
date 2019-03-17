@@ -1,6 +1,6 @@
 ﻿<?php
 /**
- * @package    DEVELOPMENT OF AN E-LEARNING SYSTEM FOR INFORMATION MANAGEMENT FOR CAVITE STATE UNIVERSITY
+ * @package    DEVELOPMENT OF MANAGEMENT INFORMATION SYSTEM FOR CAVITE STATE UNIVERSITY-AFFILIATED RENEWABLE ENERGY CENTER FOR REGION IV (CvSU-AREC IV)
  *
  * @copyright  Copyright (C) 2019, All rights reserved.
  * @license    MIT License version or later; see licensing/LICENSE.txt
@@ -72,7 +72,7 @@ include("inc/main-head.php");
                          </form>
                       </div>
 
-                      <div id="instructor" class="tab-pane fade">
+                      <div id="researcher" class="tab-pane fade">
                         <form action="data-login.php" method="POST"  role="form">
                             
                         
@@ -98,7 +98,7 @@ include("inc/main-head.php");
                                 <label for="rememberme">Remember Me</label>
                             </div>
                             <div class="col-xs-4">
-                                <button class="btn btn-block bg-pink waves-effect" type="submit" name="submit_instructor">SIGN IN</button>
+                                <button class="btn btn-block bg-pink waves-effect" type="submit" name="submit_researcher">SIGN IN</button>
                             </div>
                         </div>
                         </form>
