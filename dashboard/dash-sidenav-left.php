@@ -49,7 +49,7 @@
                         
                     <?php endif ?>
                     >
-                        <a href="account">
+                        <a href="research">
                             <i class="material-icons">search</i>
                             <span>Research</span>
                         </a>
