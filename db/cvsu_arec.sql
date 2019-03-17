@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2019 at 04:21 PM
+-- Generation Time: Mar 17, 2019 at 05:58 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -43,8 +43,10 @@ CREATE TABLE `locations` (
 
 INSERT INTO `locations` (`id`, `lat`, `lng`, `title`, `description`, `location_status`) VALUES
 (1, 15.113991, 121.216896, 'biogas', 'hahaha', 1),
-(8, 14.798028, 121.274315, 'asdasd', '123123', 1),
-(9, 14.634611, 121.719536, 'aubrey', 'aubrey', 0);
+(11, 14.896259, 121.116386, 'Darren', '123123123123', 0),
+(13, 14.628011, 120.753838, 'asdasd', 'asdasd', 1),
+(14, 14.683812, 120.649467, 'new32', 'ew32', 1),
+(15, 14.550928, 120.893913, 'asdasd', 'asdasd', 1);
 
 -- --------------------------------------------------------
 
@@ -133,7 +135,7 @@ ALTER TABLE `user_level`
 -- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `user_accounts`
 --
