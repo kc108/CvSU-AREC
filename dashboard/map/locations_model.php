@@ -22,8 +22,8 @@ function add_location(){
     $description =$_GET['description'];
     // Inserts new row with place data.
     $query = sprintf("INSERT INTO locations " .
-        " (id, lat, lng, title, description) " .
-        " VALUES (NULL, '%s', '%s', '%s', '%s');",
+        " (id, lat, lng, title, description,location_status) " .
+        " VALUES (NULL, '%s', '%s', '%s', '%s', '1');",
         mysqli_real_escape_string($conn,$lat),
         mysqli_real_escape_string($conn,$lng),
         mysqli_real_escape_string($conn,$title),

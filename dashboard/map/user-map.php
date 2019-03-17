@@ -8,6 +8,7 @@ include 'locations_model.php';
             src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyAfPKc1jcQM-i3bxv2ipJ6u9zJ1Jujh6yo">
     </script>
 
+
     <div id="map" "></div>
     <script>
         /**
@@ -21,20 +22,22 @@ include 'locations_model.php';
         var myOptions = {
             zoom: 9,
             center: new google.maps.LatLng(14.1864178, 120.5176283),
-            mapTypeId: 'roadmap'
+            mapTypeId: 'terrain'
         };
         map = new google.maps.Map(document.getElementById('map'), myOptions);
         map.data.loadGeoJson('gadm36_PHL_1.json');
-        map.data.setStyle(function (feature) {
-             var strokeColor = feature.getProperty('strokeColor');
-             return {
-                 strokeColor: "#ff0000",
-                 strokeWeight: 1,
-                 fillColor: "#555555",
-                 fillOpacity: 0,
-                
-             };
-         });
+       
+        map.data.setStyle(function(feature) {
+          var strokeColor = feature.getProperty('strokeColor');
+          return {
+            strokeColor: "#ff0000",
+            strokeWeight: 1,
+            fillColor: "#555555",
+            fillOpacity: 0,
+            clickable: false
+          };
+        })
+      
         
         /**
          * Global marker object that holds all markers.
@@ -145,11 +148,11 @@ include 'locations_model.php';
                 "<table class=\"map1\">\n" +
                 "<tr>\n" +
                 "<td><a>Title:</a></td>\n" +
-                "<td><textarea disabled id='manual_title' placeholder='Title'>"+locations[i][5]+"</textarea></td>"+
+                "<td>"+locations[i][5]+"</td>"+
                 "</tr>\n" +
                 "<tr>\n" +
                 "<td><a>Description:</a></td>\n" +
-                "<td><textarea disabled id='manual_description' placeholder='Description'>"+locations[i][3]+"</textarea></td>"+
+                "<td>"+locations[i][3]+"</td>"+
                 "</tr>\n" +
                 "</table>\n" +
                 "</div>"
@@ -184,7 +187,7 @@ include 'locations_model.php';
                     var manual_marker = markers[markerId]; // find marker
                     manual_marker.setIcon(purple_icon);
                     infowindow.close();
-                    infowindow.setContent("<div style=' color: purple; font-size: 25px;'> Waiting for admin confirm!!</div>");
+                    infowindow.setContent("<div style=' color: purple; font-size: 25px;'> Success Add Marker,</div>");
                     infowindow.open(map, manual_marker);
 
                 }else{
