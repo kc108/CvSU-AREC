@@ -76,6 +76,7 @@
     <script src="../assets/js/pages/cards/colored.js"></script>
     <!-- Demo Js -->
     <script src="../assets/js/demo.js"></script>
+    <script src="../assets/js/pages/tables/jquery-datatable.js"></script>
     
    
 
