@@ -1,10 +1,5 @@
 <?php
-/**
- * @package    DEVELOPMENT OF AN E-LEARNING SYSTEM FOR INFORMATION MANAGEMENT FOR CAVITE STATE UNIVERSITY
- *
- * @copyright  Copyright (C) 2019, All rights reserved.
- * @license    MIT License version or later; see licensing/LICENSE.txt
- */
+
 
 // Data Base Config file
 if($_SERVER['SERVER_ADDR']=="8.8.8.8"){
