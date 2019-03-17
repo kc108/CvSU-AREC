@@ -1,10 +1,4 @@
 <?php
-/**
- * @package     DEVELOPMENT OF AN E-LEARNING SYSTEM FOR INFORMATION MANAGEMENT FOR CAVITE STATE UNIVERSITY
- *
- * @copyright  Copyright (C) 2019, All rights reserved.
- * @license    MIT License version or later; see licensing/LICENSE.txt
- */
 session_start(); // Starting Session
 print_r($_POST);
 include('data-md5.php');
@@ -49,7 +43,7 @@ if (isset($_POST['submit_student'])) {
 			
 		}
 }
-if (isset($_POST['submit_instructor'])) {
+if (isset($_POST['submit_researcher'])) {
 		if (empty($_POST['username']) || empty($_POST['password'])) 
 			{
 				echo "<script>alert('Username or Password is empty !');
@@ -93,7 +87,7 @@ function login(){
 			
 			
  			$input = "$password";
-			echo $encrypted = encryptIt($input);
+			$encrypted = encryptIt($input);
 			// SQL query to fetch information of registerd users and finds user match.
 			$query = mysqli_query($conn,"SELECT * FROM `user_accounts` WHERE `user_Name` = '$username' AND `user_Pass` = '$encrypted'");
 			if (mysqli_num_rows($query) > 0) 
@@ -110,7 +104,7 @@ function login(){
 			}
 			else
 			{
-			 // error_credential();
+			 error_credential();
 			}
 			mysqli_close($conn); // Closing Connection
 }
