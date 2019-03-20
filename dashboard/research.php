@@ -3,7 +3,7 @@
     include('dash-global-function.php');
 
    
-    $pagename = "Research Management";
+    $pagename = "Research";
     $username = $_SESSION['user_Name'];
     $script_for_specific_page = "";
     $user_img = "../assets/images/user.png";
@@ -68,37 +68,37 @@
         <div class="container-fluid">
             <div class="block-header">
                 <h2>
-                    Research
+                    CVSU RESEARCH
                 </h2>
             </div>
 
             <ol class="breadcrumb breadcrumb-bg-green">
                 <li><a href="index"><i class="material-icons">home</i> Home</a></li>
-                <li  class="active"><a href="javascript:void(0);"><i class="material-icons ">search</i> Research</a></li>
+                <li  class="active"><a href="javascript:void(0);"><i class="material-icons ">search</i> Research Management</a></li>
             </ol>
             <div class="row clearfix">
                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                            <div class="card">
                                <div class="header">
                                    <h2>LIST OF RESEARCH</h2>
+                                   <div class="btn-group pull-right">
+                                   <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#research_modal">ADD RESEARCH</button>
+                                   </div>
+                                   <br>
                                </div>
-                                <br>
-                                <div class="btn-group pull pull-right">
-                                   <button type="button" class="btn btn-success waves-effect" data-toggle="modal" data-target="#add">ADD RESEARCH</button>
-                                </div>
-                                <br>
                                <div class="body">
                                    <div class="table-responsive" style="overflow-x: hidden;">
-                                       <table id="biogas_data" class="table table-bordered table-striped">
-                                           <thead>
-                                               <tr>
-                                                   <th width="10%">ID</th>
-                                                   <th width="35%">Title</th>
-                                                   <th width="35%">Mark Visibility</th>
-                                                   <th width="10%">Action</th>
-                                               </tr>
-                                           </thead>
-                                       </table>
+                                          <table id="research_data" class="table table-bordered table-striped">
+                                            <thead>
+                                              <tr>
+                                                <th width="10%">ID</th>
+                                                <th width="10%">Title</th>
+                                                <th width="10%">Status</th>
+                                                <th width="10%">Date Create</th>
+                                                <th width="10%">Action</th>
+                                              </tr>
+                                            </thead>
+                                          </table>
                                        
                                    </div>
                                </div>
@@ -116,63 +116,72 @@
     </section>
 
 
-<div id="biogas_modal" class="modal fade">
-    <div class="modal-dialog">
-        <form method="post" id="biogas_form" enctype="multipart/form-data" class="form-horizontal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title list_biogas">Modal title</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="row clearfix">
-                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                            <label for="loc_title">Title</label>
-                        </div>
-                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                            <div class="form-group">
-                                 <input type="text" name="loc_title" id="loc_title" class="form-control" />
-                            </div>
-                    </div>
-                    <br>
-                    <div class="row clearfix">
-                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                            <label for="loc_descr">Description</label>
-                        </div>
-                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                            <div class="form-group">
-                                <textarea name="loc_descr" id="loc_descr" class="form-control"></textarea>
-                                </div>
-                            </div>
-                    </div>
-                    <br>
-                    <div class="row clearfix">
-                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                            <label for="loc_stat">Active</label>
-                        </div>
-                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                            <div class="form-group">
-                                <div class="form-line">
-                                     <select class="form-control" name="loc_stat" id="loc_stat" >
-                                      <option value="null">~~SELECT~~</option>
-                                        <option value="1">Show</option>
-                                        <option value="0">Hide</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden" name="location_id" id="location_id" />
-                    <input type="hidden" name="operation" id="operation" />
-                    <input type="submit" name="action" id="action" class="btn btn-success" value="Edit" />
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
+
+ <!-- add modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="research_modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-plus-sign"></span> Add Account</h4>
+          </div>
+          
+          <form class="form-horizontal" action="php_action/create.php" method="POST" id="research_form" enctype="multipart/form-data">
+
+          <div class="modal-body">
+            <div class="messages"></div>
+              <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="research_Title">Research Title</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                              <input type="text" class="form-control" id="research_Title" name="research_Title" placeholder="Research Title">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <br>
+               <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="research_Content">Content</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                            <textarea  class="form-control " id="research_Content" name="research_Content" placeholder="Content" style="width: 482px;height: 237px;"></textarea>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <br>
+              (<b>Optional :</b> <i> 1 Attachment Per Research </i>)
+               <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="research_attachment">Attachment</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                              <input type="file" name="research_Attachment" checked="form-control">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <br>
+          </div>
+          <div class="modal-footer">
+          <input type="hidden" name="research_ID" id="research_ID" />
+          <input type="hidden" name="operation" id="operation" value="Add" />
+          <input type="submit" name="action" id="action" class="btn btn-success" value="Submit" />
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+          </form> 
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- /add modal -->
     <!-- Jquery Core Js -->
     <script src="../assets/plugins/jquery/jquery.min.js"></script>
 
@@ -208,100 +217,145 @@
     <script type="text/javascript" language="javascript" >
 $(document).ready(function(){
 
+  //select specific dropdown when updating 1 data
+  function setSelectedValue(dropDownList, valueToSet) {
+    var option = dropDownList.firstChild;
+    for (var i = 0; i < dropDownList.length; i++) {
+        if (option.text.trim().toLowerCase() == valueToSet.trim().toLowerCase()) {
+            option.selected = true;
+            return;
+        }
+        option = option.nextElementSibling;
+    }
+}
 
 
-    var dataTable = $('#biogas_data').DataTable({
-        "processing":true,
-        "serverSide":true,
-        "order":[],
-        "ajax":{
-            url:"datatable/biogas/fetch.php",
-            type:"POST"
-        },
-        "columnDefs":[
-            {
-                "targets":[0],
-                "orderable":false,
-            },
-        ],
 
-    });
-    $(document).on('submit', '#biogas_form', function(event){
-        event.preventDefault();
-        var loc_title = $('#loc_title').val();
-        var loc_descr = $('#loc_descr').val();
-        
-        if(loc_title != '' && loc_descr != '')
-        {
-            $.ajax({
-                url:"datatable/biogas/insert.php",
-                method:'POST',
-                data:new FormData(this),
-                contentType:false,
-                processData:false,
-                success:function(data)
-                {
-                    alert(data);
-                    $('#biogas_form')[0].reset();
-                    $('#biogas_modal').modal('hide');
-                    dataTable.ajax.reload();
-                }
+  var dataTable = $('#research_data').DataTable({
+    "processing":true,
+    "serverSide":true,
+    "order":[],
+    "ajax":{
+      url:"datatable/research/fetch.php",
+      type:"POST"
+    },
+    "columnDefs":[
+      {
+        "targets":[0],
+        "orderable":false,
+      },
+    ],
+
+  });
+
+  $(document).on('submit', '#research_form', function(event){
+    event.preventDefault();
+    var research_Title = $('#research_Title').val();
+    var research_Content = $('#research_Content').val();
+    var research_Attachment = $('#research_Attachment').val();
+    $("#research_Title").prop("disabled", false);
+    $("#research_Content").prop("disabled", false);
+    $.ajax({
+              url:"datatable/research/insert.php",
+              method:'POST',
+              data:new FormData(this),
+              contentType:false,
+              processData:false,
+              success:function(data)
+              {
+                $('#action').val("Add");
+                $('#operation').val("Add");
+
+                alert(data);
+                
+                $('#research_form')[0].reset();
+                $('#research_modal').modal('hide');
+                dataTable.ajax.reload();
+              }
             });
-        }
-        else
-        {
-            alert("Both Fields are Required");
-        }
-    });
+  });
 
-    
+$(document).on('click', '.add', function(){
+        $("#research_Title").prop("disabled", false);
+        $("#research_Content").prop("disabled", false);
+        document.getElementById("research_form").reset();
+  });
 
-    $(document).on('click', '.update', function(){
-        var location_id = $(this).attr("id");
-        $.ajax({
-            url:"datatable/biogas/fetch_single.php",
-            method:"POST",
-            data:{location_id:location_id},
-            dataType:"json",
-            success:function(data)
-            {
-                $('#biogas_modal').modal('show');
-                $('#loc_title').val(data.loc_title);
-                $('#loc_descr').val(data.loc_descr);
-                $('.list_biogas').text("Edit Biogas Info");
-                $('#location_id').val(location_id);
-                $('#action').val("Edit");
-                $('#operation').val("Edit");
-            }
-        })
-    });
+  $(document).on('click', '.update', function(){
+    var research_ID = $(this).attr("id");
     
-    $(document).on('click', '.delete', function(){
-        var location_id = $(this).attr("id");
-        if(confirm("Are you sure you want to delete this?"))
+    $.ajax({
+      url:"datatable/research/fetch_single.php",
+      method:"POST",
+      data:{research_ID:research_ID},
+      dataType:"json",
+      success:function(data)
+      {
+
+        $("#research_Title").prop("disabled", false);
+        $("#research_Content").prop("disabled", false);
+        $('#research_modal').modal('show');
+        $('#research_Title').val(data.research_Title);
+        $('#research_Content').val(data.research_Content);
+        $('#research_Attachment').val(data.research_Attachment);
+        $('#research_Status').val(data.research_Status);
+        $('#research_Created').val(data.research_Created);
+        $('#action').val("Edit");
+        $('#operation').val("Edit");
+        $('.modal-title').text("Edit Research Info");
+        $('#research_ID').val(research_ID);
+      }
+    });
+  });
+
+  $(document).on('click', '.view', function(){
+    var research_ID = $(this).attr("id");
+    
+    $.ajax({
+      url:"datatable/research/fetch_single.php",
+      method:"POST",
+      data:{research_ID:research_ID},
+      dataType:"json",
+      success:function(data)
+      {
+        $("#research_Title").prop("disabled", true);
+        $("#research_Content").prop("disabled", true);
+        $('#research_modal').modal('show');
+        $('#research_Title').val(data.research_Title);
+        $('#research_Content').val(data.research_Content);
+        $('#research_Attachment').val(data.research_Attachment);
+        $('#research_Status').val(data.research_Status);
+        $('#research_Created').val(data.research_Created);
+        $('#action').val("View");
+        $('#operation').val("View");
+        $('.modal-title').text("View Research Info");
+        $('#research_ID').val(research_ID);
+      }
+    });
+  });
+  
+  $(document).on('click', '.delete', function(){
+    var research_ID = $(this).attr("id");
+    if(confirm("Are you sure you want to delete this?"))
+    {
+      $.ajax({
+        url:"datatable/research/delete.php",
+        method:"POST",
+        data:{research_ID:research_ID},
+        success:function(data)
         {
-            $.ajax({
-                url:"datatable/biogas/delete.php",
-                method:"POST",
-                data:{location_id:location_id},
-                success:function(data)
-                {
-                    alert(data);
-                    dataTable.ajax.reload();
-                }
-            });
+          alert(data);
+          dataTable.ajax.reload();
         }
-        else
-        {
-            return false;   
-        }
-    });
-    
-    $(document).on('click', '.reload_table', function(){
-        dataTable.ajax.reload();
-    });
-    
-    
+      });
+    }
+    else
+    {
+      return false; 
+    }
+  });
+  
+  
 });
 </script>
 </body>
