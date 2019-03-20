@@ -11,6 +11,7 @@ include 'locations_model.php';
 
     <div id="map" "></div>
     <script>
+      
         /**
          * Create new map
          */
@@ -189,6 +190,7 @@ include 'locations_model.php';
                     infowindow.close();
                     infowindow.setContent("<div style=' color: purple; font-size: 25px;'> Success Add Marker,</div>");
                     infowindow.open(map, manual_marker);
+                    
 
                 }else{
                     console.log(responseCode);

@@ -12,10 +12,7 @@ if(isset($_GET['confirm_location'])) {
 
 
 function add_location(){
-    $conn=mysqli_connect ("localhost", 'root', '','cvsu_arec');
-    if (!$conn) {
-        die('Not connected : ' . mysqli_connect_error());
-    }
+    include('../../dbconfig.php');
     $lat = $_GET['lat'];
     $lng = $_GET['lng'];
     $title =$_GET['title'];
@@ -36,10 +33,7 @@ function add_location(){
     }
 }
 function confirm_location(){
-    $conn=mysqli_connect ("localhost", 'root', '','cvsu_arec');
-    if (!$conn) {
-        die('Not connected : ' . mysqli_connect_error());
-    }
+    include('../../dbconfig.php');
     $id =$_GET['id'];
     $connfirmed =$_GET['confirmed'];
     // update location with confirm if admin confirm.
@@ -51,10 +45,7 @@ function confirm_location(){
     }
 }
 function get_confirmed_locations(){
-    $conn=mysqli_connect ("localhost", 'root', '','cvsu_arec');
-    if (!$conn) {
-        die('Not connected : ' . mysqli_connect_error());
-    }
+   include('../../dbconfig.php');
     // update location with location_status if admin location_status.
     $sqldata = mysqli_query($conn,"
 select id ,lat,lng,description,location_status,title as isconfirmed
@@ -77,10 +68,7 @@ from locations WHERE  location_status = 1
     }
 }
 function get_all_locations(){
-    $conn=mysqli_connect ("localhost", 'root', '','cvsu_arec');
-    if (!$conn) {
-        die('Not connected : ' . mysqli_connect_error());
-    }
+    include('../../dbconfig.php');
     // update location with location_status if admin location_status.
     $sqldata = mysqli_query($conn,"
 select id ,lat,lng,description,location_status,title as isconfirmed
