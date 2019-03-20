@@ -67,9 +67,6 @@
             </div>
             <ol class="breadcrumb breadcrumb-bg-green">
                 <li><a href="javascript:void(0);"><i class="material-icons">home</i> Home</a></li>
-                <li><a href="javascript:void(0);"><i class="material-icons">library_books</i> Library</a></li>
-                <li><a href="javascript:void(0);"><i class="material-icons">archive</i> Data</a></li>
-                <li class="active"><i class="material-icons">attachment</i> File</li>
             </ol>
 
             <?php
