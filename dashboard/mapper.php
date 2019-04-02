@@ -83,7 +83,7 @@
                                    <h2>LIST OF BIOGAS</h2>
                                    <div class="btn-group pull-right">
                                    <button type="button" class="btn btn-info waves-effect" data-toggle="modal" data-target="#largeModal">BIOGAS MAPPER</button>
-                                   <button type="button" class="btn btn-info waves-effect reload_table">RELOAD TABLE</button>
+                                   <!-- <button type="button" class="btn btn-info waves-effect reload_table">RELOAD TABLE</button> -->
                                    </div>
                                    <br>
                                </div>
