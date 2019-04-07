@@ -1,40 +1,102 @@
 <?php
+
 include('db.php');
 include('function.php');
+session_start();
 if(isset($_POST["operation"]))
 {
 
 	if($_POST["operation"] == "Add")
 	{
 		
-		$username = $_POST["username"];
-		$level = $_POST["level"];
-		$email = $_POST["email"];
-		$pass = $_POST["pass"];
-		$con_pass = $_POST["con_pass"];
-		$status = $_POST["status"];
+		$login_id = $_SESSION["login_id"];
+		$research_Title = $_POST["research_Title"];
+		$research_Content = $_POST["research_Content"];
+		$research_Status = $_POST["research_Status"];
+		function file_newname($path, $filename){
+		    if ($pos = strrpos($filename, '.')) {
+		           $name = substr($filename, 0, $pos);
+		           $ext = substr($filename, $pos);
+		    } else {
+		           $name = $filename;
+		    }
+
+		    $newpath = $path.'/'.$filename;
+		    $newname = $filename;
+		    $counter = 0;
+		    while (file_exists($newpath)) {
+		           $newname = $name .'_'. $counter . $ext;
+		           $newpath = $path.'/'.$newname;
+		           $counter++;
+		     }
+
+		    return $newname;
+		}
+		if ($_FILES['research_Attachment']['error'] > 0) {
+			 $filename = "";
+		} else {
+			
+			$target_dir = "uploads";
+			$uploadOk = 1;
+			$target_file = basename($_FILES["research_Attachment"]["name"]);
+			
+			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+			
+		
+			echo $filename = file_newname($target_dir,$target_file);
+			// Check file size
+			if ($_FILES["research_Attachment"]["size"] > 500000) {
+			    echo "Sorry, your file is too large.";
+			    $uploadOk = 0;
+			}
+			// Allow certain file formats
+			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+			&& $imageFileType != "gif" && $imageFileType != "zip" && $imageFileType != "rar" && $imageFileType != "docx" && $imageFileType != "doc" && $imageFileType != "pdf" ) {
+			    echo "Sorry, this type of files are allowed.";
+			    $uploadOk = 0;
+			}
+			// Check if $uploadOk is set to 0 by an error
+			if ($uploadOk == 0) {
+			    echo "Sorry, your file was not uploaded.";
+			// if everything is ok, try to upload file
+			} else {
+			    if (move_uploaded_file($_FILES["research_Attachment"]["tmp_name"],$target_dir.'/'.$filename)) {
+			        echo "The file ".basename($_FILES["research_Attachment"]["name"]). " has been uploaded.";
+			    } else {
+			        echo "Sorry, there was an error uploading your file.";
+			       
+			    }
+			}
+		}
+		
 		
 
-		
-		$sql = "SELECT * FROM `user_accounts` WHERE `user_Name`= :user_Name;";
-		$statement = $connection->prepare($sql);
-		$statement->bindParam(':user_Name', $username, PDO::PARAM_STR);
-		$result = $statement->execute();
-		$resultrows = $statement->rowCount();
 
-		if (empty($resultrows)) { 
-		   // if username is available
-
-			$sql = "INSERT INTO `user_accounts` (`user_ID`, `level_ID`, `user_Name`, `user_Pass`, `user_Email`, `user_Registered`, `user_status`) VALUES (NULL, :level, :user_Name, :encrypted_pass, :email, CURRENT_TIMESTAMP, :status);";
+		echo 	$sql = "INSERT INTO `research` 
+		(`research_ID`,
+		 `research_Title`,
+		  `research_Content`,
+		   `status_ID`,
+		    `research_Created`,
+		     `research_Attachment`,
+		     `user_ID`) 
+		VALUES 
+		(NULL,
+		 :research_Title,
+		  :research_Content,
+		   :research_Status,
+		    CURRENT_TIMESTAMP,
+		     :filename,
+		     :login_id);";
 			$statement = $connection->prepare($sql);
 			
 			$result = $statement->execute(
 				array(
-					':level'			=>	$level,
-					':user_Name'		=>	$username,
-					':encrypted_pass' 	=>	encryptIt($pass),
-					':email'	  		=>	$email,
-					':status'	 		=>	$status
+					':research_Title'			=>	$research_Title,
+					':research_Content'		=>	$research_Content,
+					':filename'	 		=>	$filename,
+					':research_Status'	 		=>	$research_Status,
+					':login_id'	 		=>	$login_id
 				)
 			);
 
@@ -43,11 +105,6 @@ if(isset($_POST["operation"]))
 				echo 'Successfully User Added';
 			}
 
-		} else {
-		   // if username is not available
-			echo 'Username is Already Use';
-
-		}
 
 	
 	}
@@ -55,25 +112,24 @@ if(isset($_POST["operation"]))
 	if($_POST["operation"] == "Edit")
 	{
 		
-		$user_ID = $_POST["user_ID"];
+		$research_ID = $_POST["research_ID"];
 		
-		$level = $_POST["level"];
-		$email = $_POST["email"];
-		$pass = $_POST["pass"];
-		$con_pass = $_POST["con_pass"];
-		$status = $_POST["status"];
+		$research_Title = $_POST["research_Title"];
+		$research_Content = $_POST["research_Content"];
+		// $research_Status = $_POST["research_Status"];
 		
-		echo $sql ="UPDATE `user_accounts` SET `level_ID` = :level,`user_Pass` = :encrypted_pass,`user_Email` = :email,`user_status` = :status WHERE `user_accounts`.`user_ID` = :user_ID;";
+		// unlink();
+		echo $sql ="UPDATE `research` SET `research_Title` = :research_Title WHERE `research`.`research_ID` = :research_ID";
 		
 		$statement = $connection->prepare($sql);
 		
 		$result = $statement->execute(
 				array(
-					':user_ID'			=>	$user_ID,
-					':level'			=>	$level,
-					':encrypted_pass' 	=>	encryptIt($pass),
-					':email'	  		=>	$email,
-					':status'	 		=>	$status
+					':research_ID'			=>	$research_ID,
+					':research_Title'		=>	$research_Title,
+					// ':research_Content'		=>	$research_Content,
+					// ':filename'	 		=>	$filename,
+					// ':research_Status'	 		=>	$research_Status
 				)
 			);
 		if(!empty($result))

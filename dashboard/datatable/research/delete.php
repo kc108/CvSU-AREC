@@ -3,7 +3,7 @@
 include('db.php');
 include("function.php");
 
-if(isset($_POST["user_ID"]))
+if(isset($_POST["research_ID"]))
 {
 	
 	$statement = $connection->prepare(

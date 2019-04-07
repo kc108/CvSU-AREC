@@ -11,7 +11,7 @@
     if(isset($_SESSION['login_level']) )
     {      
         $login_level = $_SESSION['login_level'];
-        if ($login_level != 3) {
+        if ($login_level != 2) {
          
           header('location: error404.php');
         }
@@ -83,7 +83,7 @@
                                    <h2>LIST OF BIOGAS</h2>
                                    <div class="btn-group pull-right">
                                    <button type="button" class="btn btn-info waves-effect" data-toggle="modal" data-target="#largeModal">BIOGAS MAPPER</button>
-                                   <!-- <button type="button" class="btn btn-info waves-effect reload_table">RELOAD TABLE</button> -->
+                                   <button type="button" class="btn btn-info waves-effect reload_table">RELOAD TABLE</button>
                                    </div>
                                    <br>
                                </div>

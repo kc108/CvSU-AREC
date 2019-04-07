@@ -1,7 +1,7 @@
 <?php 
     include('../session.php');
     include('dash-global-function.php');
-
+ 
    
     $pagename = "Research";
     $username = $_SESSION['user_Name'];
@@ -11,19 +11,14 @@
     if(isset($_SESSION['login_level']) )
     {      
         $login_level = $_SESSION['login_level'];
-        if ($login_level != 3) {
+        // if ($login_level != 2) {
          
-          header('location: error404.php');
-        }
+        //   header('location: error404.php');
+        // }
          
     }
 
-    if (empty($_REQUEST['page'])) {
-        $page = "";
-    }
-    else{
-        $page = $_REQUEST['page'];
-    }
+  echo $login_level;
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +77,19 @@
                                <div class="header">
                                    <h2>LIST OF RESEARCH</h2>
                                    <div class="btn-group pull-right">
-                                   <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#research_modal">ADD RESEARCH</button>
+                                   
+                                   <?php 
+                                   if ($login_level == 1) {
+                                     ?>
+                                     <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#research1_modal">ADD RESEARCH</button>
+                                     <?php
+                                   }
+                                   else{
+                                    ?>
+                                     <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#research_modal">ADD RESEARCH</button>
+                                     <?php
+                                   }
+                                   ?>
                                    </div>
                                    <br>
                                </div>
@@ -92,6 +99,7 @@
                                             <thead>
                                               <tr>
                                                 <th width="10%">ID</th>
+                                                <th width="10%">Researcher</th>
                                                 <th width="10%">Title</th>
                                                 <th width="10%">Status</th>
                                                 <th width="10%">Date Create</th>
@@ -126,10 +134,9 @@
             <h4 class="modal-title"><span class="glyphicon glyphicon-plus-sign"></span> Add Account</h4>
           </div>
           
-          <form class="form-horizontal" action="php_action/create.php" method="POST" id="research_form" enctype="multipart/form-data">
+          <form class="form-horizontal" action="#" method="POST" id="research_form" enctype="multipart/form-data">
 
           <div class="modal-body">
-            <div class="messages"></div>
               <div class="row clearfix">
                   <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                       <label for="research_Title">Research Title</label>
@@ -156,6 +163,23 @@
                   </div>
               </div>
               <br>
+              <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="research_Status">Status</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                               <select class="form-control" name="research_Status" id="research_Status" >
+                                <option value="">~~SELECT~~</option>
+                                <option value="1">Pending</option>
+                                <option value="2">Approve</option>
+                              </select>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+               <br>
               (<b>Optional :</b> <i> 1 Attachment Per Research </i>)
                <div class="row clearfix">
                   <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
@@ -164,12 +188,79 @@
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
                           <div class="form-line">
-                              <input type="file" name="research_Attachment" checked="form-control">
+                              <input type="file" name="research_Attachment"  id="research_Attachment" class="form-control">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+          <input type="hidden" name="research_ID" id="research_ID" />
+          <input type="hidden" name="operation" id="operation" value="Add" />
+          <input type="submit" name="action" id="action" class="btn btn-success" value="Submit" />
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+          </form> 
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- /add modal -->
+
+
+
+    <!-- add modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="research1_modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-plus-sign"></span> Add Account</h4>
+          </div>
+          
+          <form class="form-horizontal" action="#" method="POST" id="research_form" enctype="multipart/form-data">
+
+          <div class="modal-body">
+              <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="research_Title">Research Title</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                              <input type="text" class="form-control" id="research_Title" name="research_Title" placeholder="Research Title">
                           </div>
                       </div>
                   </div>
               </div>
               <br>
+               <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="research_Content">Content</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                            <textarea  class="form-control " id="research_Content" name="research_Content" placeholder="Content" style="width: 482px;height: 237px;"></textarea>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <br>
+              <input type="hidden" name="research_Status"  id="research_Status" class="form-control" value="1">
+               <br>
+              (<b>Optional :</b> <i> 1 Attachment Per Research </i>)
+               <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="research_attachment">Attachment</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                              <input type="file" name="research_Attachment"  id="research_Attachment" class="form-control">
+                          </div>
+                      </div>
+                  </div>
+              </div>
           </div>
           <div class="modal-footer">
           <input type="hidden" name="research_ID" id="research_ID" />
@@ -253,6 +344,9 @@ $(document).ready(function(){
     var research_Title = $('#research_Title').val();
     var research_Content = $('#research_Content').val();
     var research_Attachment = $('#research_Attachment').val();
+    var research_Status = $('#research_Status').val();
+   
+    
     $("#research_Title").prop("disabled", false);
     $("#research_Content").prop("disabled", false);
     $.ajax({
@@ -270,6 +364,7 @@ $(document).ready(function(){
                 
                 $('#research_form')[0].reset();
                 $('#research_modal').modal('hide');
+                $('#research1_modal').modal('hide');
                 dataTable.ajax.reload();
               }
             });
@@ -280,60 +375,46 @@ $(document).on('click', '.add', function(){
         $("#research_Content").prop("disabled", false);
         document.getElementById("research_form").reset();
   });
-
-  $(document).on('click', '.update', function(){
+    $(document).on('click', '.view', function(){
     var research_ID = $(this).attr("id");
     
     $.ajax({
-      url:"datatable/research/fetch_single.php",
-      method:"POST",
+      url:"datatable/research/fetch_view.php",
+      type:"POST",
       data:{research_ID:research_ID},
-      dataType:"json",
+      dataType:"html",
       success:function(data)
       {
-
-        $("#research_Title").prop("disabled", false);
-        $("#research_Content").prop("disabled", false);
+        $('.modal-body').html('');
         $('#research_modal').modal('show');
-        $('#research_Title').val(data.research_Title);
-        $('#research_Content').val(data.research_Content);
-        $('#research_Attachment').val(data.research_Attachment);
-        $('#research_Status').val(data.research_Status);
-        $('#research_Created').val(data.research_Created);
+        $('.modal-body').html(data);
+        $('.modal-title').text("View Research Info");
+        $('#action').hide();
+      }
+    });
+  });
+$(document).on('click', '.update', function(){
+    var research_ID = $(this).attr("id");
+    
+    $.ajax({
+      url:"datatable/research/fetch_update.php",
+      type:"POST",
+      data:{research_ID:research_ID},
+      dataType:"html",
+      success:function(data)
+      {
+        $('.modal-body').html('');
+        $('#research_modal').modal('show');
+        $('.modal-body').html(data);
+        $('.modal-title').text("Edit Research Info");
         $('#action').val("Edit");
         $('#operation').val("Edit");
-        $('.modal-title').text("Edit Research Info");
-        $('#research_ID').val(research_ID);
+        $('#action').show();
+        
       }
     });
   });
 
-  $(document).on('click', '.view', function(){
-    var research_ID = $(this).attr("id");
-    
-    $.ajax({
-      url:"datatable/research/fetch_single.php",
-      method:"POST",
-      data:{research_ID:research_ID},
-      dataType:"json",
-      success:function(data)
-      {
-        $("#research_Title").prop("disabled", true);
-        $("#research_Content").prop("disabled", true);
-        $('#research_modal').modal('show');
-        $('#research_Title').val(data.research_Title);
-        $('#research_Content').val(data.research_Content);
-        $('#research_Attachment').val(data.research_Attachment);
-        $('#research_Status').val(data.research_Status);
-        $('#research_Created').val(data.research_Created);
-        $('#action').val("View");
-        $('#operation').val("View");
-        $('.modal-title').text("View Research Info");
-        $('#research_ID').val(research_ID);
-      }
-    });
-  });
-  
   $(document).on('click', '.delete', function(){
     var research_ID = $(this).attr("id");
     if(confirm("Are you sure you want to delete this?"))

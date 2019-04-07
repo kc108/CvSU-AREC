@@ -13,7 +13,7 @@ function get_total_all_records()
 function check_user_level($var)
 {
 	include('db.php');
-	$statement = $conn->prepare("SELECT * FROM `user_level` WHERE level_ID = $var");
+	$statement = $conn->prepare("SELECT * FROM `user_level` WHERE `level_ID` = $var");
 	$statement->execute();
 	$result = $statement->fetchAll();
 	foreach($result as $row)
@@ -41,6 +41,5 @@ function check_status_level($var)
 	return $user_status;
 
 }
-
 
 ?>

@@ -1,3 +1,92 @@
+<?php 
+function side_dashboard(){
+    ?>
+    <li
+    <?php if ($GLOBALS["pagename"] == "Dashboard"): ?>
+        class="active"
+    <?php else: ?>
+        
+    <?php endif ?>
+    
+    >
+        <a href="index">
+            <i class="material-icons">home</i>
+            <span>Dashboard</span>
+        </a>
+    </li>
+    <?php
+}
+function side_account(){
+    ?>
+     <li
+    <?php if ($GLOBALS["pagename"] == "Account Management"): ?>
+        class="active"
+    <?php else: ?>
+        
+    <?php endif ?>
+    >
+        <a href="account">
+            <i class="material-icons">account_box</i>
+            <span>Account</span>
+        </a>
+    </li>
+    <?php
+}
+function side_researcher(){
+    ?>
+  <li
+  <?php if ($GLOBALS["pagename"]  == "Research"): ?>
+      class="active"
+  <?php else: ?>
+      
+  <?php endif ?>
+  >
+      <a href="research">
+          <i class="material-icons">search</i>
+          <span>Research</span>
+      </a>
+  </li>
+    <?php
+}
+function side_biogas(){
+    ?>
+ <li
+ <?php if ($GLOBALS["pagename"] == "Biogas Mapper"): ?>
+     class="active"
+ <?php else: ?>
+     
+ <?php endif ?>
+  >
+      <a href="mapper">
+         <i class="material-icons">map</i>
+         <span>Biogas Mapper</span>
+     </a>
+ </li>
+    <?php
+}
+function side_report(){
+    ?>
+    <li
+    <?php if ($GLOBALS["pagename"] == "Reports"): ?>
+        class="active"
+    <?php else: ?>
+        
+    <?php endif ?>
+     >
+        <a href="javascript:void(0);" class="menu-toggle">
+            <i class="material-icons">collections_bookmark</i>
+            <span>Reports</span>
+        </a>
+        <ul class="ml-menu">
+            <li>
+                <a href="../assets/fpdf181/index.php?report=Accountlist" class=" waves-effect waves-block" target="_BLANK">List of account</a>
+            </li>
+        </ul>
+    </li>
+    <?php
+}
+?>
+
 <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
             <!-- User Info -->
@@ -17,79 +106,33 @@
                  
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li
-                    <?php if ($pagename == "Dashboard"): ?>
-                        class="active"
-                    <?php else: ?>
+                    <?php
+                    side_dashboard();
+                    //researcher
+                    if ($login_level == 1) {
                         
-                    <?php endif ?>
+                        side_researcher();
+                       
+                    } 
+                    //admin
+                    else if ($login_level == 2){
+                        side_account();
+                        side_researcher();
+                        side_biogas();
+                        side_report();
+                    }
+                    else {
+                        # code...
+                    }
                     
-                    >
-                        <a href="index">
-                            <i class="material-icons">home</i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li
-                    <?php if ($pagename == "Account Management"): ?>
-                        class="active"
-                    <?php else: ?>
-                        
-                    <?php endif ?>
-                    >
-                        <a href="account">
-                            <i class="material-icons">account_box</i>
-                            <span>Account</span>
-                        </a>
-                    </li>
-                    <li
-                    <?php if ($pagename == "Research"): ?>
-                        class="active"
-                    <?php else: ?>
-                        
-                    <?php endif ?>
-                    >
-                        <a href="research">
-                            <i class="material-icons">search</i>
-                            <span>Research</span>
-                        </a>
-                    </li>
-                      <li
-                    <?php if ($pagename == "Reports"): ?>
-                        class="active"
-                    <?php else: ?>
-                        
-                    <?php endif ?>
-                     >
-                         <a href="mapper">
-                            <i class="material-icons">map</i>
-                            <span>Biogas Mapper</span>
-                        </a>
-                    </li>
-                     <li
-                    <?php if ($pagename == "Reports"): ?>
-                        class="active"
-                    <?php else: ?>
-                        
-                    <?php endif ?>
-                     >
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">collections_bookmark</i>
-                            <span>Reports</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../assets/" class=" waves-effect waves-block" target="_BLANK">List of student</a>
-                            </li>
-                        </ul>
-                    </li>
+                    ?>
                 </ul>
             </div>
             <!-- #Menu -->
             <!-- Footer -->
             <div class="legal">
                 <div class="copyright">
-                     &copy; <?php auto_copyright("2019"); ?> <a href="javascript:void(0);">E-learning</a>
+                     &copy; <?php auto_copyright("2019"); ?> <a href="javascript:void(0);">CvSU AREC</a>
                 </div>
                 <!-- <div class="version">
                     <b>Version: </b> 1.0.5

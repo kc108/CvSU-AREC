@@ -11,19 +11,14 @@
     if(isset($_SESSION['login_level']) )
     {      
         $login_level = $_SESSION['login_level'];
-        if ($login_level != 3) {
+        //if the user is not admin go to 404
+        if ($login_level != 2) {
          
           header('location: error404.php');
         }
          
     }
-
-    if (empty($_REQUEST['page'])) {
-        $page = "";
-    }
-    else{
-        $page = $_REQUEST['page'];
-    }
+ 
 ?>
 
 <!DOCTYPE html>
@@ -127,10 +122,9 @@
             <h4 class="modal-title"><span class="glyphicon glyphicon-plus-sign"></span> Add Account</h4>
           </div>
           
-          <form class="form-horizontal" action="php_action/create.php" method="POST" id="account_form" enctype="multipart/form-data">
+          <form class="form-horizontal" action="#" method="POST" id="account_form" enctype="multipart/form-data">
 
           <div class="modal-body">
-            <div class="messages"></div>
               <div class="row clearfix">
                   <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                       <label for="username">Username</label>
@@ -307,7 +301,7 @@ $(document).ready(function(){
           if (pass.length > 6) {
             $.ajax({
               url:"datatable/account/insert.php",
-              method:'POST',
+              type:'POST',
               data:new FormData(this),
               contentType:false,
               processData:false,
@@ -342,7 +336,7 @@ $(document).ready(function(){
     
     $.ajax({
       url:"datatable/account/fetch_single.php",
-      method:"POST",
+      type:"POST",
       data:{user_ID:user_ID},
       dataType:"json",
       success:function(data)
@@ -360,7 +354,7 @@ $(document).ready(function(){
         $('.modal-title').text("Edit Account Info");
         $('#user_ID').val(user_ID);
       }
-    })
+    });
   });
   $(document).on('click', '.add', function(){
         $("#username").prop("disabled", false);
@@ -372,7 +366,7 @@ $(document).ready(function(){
     {
       $.ajax({
         url:"datatable/account/delete.php",
-        method:"POST",
+        type:"POST",
         data:{user_ID:user_ID},
         success:function(data)
         {

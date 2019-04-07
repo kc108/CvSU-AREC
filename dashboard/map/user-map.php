@@ -9,7 +9,7 @@ include 'locations_model.php';
     </script>
 
 
-    <div id="map" "></div>
+    <div id="map" ></div>
     <script>
       
         /**
