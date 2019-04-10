@@ -113,6 +113,38 @@
                     </div>
                 </div>
                </div>
+                     <div class="row">
+                <div class="col-sm-12 text-center " style="min-height: 100px;">
+                     <img src="../assets/images/logo.png" height="80" style="margin-left: -450px;"> <H3 style="margin-top: -50px;">CAVITE STATE UNIVERSITY</H3>
+                </div>
+            </div>
+                <div class="col-sm-6">
+                     <div class="panel bg-green"  style="min-height: 250px">
+                         <div class="panel-heading  text-center" style=" border-bottom: 5px solid ;"><strong>UNIVERSITY MISSION</strong></div>
+                         <div class="panel-body text-center">
+                           CAVITE STATE UNIVERSITY shall provide
+                            <br>excellent equitable and relevant educational
+                             <br>opportunities in the arts, sciences
+                              <br>and technology through quality instruction
+                               <br>and responsive research 
+                               <br>and development activitis. 
+<br>It shall produce professional,skilled 
+<br>and morally upright individuals for 
+<br>global competitiveness
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-sm-6">
+                     <div class="panel bg-green"  style="min-height: 250px">
+                         <div class="panel-heading text-center" style="border-bottom: 5px solid ;"><strong>UNIVERSITY VISION</strong></div>
+                         <div class="panel-body text-center">
+                           The Premier University in historic Cavite recognized
+                           <br>for excellence in the development of globally 
+                           <br>competitive and morally upright individuals.
+                         </div>
+                     </div>
+                 </div>
+         
            </div>
         </div>
     </section>

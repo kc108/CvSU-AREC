@@ -3,7 +3,7 @@
     include('dash-global-function.php');
  
    
-    $pagename = "Research";
+    $pagename = "Project Monitoring";
     $username = $_SESSION['user_Name'];
     $script_for_specific_page = "";
     $user_img = "../assets/images/user.png";
@@ -69,45 +69,34 @@
 
             <ol class="breadcrumb breadcrumb-bg-green">
                 <li><a href="index"><i class="material-icons">home</i> Home</a></li>
-                <li  class="active"><a href="javascript:void(0);"><i class="material-icons ">search</i> Research Management</a></li>
+                <li  class="active"><a href="javascript:void(0);"><i class="material-icons ">search</i> Project Monitoring</a></li>
             </ol>
             <div class="row clearfix">
                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                            <div class="card">
                                <div class="header">
-                                   <h2>LIST OF RESEARCH</h2>
+                                   <h2>LIST OF PROJECT</h2>
                                    <div class="btn-group pull-right">
-                                   
-                                   <?php 
-                                   if ($login_level == 1) {
-                                     ?>
-                                     <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#research1_modal">ADD RESEARCH</button>
-                                     <?php
-                                   }
-                                   else{
-                                    ?>
-                                     <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#research_modal">ADD RESEARCH</button>
-                                     <?php
-                                   }
-                                   ?>
+                                    <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#project_modal">ADD PROJECT</button>
                                    </div>
                                    <br>
                                </div>
                                <div class="body">
                                    <div class="table-responsive" style="overflow-x: hidden;">
-                                          <table id="research_data" class="table table-bordered table-striped">
+                                          <table id="project_data" class="table table-bordered table-striped">
                                             <thead>
                                               <tr>
-                                                <th width="10%">ID</th>
-                                                <th width="10%">Researcher</th>
-                                                <th width="10%">Title</th>
-                                                <th width="10%">Status</th>
-                                                <th width="10%">Date Create</th>
+                                                <th width="10%">Project Title</th>
+                                                <th width="10%">Project Owner</th>
+                                                <th width="10%">Date Started</th>
+                                                <th width="10%">Date Ended</th>
+                                                <th width="10%">Project Location</th>
+                                                <th width="10%">Project Progress</th>
                                                 <th width="10%">Action</th>
                                               </tr>
                                             </thead>
                                           </table>
-                                       
+                                      <!--  -->
                                    </div>
                                </div>
                            </div>
@@ -125,39 +114,27 @@
 
 
 
- <!-- add modal -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="research_modal">
+
+    <!-- add modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="project_modal">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-plus-sign"></span> Add Account</h4>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-plus-sign"></span> Add Project</h4>
           </div>
           
-          <form class="form-horizontal" action="#" method="POST" id="research_form" enctype="multipart/form-data">
+          <form class="form-horizontal" action="#" method="POST" id="project_form" enctype="multipart/form-data">
 
           <div class="modal-body">
               <div class="row clearfix">
                   <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                      <label for="research_Title">Research Title</label>
+                      <label for="project_title">Project Title</label>
                   </div>
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
                           <div class="form-line">
-                              <input type="text" class="form-control" id="research_Title" name="research_Title" placeholder="Research Title">
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <br>
-               <div class="row clearfix">
-                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                      <label for="research_Content">Content</label>
-                  </div>
-                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                      <div class="form-group">
-                          <div class="form-line">
-                            <textarea  class="form-control " id="research_Content" name="research_Content" placeholder="Content" style="width: 482px;height: 237px;"></textarea>
+                              <input type="text" class="form-control" id="project_title" name="project_title" placeholder="Project Title">
                           </div>
                       </div>
                   </div>
@@ -165,105 +142,114 @@
               <br>
               <div class="row clearfix">
                   <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                      <label for="research_Status">Status</label>
+                      <label for="project_owner">Project Owner</label>
                   </div>
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
                           <div class="form-line">
-                               <select class="form-control" name="research_Status" id="research_Status" >
+                              <input type="text" class="form-control" id="project_owner" name="project_owner" placeholder="Project Owner">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <br>
+              <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="project_location">Project Location</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                              <input type="text" class="form-control" id="project_location" name="project_location" placeholder="Project Location">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <br>
+
+              <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="project_start">Start Date</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                              <input type="date" class="form-control" id="project_start" name="project_start" >
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <br>
+              <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="project_end">End Date</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                              <input type="date" class="form-control" id="project_end" name="project_end" >
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <br>
+
+              <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="research_Title">Scope</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                              <input type="text" class="form-control" id="project_scope" name="project_scope" placeholder="Project Scope">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <br>
+
+              <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="project_end">Project Head</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                              <input type="text" class="form-control" id="project_head" name="project_head" placeholder="Name ">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <br>
+              <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="project_status">Project Status</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                               <select class="form-control" name="project_status" id="project_status" >
                                 <option value="">~~SELECT~~</option>
-                                <option value="1">Pending</option>
-                                <option value="2">Approve</option>
+                              <?php 
+                                $query = mysqli_query($conn,"SELECT * FROM `status`");
+                                if (mysqli_num_rows($query) > 0) 
+                                {
+                                     while ($rows = mysqli_fetch_assoc($query)) {
+                                ?>
+                                <option value="<?php echo $rows['status_ID']?>" ><?php echo $rows['status_Name']?></option>
+                                <?php
+                                     }
+                                }
+                                ?>
                               </select>
                           </div>
                       </div>
                   </div>
               </div>
-               <br>
-              (<b>Optional :</b> <i> 1 Attachment Per Research </i>)
-               <div class="row clearfix">
-                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                      <label for="research_attachment">Attachment</label>
-                  </div>
-                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                      <div class="form-group">
-                          <div class="form-line">
-                              <input type="file" name="research_Attachment"  id="research_Attachment" class="form-control">
-                          </div>
-                      </div>
-                  </div>
-              </div>
+              <br>
           </div>
           <div class="modal-footer">
-          <input type="hidden" name="research_ID" id="research_ID" />
-          <input type="hidden" name="operation" id="operation" value="Add" />
-          <input type="submit" name="action" id="action" class="btn btn-success" value="Submit" />
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-          </form> 
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-    <!-- /add modal -->
-
-
-
-    <!-- add modal -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="research1_modal">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-plus-sign"></span> Add Account</h4>
-          </div>
-          
-          <form class="form-horizontal" action="#" method="POST" id="research_form" enctype="multipart/form-data">
-
-          <div class="modal-body">
-              <div class="row clearfix">
-                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                      <label for="research_Title">Research Title</label>
-                  </div>
-                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                      <div class="form-group">
-                          <div class="form-line">
-                              <input type="text" class="form-control" id="research_Title" name="research_Title" placeholder="Research Title">
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <br>
-               <div class="row clearfix">
-                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                      <label for="research_Content">Content</label>
-                  </div>
-                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                      <div class="form-group">
-                          <div class="form-line">
-                            <textarea  class="form-control " id="research_Content" name="research_Content" placeholder="Content" style="width: 482px;height: 237px;"></textarea>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <br>
-              <input type="hidden" name="research_Status"  id="research_Status" class="form-control" value="1">
-               <br>
-              (<b>Optional :</b> <i> 1 Attachment Per Research </i>)
-               <div class="row clearfix">
-                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                      <label for="research_attachment">Attachment</label>
-                  </div>
-                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                      <div class="form-group">
-                          <div class="form-line">
-                              <input type="file" name="research_Attachment"  id="research_Attachment" class="form-control">
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="modal-footer">
-          <input type="hidden" name="research_ID" id="research_ID" />
+          <input type="hidden" name="proj_ID" id="proj_ID" />
           <input type="hidden" name="operation" id="operation" value="Add" />
           <input type="submit" name="action" id="action" class="btn btn-success" value="Submit" />
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -322,12 +308,12 @@ $(document).ready(function(){
 
 
 
-  var dataTable = $('#research_data').DataTable({
+  var dataTable = $('#project_data').DataTable({
     "processing":true,
     "serverSide":true,
     "order":[],
     "ajax":{
-      url:"datatable/research/fetch.php",
+      url:"datatable/project/fetch.php",
       type:"POST"
     },
     "columnDefs":[
@@ -339,18 +325,20 @@ $(document).ready(function(){
 
   });
 
-  $(document).on('submit', '#research_form', function(event){
+  $(document).on('submit', '#project_form', function(event){
     event.preventDefault();
-    var research_Title = $('#research_Title').val();
-    var research_Content = $('#research_Content').val();
-    var research_Attachment = $('#research_Attachment').val();
-    var research_Status = $('#research_Status').val();
-   
-    
-    $("#research_Title").prop("disabled", false);
-    $("#research_Content").prop("disabled", false);
+    var project_title = $('#project_title').val();
+    var project_owner = $('#project_owner').val();
+    var project_location = $('#project_location').val();
+    var project_start = $('#project_start').val();
+    var project_end = $('#project_end').val();
+    var project_scope = $('#project_scope').val();
+    var project_head = $('#project_head').val();
+    var project_status = $('#project_status').val();
+
+
     $.ajax({
-              url:"datatable/research/insert.php",
+              url:"datatable/project/insert.php",
               method:'POST',
               data:new FormData(this),
               contentType:false,
@@ -362,67 +350,93 @@ $(document).ready(function(){
 
                 alert(data);
                 
-                $('#research_form')[0].reset();
-                $('#research_modal').modal('hide');
-                $('#research1_modal').modal('hide');
+                document.getElementById("project_form").reset();
+                $('#project_modal').modal('hide');
                 dataTable.ajax.reload();
               }
             });
   });
 
 $(document).on('click', '.add', function(){
-        $("#research_Title").prop("disabled", false);
-        $("#research_Content").prop("disabled", false);
-        document.getElementById("research_form").reset();
+        $('#action').val("Add");
+        $('#operation').val("Add");
+        $('.modal-title').text('Add Project');
+        $('#action').show();
+        $('#project_title').val('');
+        $('#project_owner').val('');
+        $('#project_location').val('');
+        $('#project_start').val('');
+        $('#project_end').val('');
+        $('#project_scope').val('');
+        $('#project_head').val('');
+        $('#project_status').val('');
+        // document.getElementById("project_form").reset();
+
   });
-    $(document).on('click', '.view', function(){
-    var research_ID = $(this).attr("id");
-    
-    $.ajax({
-      url:"datatable/research/fetch_view.php",
-      type:"POST",
-      data:{research_ID:research_ID},
-      dataType:"html",
-      success:function(data)
-      {
-        $('.modal-body').html('');
-        $('#research_modal').modal('show');
-        $('.modal-body').html(data);
-        $('.modal-title').text("View Research Info");
-        $('#action').hide();
-      }
-    });
-  });
+
 $(document).on('click', '.update', function(){
-    var research_ID = $(this).attr("id");
+    var proj_ID = $(this).attr("id");
     
     $.ajax({
-      url:"datatable/research/fetch_update.php",
+      url:"datatable/project/fetch_update.php",
       type:"POST",
-      data:{research_ID:research_ID},
+      data:{proj_ID:proj_ID},
       dataType:"html",
       success:function(data)
       {
+
         $('.modal-body').html('');
-        $('#research_modal').modal('show');
+        $('#project_modal').modal('show');
         $('.modal-body').html(data);
-        $('.modal-title').text("Edit Research Info");
         $('#action').val("Edit");
         $('#operation').val("Edit");
-        $('#action').show();
+        $('#proj_ID').val(proj_ID);
+         $('.modal-title').text('Edit Project');
+         $('#action').show();
         
       }
     });
   });
 
+$(document).on('click', '.view', function(){
+    var proj_ID = $(this).attr("id");
+    
+      
+    $.ajax({
+      url:"datatable/project/fetch_view.php",
+      type:"POST",
+      data:{proj_ID:proj_ID},
+      dataType:"html",
+      success:function(data)
+      {
+       
+        
+
+
+        $('.modal-title').text('View Project');
+        $('#action').hide();
+        $('.modal-body').html('');
+        $('#project_modal').modal('show');
+        $('.modal-body').html(data);
+        $('#action').val("Edit");
+        $('#operation').val("Edit");
+        $('#proj_ID').val(proj_ID);
+
+        
+      }
+    });
+  });
+
+
+
   $(document).on('click', '.delete', function(){
-    var research_ID = $(this).attr("id");
+    var proj_ID = $(this).attr("id");
     if(confirm("Are you sure you want to delete this?"))
     {
       $.ajax({
-        url:"datatable/research/delete.php",
+        url:"datatable/project/delete.php",
         method:"POST",
-        data:{research_ID:research_ID},
+        data:{proj_ID:proj_ID},
         success:function(data)
         {
           alert(data);

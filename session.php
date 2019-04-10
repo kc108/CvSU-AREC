@@ -19,6 +19,7 @@ $user_check = $_SESSION['login_user'];
 	else{
 	  $s_img = "../assets/images/user.png";
 	}
+	 $_SESSION['user_img'] = $s_img;
 
 
 if (!isset($login_session))

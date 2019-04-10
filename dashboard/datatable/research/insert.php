@@ -5,15 +5,7 @@ include('function.php');
 session_start();
 if(isset($_POST["operation"]))
 {
-
-	if($_POST["operation"] == "Add")
-	{
-		
-		$login_id = $_SESSION["login_id"];
-		$research_Title = $_POST["research_Title"];
-		$research_Content = $_POST["research_Content"];
-		$research_Status = $_POST["research_Status"];
-		function file_newname($path, $filename){
+	function file_newname($path, $filename){
 		    if ($pos = strrpos($filename, '.')) {
 		           $name = substr($filename, 0, $pos);
 		           $ext = substr($filename, $pos);
@@ -32,6 +24,14 @@ if(isset($_POST["operation"]))
 
 		    return $newname;
 		}
+	if($_POST["operation"] == "Add")
+	{
+		
+		$login_id = $_SESSION["login_id"];
+		$research_Title = $_POST["research_Title"];
+		$research_Content = $_POST["research_Content"];
+		$research_Status = $_POST["research_Status"];
+		
 		if ($_FILES['research_Attachment']['error'] > 0) {
 			 $filename = "";
 		} else {
@@ -116,10 +116,49 @@ if(isset($_POST["operation"]))
 		
 		$research_Title = $_POST["research_Title"];
 		$research_Content = $_POST["research_Content"];
-		// $research_Status = $_POST["research_Status"];
+		$research_Status = $_POST["research_Status"];
+		if ($_FILES['research_Attachment']['error'] > 0) {
+			 $filename = "";
+		} else {
+			
+			$target_dir = "uploads";
+			$uploadOk = 1;
+			$target_file = basename($_FILES["research_Attachment"]["name"]);
+			
+			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+			
 		
-		// unlink();
-		echo $sql ="UPDATE `research` SET `research_Title` = :research_Title WHERE `research`.`research_ID` = :research_ID";
+			 $filename = file_newname($target_dir,$target_file);
+			// Check file size
+			if ($_FILES["research_Attachment"]["size"] > 500000) {
+			    echo "Sorry, your file is too large.";
+			    $uploadOk = 0;
+			}
+			// Allow certain file formats
+			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+			&& $imageFileType != "gif" && $imageFileType != "zip" && $imageFileType != "rar" && $imageFileType != "docx" && $imageFileType != "doc" && $imageFileType != "pdf" ) {
+			    echo "Sorry, this type of files are allowed.";
+			    $uploadOk = 0;
+			}
+			// Check if $uploadOk is set to 0 by an error
+			if ($uploadOk == 0) {
+			    echo "Sorry, your file was not uploaded.";
+			// if everything is ok, try to upload file
+			} else {
+			    if (move_uploaded_file($_FILES["research_Attachment"]["tmp_name"],$target_dir.'/'.$filename)) {
+			        echo "The file ".basename($_FILES["research_Attachment"]["name"]). " has been uploaded.";
+			    } else {
+			        echo "Sorry, there was an error uploading your file.";
+			       
+			    }
+			}
+		}
+		 $sql ="UPDATE `research` SET 
+		 `research_Title` = :research_Title,
+		 `research_Content` = :research_Content,
+		 `status_ID` = :research_Status,
+		 `research_Attachment` = :filename
+		  WHERE `research`.`research_ID` = :research_ID";
 		
 		$statement = $connection->prepare($sql);
 		
@@ -127,9 +166,9 @@ if(isset($_POST["operation"]))
 				array(
 					':research_ID'			=>	$research_ID,
 					':research_Title'		=>	$research_Title,
-					// ':research_Content'		=>	$research_Content,
-					// ':filename'	 		=>	$filename,
-					// ':research_Status'	 		=>	$research_Status
+					':research_Content'		=>	$research_Content,
+					':filename'	 		=>	$filename,
+					':research_Status'	 		=>	$research_Status
 				)
 			);
 		if(!empty($result))

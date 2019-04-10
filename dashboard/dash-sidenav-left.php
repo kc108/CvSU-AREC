@@ -48,6 +48,23 @@ function side_researcher(){
   </li>
     <?php
 }
+function side_projectmonitoring(){
+    ?>
+  <li
+  <?php if ($GLOBALS["pagename"]  == "Project Monitoring"): ?>
+      class="active"
+  <?php else: ?>
+      
+  <?php endif ?>
+  >
+      <a href="projectmonitoring">
+          <i class="material-icons">personal_video</i>
+          <span>Project Monitoring</span>
+      </a>
+  </li>
+    <?php
+}
+
 function side_biogas(){
     ?>
  <li
@@ -92,7 +109,7 @@ function side_report(){
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                    <img src="<?php echo $user_img?>" width="48" height="48" alt="User" />
+                    <img src="<?php echo $user_img?>" width="48" height="48" alt="User" id="r_img"/>
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $username?></div>
@@ -118,6 +135,7 @@ function side_report(){
                     else if ($login_level == 2){
                         side_account();
                         side_researcher();
+                        side_projectmonitoring();
                         side_biogas();
                         side_report();
                     }
