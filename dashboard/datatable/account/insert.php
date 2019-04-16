@@ -63,7 +63,7 @@ if(isset($_POST["operation"]))
 		$con_pass = $_POST["con_pass"];
 		$status = $_POST["status"];
 		
-		echo $sql ="UPDATE `user_accounts` SET `level_ID` = :level,`user_Pass` = :encrypted_pass,`user_Email` = :email,`user_status` = :status WHERE `user_accounts`.`user_ID` = :user_ID;";
+		 $sql ="UPDATE `user_accounts` SET `level_ID` = :level,`user_Pass` = :encrypted_pass,`user_Email` = :email,`user_status` = :status WHERE `user_accounts`.`user_ID` = :user_ID;";
 		
 		$statement = $conn->prepare($sql);
 		

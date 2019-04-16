@@ -33,6 +33,7 @@ include("inc/main-head.php");
                         <h3>Management Information System</h3>
                         <small>Login here using your username and password</small>
                     </div>
+                    <div class="tab-content">
                      <div id="researcher" class="tab-pane fade in active">
                         <form action="data-login.php" method="POST"  role="form">
                             
@@ -58,18 +59,68 @@ include("inc/main-head.php");
                                 <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink">
                                 <label for="rememberme">Remember Me</label>
                             </div>
-                            <div class="col-xs-4">
-                                <button class="btn btn-block bg-pink waves-effect" type="submit" name="submit_login">SIGN IN</button>
+                            <div class="col-xs-6">
+                                 <a class="btn btn-block bg-red waves-effect" data-toggle="tab" href="#register">REGISTER</a>
+                            </div>
+                            <div class="col-xs-6">
+                                <button class="btn btn-block bg-blue waves-effect" type="submit" name="submit_login">SIGN IN</button>
                             </div>
                         </div>
                         </form>
                       </div>
-                   
-                    <hr>
-                    <div class="row m-t-15 m-b--20">
-                        <div class="col-xs-6 align-right">
-                            <a href="forgot-password.html">Forgot Password?</a>
+                      <div id="register" class="tab-pane">
+                        <form action="data-login.php" method="POST"  role="form">
+                            
+                        
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">person</i>
+                            </span>
+                            <div class="form-line">
+                                <input type="text" class="form-control" name="r_username" placeholder="Username" id="r_username" required autofocus>
+                            </div>
                         </div>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">lock</i>
+                            </span>
+                            <div class="form-line">
+                                <input type="password" class="form-control" name="r_password" id="r_password" placeholder="Password" required>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">lock</i>
+                            </span>
+                            <div class="form-line">
+                                <input type="password" class="form-control" name="r_cpassword" id="r_cpassword" placeholder="Password" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">email</i>
+                            </span>
+                            <div class="form-line">
+                                <input type="email" class="form-control" name="r_email" placeholder="Email" id="r_email" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8 p-t-5">
+                                <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink">
+                                <label for="rememberme">Remember Me</label>
+                            </div>
+                            
+                            <div class="col-xs-6">
+                                 <a class="btn btn-block bg-red waves-effect" data-toggle="tab" href="#researcher">SIGN IN</a>
+                            </div>
+
+                            <div class="col-xs-6">
+                                <button class="btn btn-block bg-blue waves-effect" type="submit" name="submit_register">REGISTER</button>
+                            </div>
+                        </div>
+                        </form>
+                      </div>
                     </div>
                 </div>
             </div>

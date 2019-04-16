@@ -147,9 +147,8 @@
                           <div class="form-line">
                                <select class="form-control" name="level" id="level" >
                                 <option value="">~~SELECT~~</option>
-                                <option value="1">Student</option>
-                                <option value="2">Researcher</option>
-                                <option value="3">Admin</option>
+                                <option value="1">Researcher</option>
+                                <option value="2">Admin</option>
                               </select>
                           </div>
                       </div>
@@ -358,6 +357,9 @@ $(document).ready(function(){
   });
   $(document).on('click', '.add', function(){
         $("#username").prop("disabled", false);
+        $('#action').val("Submit");
+        $('#operation').val("Add");
+        $('.modal-title').text("Add Account");
         document.getElementById("account_form").reset();
   });
   $(document).on('click', '.delete', function(){

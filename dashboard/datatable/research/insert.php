@@ -177,5 +177,5 @@ if(isset($_POST["operation"]))
 		}
 	}
 }
-print_r($_POST);
+
 ?>

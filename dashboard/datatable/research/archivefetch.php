@@ -9,7 +9,7 @@ $query .= "SELECT `r`.*,`rs`.`status_Name`  `rssn`,`ua`.`user_Name`";
 $query .= " FROM `research` as `r` 
 LEFT JOIN `research_status` as `rs` ON `r`.`status_ID` = `rs`.`status_ID`
 LEFT JOIN `user_accounts` `ua` ON `r`.user_ID = `ua`.`user_ID`";
- $query .= " WHERE  `rs`.`status_ID` = '1' AND ";
+ $query .= " WHERE  `rs`.`status_ID` = '2' AND ";
 if(isset($_POST["search"]["value"]))
 {
 
@@ -46,7 +46,7 @@ foreach($result as $row)
 		$button .= '</div>';
 	}
 	else if ($login_level == 2) {
-		$button = '<div class="dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Action<span class="caret"></span></button><ul class="dropdown-menu"><li><a href="#" id="'.$row["research_ID"].'" class="view">View</a></li><li><a href="#" id="'.$row["research_ID"].'" class="update">Update</a></li><li><a href="#" id="'.$row["research_ID"].'" class="archive">Archive</a></li><li><a href="#" id="'.$row["research_ID"].'" class="delete">Delete</a></li></ul></div>';
+		$button = '<div class="dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Action<span class="caret"></span></button><ul class="dropdown-menu"><li><a href="#" id="'.$row["research_ID"].'" class="view">View</a></li><li><a href="#" id="'.$row["research_ID"].'" class="update">Update</a></li><li><a href="#" id="'.$row["research_ID"].'" class="unarchive">Unarchive</a></li><li><a href="#" id="'.$row["research_ID"].'" class="delete">Delete</a></li></ul></div>';
 	}
 	else{
 		
@@ -64,7 +64,7 @@ foreach($result as $row)
 $output = array(
 	"draw"				=>	intval($_POST["draw"]),
 	"recordsTotal"		=> 	$filtered_rows,
-	"recordsFiltered"	=>	get_total_all_records(),
+	"recordsFiltered"	=>	get_total_all_arcrecords(),
 	"data"				=>	$data
 );
 echo json_encode($output);

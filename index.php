@@ -91,6 +91,7 @@ else{
                 </li>
                 <li><a href="#section-industries" class="nav-link">Images</a></li>
                 <li><a href="#section-blog" class="nav-link">News</a></li>
+                <li><a href="biogas.php" class="nav-link">Biogas</a></li>
                 <li><a href="#section-contact" class="nav-link">Contact</a></li>
                 <li><?php echo $authentication_nav?></li>
               </ul>

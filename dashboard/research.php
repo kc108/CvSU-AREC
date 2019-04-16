@@ -86,6 +86,7 @@
                                    }
                                    else{
                                     ?>
+                                     <button type="button" class="btn btn-info waves-effect add" data-toggle="modal" data-target="#archiveresearch_modal">VIEW ARCHIVE</button>
                                      <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#research_modal">ADD RESEARCH</button>
                                      <?php
                                    }
@@ -125,18 +126,54 @@
 
 
 
+<!-- add modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="archiveresearch_modal">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><span class="fa fa-eye"></span> View Archive</h4>
+          </div>
+          <div class="modal-body archiveresearch">
+          <div class="table-responsive" style="overflow-x: hidden;">
+                                          <table id="archiveresearch_data" class="table table-bordered table-striped">
+                                            <thead>
+                                              <tr>
+                                                <th width="10%">ID</th>
+                                                <th width="10%">Researcher</th>
+                                                <th width="10%">Title</th>
+                                                <th width="10%">Status</th>
+                                                <th width="10%">Date Create</th>
+                                                <th width="10%">Action</th>
+                                              </tr>
+                                            </thead>
+                                          </table>
+                                       
+                                   </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- /add modal -->
+
+
+
+
  <!-- add modal -->
     <div class="modal fade" tabindex="-1" role="dialog" id="research_modal">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-plus-sign"></span> Add Account</h4>
+            <h4 class="modal-title mview"><span class="glyphicon glyphicon-plus-sign"></span> Add Account</h4>
           </div>
           
           <form class="form-horizontal" action="#" method="POST" id="research_form" enctype="multipart/form-data">
 
-          <div class="modal-body">
+          <div class="modal-body mview">
               <div class="row clearfix">
                   <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                       <label for="research_Title">Research Title</label>
@@ -210,8 +247,8 @@
 
     <!-- add modal -->
     <div class="modal fade" tabindex="-1" role="dialog" id="research1_modal">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
+      <div class="modal-dialog " role="document" >
+        <div class="modal-content ">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title"><span class="glyphicon glyphicon-plus-sign"></span> Add Account</h4>
@@ -325,9 +362,28 @@ $(document).ready(function(){
   var dataTable = $('#research_data').DataTable({
     "processing":true,
     "serverSide":true,
+     "bAutoWidth": false,
     "order":[],
     "ajax":{
       url:"datatable/research/fetch.php",
+      type:"POST"
+    },
+    "columnDefs":[
+      {
+        "targets":[0],
+        "orderable":false,
+      },
+    ],
+
+  });
+
+   var archivedataTable = $('#archiveresearch_data').DataTable({
+    "processing":true,
+    "serverSide":true,
+     "bAutoWidth": false,
+    "order":[],
+    "ajax":{
+      url:"datatable/research/archivefetch.php",
       type:"POST"
     },
     "columnDefs":[
@@ -373,7 +429,11 @@ $(document).ready(function(){
 $(document).on('click', '.add', function(){
         $("#research_Title").prop("disabled", false);
         $("#research_Content").prop("disabled", false);
-        document.getElementById("research_form").reset();
+        $('#research_Title').val('');
+        $('#research_Content').val('');
+        $('#research_Attachment').val('');
+        $('#research_Status').val('');
+        document.getElementById("research_form").reset('');
   });
     $(document).on('click', '.view', function(){
     var research_ID = $(this).attr("id");
@@ -385,10 +445,10 @@ $(document).on('click', '.add', function(){
       dataType:"html",
       success:function(data)
       {
-        $('.modal-body').html('');
+        $('.modal-body.mview').html('');
         $('#research_modal').modal('show');
-        $('.modal-body').html(data);
-        $('.modal-title').text("View Research Info");
+        $('.modal-body.mview').html(data);
+        $('.modal-title.mview').text("View Research Info");
         $('#action').hide();
       }
     });
@@ -403,16 +463,65 @@ $(document).on('click', '.update', function(){
       dataType:"html",
       success:function(data)
       {
-        $('.modal-body').html('');
+        $('.modal-body.mview').html('');
         $('#research_modal').modal('show');
-        $('.modal-body').html(data);
-        $('.modal-title').text("Edit Research Info");
+        $('.modal-body.mview').html(data);
+        $('.modal-title.mview').text("Edit Research Info");
         $('#action').val("Edit");
         $('#operation').val("Edit");
         $('#action').show();
         
       }
     });
+  });
+
+$(document).on('click', '.archive', function(){
+
+
+  var research_ID = $(this).attr("id");
+    if(confirm("Are you sure you want to archive this?"))
+    {
+      $.ajax({
+        url:"datatable/research/archive.php",
+        method:"POST",
+        data:{research_ID:research_ID},
+        success:function(data)
+        {
+          alert(data);
+          dataTable.ajax.reload();
+          archivedataTable.ajax.reload();
+          
+        }
+      });
+    }
+    else
+    {
+      return false; 
+    }
+  });
+$(document).on('click', '.unarchive', function(){
+
+
+  var research_ID = $(this).attr("id");
+    if(confirm("Are you sure you want to unarchive this?"))
+    {
+      $.ajax({
+        url:"datatable/research/unarchive.php",
+        method:"POST",
+        data:{research_ID:research_ID},
+        success:function(data)
+        {
+          alert(data);
+          dataTable.ajax.reload();
+          archivedataTable.ajax.reload();
+          
+        }
+      });
+    }
+    else
+    {
+      return false; 
+    }
   });
 
   $(document).on('click', '.delete', function(){
@@ -436,7 +545,9 @@ $(document).on('click', '.update', function(){
     }
   });
   
-  
+
+
+
 });
 </script>
 </body>
