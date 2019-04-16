@@ -63,7 +63,7 @@
         <div class="container-fluid">
             <div class="block-header">
                 <h2>
-                    CVSU RESEARCH
+                    PROJECT MONITORING
                 </h2>
             </div>
 

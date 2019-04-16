@@ -3,7 +3,7 @@
     include('dash-global-function.php');
 
    
-    $pagename = "Account Management";
+    $pagename = "News Management";
     $username = $_SESSION['user_Name'];
     $script_for_specific_page = "";
     $user_img = "../assets/images/user.png";
@@ -63,33 +63,31 @@
         <div class="container-fluid">
             <div class="block-header">
                 <h2>
+                   
                 </h2>
             </div>
 
             <ol class="breadcrumb breadcrumb-bg-green">
                 <li><a href="index"><i class="material-icons">home</i> Home</a></li>
-                <li  class="active"><a href="javascript:void(0);"><i class="material-icons ">account_box</i> Account Management</a></li>
+                <li  class="active"><a href="javascript:void(0);"><i class="material-icons ">account_box</i> News Management</a></li>
             </ol>
             <div class="row clearfix">
                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                            <div class="card">
                                <div class="header">
-                                   <h2>LIST OF ACCOUNT</h2>
+                                   <h2>LIST OF News</h2>
                                    <div class="btn-group pull-right">
-                                   <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#account_modal">ADD ACCOUNT</button>
+                                   <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#news_modal">ADD NEWS</button>
                                    </div>
                                    <br>
                                </div>
                                <div class="body">
                                    <div class="table-responsive" style="overflow-x: hidden;">
-                                          <table id="account_data" class="table table-bordered table-striped">
+                                          <table id="news_data" class="table table-bordered table-striped">
                                             <thead>
                                               <tr>
-                                                <th width="10%">ID</th>
-                                                <th width="10%">Level</th>
-                                                <th width="10%">Username</th>
-                                                <th width="10%">Status</th>
-                                                <th width="10%">Register</th>
+                                                <th width="10%">Title</th>
+                                                <th width="10%">Date</th>
                                                 <th width="10%">Action</th>
                                               </tr>
                                             </thead>
@@ -113,107 +111,47 @@
 
 
  <!-- add modal -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="account_modal">
+    <div class="modal fade" tabindex="-1" role="dialog" id="news_modal">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-plus-sign"></span> Add Account</h4>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-plus-sign"></span> Add News</h4>
           </div>
           
-          <form class="form-horizontal" action="#" method="POST" id="account_form" enctype="multipart/form-data">
+          <form class="form-horizontal" action="#" method="POST" id="news_form" enctype="multipart/form-data">
 
-          <div class="modal-body">
+          <div class="modal-body news">
+            <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="news_content">Title</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                             <input type="text" class="form-control" name="news_title" id="news_title">
+                          </div>
+                      </div>
+                  </div>
+              </div>
               <div class="row clearfix">
                   <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                      <label for="username">Username</label>
+                      <label for="news_content">News</label>
                   </div>
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
-                          <div class="form-line">
-                              <input type="text" class="form-control" id="username" name="username" placeholder="username">
+                          <div class="form-line" id="znews_content1">
+                             <textarea class="form-control" name="news_content" id="news_content" style="min-height: 400px;"></textarea>
+                            
                           </div>
+                           <div id="znews_content"></div>
                       </div>
                   </div>
-              </div>
-              <br>
-              <div class="row clearfix">
-                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                      <label for="level">Level</label>
-                  </div>
-                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                      <div class="form-group">
-                          <div class="form-line">
-                               <select class="form-control" name="level" id="level" >
-                                <option value="">~~SELECT~~</option>
-                                <option value="1">Researcher</option>
-                                <option value="2">Admin</option>
-                              </select>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <br>
-               <div class="row clearfix">
-                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                      <label for="email">Email</label>
-                  </div>
-                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                      <div class="form-group">
-                          <div class="form-line">
-                              <input type="text" class="form-control" id="email" name="email" placeholder="Email">
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <br>
-               <div class="row clearfix">
-                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                      <label for="pass">Password</label>
-                  </div>
-                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                      <div class="form-group">
-                          <div class="form-line">
-                              <input type="password" class="form-control" id="pass" name="pass" placeholder="Password">
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <br>
-               <div class="row clearfix">
-                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                      <label for="con_pass">Retype</label>
-                  </div>
-                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                      <div class="form-group">
-                          <div class="form-line">
-                              <input type="password" class="form-control" id="con_pass" name="con_pass" placeholder="Confirm Your Password">
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <br>
-              <div class="row clearfix">
-                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                      <label for="status">Active</label>
-                  </div>
-                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                      <div class="form-group">
-                          <div class="form-line">
-                               <select class="form-control" name="status" id="status" >
-                                <option value="">~~SELECT~~</option>
-                                <option value="1">Activate</option>
-                                <option value="0">Deactivate</option>
-                                <option value="2">Ban</option>
-                              </select>
-                          </div>
-                      </div>
-                  </div>
-              </div>                    
+              </div>                 
 
           </div>
           <div class="modal-footer">
-          <input type="hidden" name="user_ID" id="user_ID" />
+          <input type="hidden" name="news_ID" id="news_ID" />
           <input type="hidden" name="operation" id="operation" value="Add" />
           <input type="submit" name="action" id="action" class="btn btn-success" value="Submit" />
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -264,13 +202,15 @@ $(document).ready(function(){
   });
 
 
-  var dataTable = $('#account_data').DataTable({
+  var dataTable = $('#news_data').DataTable({
+
     "processing":true,
     "serverSide":true,
     "order":[],
     "ajax":{
-      url:"datatable/account/fetch.php",
-      type:"POST"
+      url:"datatable/news/fetch.php",
+      type:"POST",
+      data:{admin:1}
     },
     "columnDefs":[
       {
@@ -281,24 +221,14 @@ $(document).ready(function(){
 
   });
 
-  $(document).on('submit', '#account_form', function(event){
+  $(document).on('submit', '#news_form', function(event){
     event.preventDefault();
-    var username = $('#username').val();
-    var level = $('#level').val();
-    var email = $('#email').val();
-    var pass = $('#pass').val();
-    var con_pass = $('#con_pass').val();
-    var status = $('#status').val();
-    if(username != '' && level != '' && email != '' && pass != '' && con_pass != '' && status != '')
+    var news_title = $('#news_title').val();
+    var news_content = $('#news_content').val();
+    if(news_title != '' && news_content != '' )
     {
-
-
-      if (pass == con_pass) 
-        {
-
-          if (pass.length > 6) {
             $.ajax({
-              url:"datatable/account/insert.php",
+              url:"datatable/news/insert.php",
               type:'POST',
               data:new FormData(this),
               contentType:false,
@@ -309,66 +239,93 @@ $(document).ready(function(){
                 $('#operation').val("Add");
 
                 alert(data);
-                $('#account_form')[0].reset();
-                $('#account_modal').modal('hide');
+                $('#news_form')[0].reset();
+                $('#news_modal').modal('hide');
                 dataTable.ajax.reload();
               }
             });
-          } 
-          else {
-            alert("Minumum Password Length is 6 Character");
-          }
-        } 
-        else {
-          alert("Password not match");
-        }
+       
     }
     else
     {
       alert("Fields are Required");
     }
   });
-
-  $(document).on('click', '.update', function(){
-    var user_ID = $(this).attr("id");
+$(document).on('click', '.view', function(){
+    var news_ID = $(this).attr("id");
     
     $.ajax({
-      url:"datatable/account/fetch_single.php",
+      url:"datatable/news/fetch_single.php",
       type:"POST",
-      data:{user_ID:user_ID},
+      data:{news_ID:news_ID},
       dataType:"json",
       success:function(data)
       {
-        $('#account_modal').modal('show');
-        $("#username").prop("disabled", true);
-        $('#username').val(data.user_Name);
-        $('#email').val(data.user_Email);
-        $('#pass').val(data.user_Pass);
-        $('#con_pass').val(data.user_Pass);
-        $('#level').val(data.level_ID).change();
-        $('#status').val(data.user_status).change();
+        $("#news_title").prop("disabled", true);
+        $("#news_content").prop("disabled", true);
+        $('#news_modal').modal('show');
+        $('#news_title').val(data.news_Title);
+
+        $('#znews_content1').hide();
+        $('#znews_content').show();
+        $('#znews_content').text(data.news_Content);
         $('#action').val("Edit");
         $('#operation').val("Edit");
-        $('.modal-title').text("Edit Account Info");
-        $('#user_ID').val(user_ID);
+        $('.modal-title').text("View News");
+         $('#news_ID').val(news_ID);
+       
+
+   
+      }
+    });
+  });
+  $(document).on('click', '.update', function(){
+    var news_ID = $(this).attr("id");
+    
+    $.ajax({
+      url:"datatable/news/fetch_single.php",
+      type:"POST",
+      data:{news_ID:news_ID},
+      dataType:"json",
+      success:function(data)
+      {
+        $("#news_title").prop("disabled", false);
+        $("#news_content").prop("disabled", false);
+        $('#news_modal').modal('show');
+        $('#news_title').val(data.news_Title);
+        $('#news_content').val(data.news_Content);
+         $('#znews_content1').show();
+         $('#znews_content').hide();
+        $('#action').val("Edit");
+        $('#operation').val("Edit");
+        $('.modal-title').text("Update News");
+            $('#news_ID').val(news_ID);
+
+   
       }
     });
   });
   $(document).on('click', '.add', function(){
-        $("#username").prop("disabled", false);
+        $('.ztitle#news_title').val('');
+        $('#news_content').text('');
         $('#action').val("Submit");
         $('#operation').val("Add");
-        $('.modal-title').text("Add Account");
-        document.getElementById("account_form").reset();
+        $('.modal-title').text("Add News");
+           $('#znews_content1').show();
+         $('#znews_content').hide();
+        $("#news_title").prop("disabled", false);
+        $("#news_content").prop("disabled", false);
+        document.getElementById("news_form").reset();
+        $('#news_form')[0].reset();
   });
   $(document).on('click', '.delete', function(){
-    var user_ID = $(this).attr("id");
+    var news_ID = $(this).attr("id");
     if(confirm("Are you sure you want to delete this?"))
     {
       $.ajax({
-        url:"datatable/account/delete.php",
+        url:"datatable/news/delete.php",
         type:"POST",
-        data:{user_ID:user_ID},
+        data:{news_ID:news_ID},
         success:function(data)
         {
           alert(data);

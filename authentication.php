@@ -55,10 +55,6 @@ include("inc/main-head.php");
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-8 p-t-5">
-                                <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink">
-                                <label for="rememberme">Remember Me</label>
-                            </div>
                             <div class="col-xs-6">
                                  <a class="btn btn-block bg-red waves-effect" data-toggle="tab" href="#register">REGISTER</a>
                             </div>
@@ -106,11 +102,6 @@ include("inc/main-head.php");
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-8 p-t-5">
-                                <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink">
-                                <label for="rememberme">Remember Me</label>
-                            </div>
-                            
                             <div class="col-xs-6">
                                  <a class="btn btn-block bg-red waves-effect" data-toggle="tab" href="#researcher">SIGN IN</a>
                             </div>

@@ -32,6 +32,22 @@ function side_account(){
     </li>
     <?php
 }
+function side_news(){
+    ?>
+     <li
+    <?php if ($GLOBALS["pagename"] == "News Management"): ?>
+        class="active"
+    <?php else: ?>
+        
+    <?php endif ?>
+    >
+        <a href="news">
+            <i class="material-icons">speaker_notes</i>
+            <span>News</span>
+        </a>
+    </li>
+    <?php
+}
 function side_researcher(){
     ?>
   <li
@@ -134,6 +150,7 @@ function side_report(){
                     //admin
                     else if ($login_level == 2){
                         side_account();
+                        side_news();
                         side_researcher();
                         side_projectmonitoring();
                         side_biogas();
