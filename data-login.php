@@ -1,6 +1,6 @@
 <?php
 session_start(); // Starting Session
-print_r($_POST);
+
 include('data-md5.php');
 $error=''; // Variable To Store Error Message
 function success(){
@@ -134,7 +134,7 @@ function register(){
  			$input = "$r_password";
 			$encrypted = encryptIt($input);
 
-			echo $sql = "SELECT * FROM `user_accounts` WHERE `user_Name`= '$r_username'";
+			 $sql = "SELECT * FROM `user_accounts` WHERE `user_Name`= '$r_username'";
 			$query1 = mysqli_query($conn,$sql);
 
 			if (mysqli_num_rows($query1) > 0) 

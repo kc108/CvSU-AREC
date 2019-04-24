@@ -53,7 +53,7 @@ else{
     <link rel="stylesheet" href="front/css/aos.css">
 
     <link rel="stylesheet" href="front/css/style.css">
-    
+    <link rel="stylesheet" href="front/dataTablebtstrp4/dataTables.bootstrap4.min.css">
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="200">
   
@@ -73,10 +73,10 @@ else{
       <div class="container">
         <div class="row align-items-center">
           
-          <div class="col-11 col-xl-4 site-logo">
+          <div class="col-11 col-xl-3 site-logo">
             <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0">CvSU AREC</a></h1>
           </div>
-          <div class="col-12 col-md-8 d-none d-xl-block">
+          <div class="col-12 col-md-9 d-none d-xl-block">
             <nav class="site-navigation position-relative text-right" role="navigation">
 
               <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
@@ -89,10 +89,10 @@ else{
                     <li><a href="index.php" class="nav-link">Our Team</a></li>
                   </ul>
                 </li>
-                <li><a href="index.php" class="nav-link">Services</a></li>
                 <li><a href="index.php" class="nav-link">Images</a></li>
                 <li><a href="index.php" class="nav-link">News</a></li>
                 <li><a href="biogas.php" class="nav-link">Biogas</a></li>
+                <li><a href="projects.php" class="nav-link">Projects</a></li>
                 <li><a href="index.php" class="nav-link">Contact</a></li>
                 <li><?php echo $authentication_nav?></li>
               </ul>
@@ -120,7 +120,6 @@ else{
 
             <h1 class="text-white font-weight-light text-uppercase font-weight-bold" data-aos="fade-up">CvSU-AREC IV</h1>
             <p class="mb-5" data-aos="fade-up" data-aos-delay="100">CAVITE STATE UNIVERSITY-AFFILIATED RENEWABLE ENERGY CENTER FOR REGION IV</p>
-            <p data-aos="fade-up" data-aos-delay="200"><a href="#section-instroduction" class="btn btn-primary py-3 px-5 text-white">Get Started!</a></p>
 
           </div>
         </div>
@@ -193,6 +192,7 @@ else{
       </div>
     </div>
     
+    
     <footer class="site-footer">
       <div class="container">
         <div class="row">
@@ -203,7 +203,7 @@ else{
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam iure deserunt ut architecto dolores quo beatae laborum aliquam ipsam rem impedit obcaecati ea consequatur.</p>
               </div>
               
-              <div class="col-md-3">
+            <!--   <div class="col-md-3">
                 <h2 class="footer-heading mb-4">Quick Links</h2>
                 <ul class="list-unstyled">
                   <li><a href="#">About Us</a></li>
@@ -211,7 +211,7 @@ else{
                   <li><a href="#">Testimonials</a></li>
                   <li><a href="#">Contact Us</a></li>
                 </ul>
-              </div>
+              </div> -->
               <div class="col-md-3">
                 <h2 class="footer-heading mb-4">Follow Us</h2>
                 <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
@@ -221,7 +221,7 @@ else{
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+        <!--   <div class="col-md-3">
             <h2 class="footer-heading mb-4">Subscribe Newsletter</h2>
             <form action="#" method="post">
               <div class="input-group mb-3">
@@ -231,7 +231,7 @@ else{
                 </div>
               </div>
             </form>
-          </div>
+          </div> -->
         </div>
         <div class="row pt-5 mt-5 text-center">
           <div class="col-md-12">
@@ -262,7 +262,9 @@ else{
 
   <script src="front/js/main.js"></script>
    <!-- Jquery DataTable Plugin Js -->
-    <script src="assets/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <!-- <script src="assets/plugins/jquery-datatable/jquery.dataTables.js"></script> -->
+       <script src="front/dataTablebtstrp4/jquery.dataTables.min.js"></script>
+    <script src="front/dataTablebtstrp4/dataTables.bootstrap4.min.js"></script>
 <!--     <script src="assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script> -->
 <!--     <script src="assets/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
     <script src="assets/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>

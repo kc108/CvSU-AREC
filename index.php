@@ -73,10 +73,10 @@ else{
       <div class="container">
         <div class="row align-items-center">
           
-          <div class="col-11 col-xl-4 site-logo">
+          <div class="col-11 col-xl-3 site-logo">
             <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0">CvSU AREC</a></h1>
           </div>
-          <div class="col-12 col-md-8 d-none d-xl-block">
+          <div class="col-12 col-md-9 d-none d-xl-block">
             <nav class="site-navigation position-relative text-right" role="navigation">
 
               <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
@@ -92,6 +92,7 @@ else{
                 <li><a href="#section-industries" class="nav-link">Images</a></li>
                 <li><a href="#section-blog" class="nav-link">News</a></li>
                 <li><a href="biogas.php" class="nav-link">Biogas</a></li>
+                <li><a href="projects.php" class="nav-link">Projects</a></li>
                 <li><a href="#section-contact" class="nav-link">Contact</a></li>
                 <li><?php echo $authentication_nav?></li>
               </ul>
@@ -548,7 +549,7 @@ ORDER BY `news`.`news_Pub` DESC LIMIT 3";
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam iure deserunt ut architecto dolores quo beatae laborum aliquam ipsam rem impedit obcaecati ea consequatur.</p>
               </div>
               
-              <div class="col-md-3">
+            <!--   <div class="col-md-3">
                 <h2 class="footer-heading mb-4">Quick Links</h2>
                 <ul class="list-unstyled">
                   <li><a href="#">About Us</a></li>
@@ -556,7 +557,7 @@ ORDER BY `news`.`news_Pub` DESC LIMIT 3";
                   <li><a href="#">Testimonials</a></li>
                   <li><a href="#">Contact Us</a></li>
                 </ul>
-              </div>
+              </div> -->
               <div class="col-md-3">
                 <h2 class="footer-heading mb-4">Follow Us</h2>
                 <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
@@ -566,7 +567,7 @@ ORDER BY `news`.`news_Pub` DESC LIMIT 3";
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+        <!--   <div class="col-md-3">
             <h2 class="footer-heading mb-4">Subscribe Newsletter</h2>
             <form action="#" method="post">
               <div class="input-group mb-3">
@@ -576,7 +577,7 @@ ORDER BY `news`.`news_Pub` DESC LIMIT 3";
                 </div>
               </div>
             </form>
-          </div>
+          </div> -->
         </div>
         <div class="row pt-5 mt-5 text-center">
           <div class="col-md-12">

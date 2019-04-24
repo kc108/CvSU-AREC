@@ -2,7 +2,10 @@
 include('db.php');
 include('function.php');
 session_start();
-$login_level = $_SESSION['login_level'];
+
+if (isset($_SESSION['login_level'])) {
+	$login_level = $_SESSION['login_level'];
+}
 $query = '';
 $output = array();
 

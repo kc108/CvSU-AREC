@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+include('dbconfig.php');
 if(isset($_SESSION['login_user']))
 {      
     $authentication_nav = '<a href="dashboard" class="nav-link">Dashboard</a>';
@@ -53,6 +53,12 @@ else{
     <link rel="stylesheet" href="front/css/aos.css">
 
     <link rel="stylesheet" href="front/css/style.css">
+    
+    <link rel="stylesheet" href="front/dataTablebtstrp4/dataTables.bootstrap4.min.css">
+     <!-- <link rel="stylesheet" href="front/dataTablebtstrp4/bootstrap.css"> -->
+    
+    
+
     
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="200">
@@ -120,6 +126,7 @@ else{
 
             <h1 class="text-white font-weight-light text-uppercase font-weight-bold" data-aos="fade-up">CvSU-AREC IV</h1>
             <p class="mb-5" data-aos="fade-up" data-aos-delay="100">CAVITE STATE UNIVERSITY-AFFILIATED RENEWABLE ENERGY CENTER FOR REGION IV</p>
+     
 
           </div>
         </div>
@@ -131,11 +138,64 @@ else{
           
           
           <div class="col-md-12 order-md-1" data-aos="fade-up">
-            <div class="text-left pb-1 border-primary mb-12">
-              <h2 class="text-primary">Biogas Map</h2>
-            </div>
+       <?php 
+       if (isset($_REQUEST["news_ID"])) {
+        $r_news_ID = $_REQUEST["news_ID"];
+        $sql = "SELECT * FROM `news` WHERE  news_ID = $r_news_ID
+                ORDER BY `news`.`news_Pub` DESC LIMIT 1";
+        $result = mysqli_query($conn, $sql);
 
-<iframe src="dashboard/map/user-map1.php" style=" display:block; width:100%; height: 800px;"></iframe>
+        if (mysqli_num_rows($result) > 0) {
+            // output data of each row
+            while($row = mysqli_fetch_assoc($result)) {
+              $news_ID = $row["news_ID"];
+              $news_Title = $row["news_Title"];
+              $news_Content = $row["news_Content"];
+           
+              $news_Pub = $row["news_Pub"];
+              $news_Pub = strtotime($news_Pub);
+              $news_Pub = date("Y-m-d h:i:sa",$news_Pub);
+                ?>
+            <div class="text-left pb-1 border-primary mb-12">
+              <h2 class="text-primary"><?php echo $news_Title?></h2>
+            </div>
+                <div class="" data-aos="fade-up">
+              <div class="h-entry">
+                <div class="meta mb-4">&bullet; <?php echo $news_Pub?> <span class="mx-2">&bullet;</span></div>
+                <p><?php echo $news_Content?></p>
+              </div> 
+      
+            </div>
+                <?php
+            }
+        } else {
+            
+        }
+       }
+       else{
+
+
+                ?>
+              <div class="table-responsive" style="overflow-x: hidden;">
+              <table id="news_data" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                                                <th width="10%">Project Title</th>
+                                                <th width="10%">Project Owner</th>
+                                                <th width="10%">Date Started</th>
+                                                <th width="10%">Date Ended</th>
+                                                <th width="10%">Project Location</th>
+                                                <th width="10%">Project Progress</th>
+                  </tr>
+                </thead>
+            
+              </table>               
+              </div>
+                <?php
+       }
+
+   
+      ?>
           </div>
           
         </div>
@@ -211,6 +271,51 @@ else{
   <script src="front/js/aos.js"></script>
 
   <script src="front/js/main.js"></script>
-    
+   <!-- Jquery DataTable Plugin Js -->
+    <!-- <script src="assets/plugins/jquery-datatable/jquery.dataTables.js"></script> -->
+    <script src="front/dataTablebtstrp4/jquery.dataTables.min.js"></script>
+    <script src="front/dataTablebtstrp4/dataTables.bootstrap4.min.js"></script>
+
+
+<!--     <script src="assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script> -->
+<!--     <script src="assets/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="assets/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script> -->
+
+    <!-- Custom Js -->
+    <!-- <script src="assets/js/pages/tables/jquery-datatable.js"></script> -->
+ 
+   <script type="text/javascript">
+      
+$(document).ready(function() {
+
+
+        var dataTable = $('#news_data').DataTable({
+        "processing":true,
+        "serverSide":true,
+        "order":[],
+        "ajax":{
+            url:"dashboard/datatable/project/fetch.php",
+            type:"POST"
+        },
+        "columnDefs":[
+            {
+                "targets":[0],
+                "orderable":false,
+            },
+        ],
+        dom: "<'row'<'col-sm-3'l><'col-sm-3'f><'col-sm-6'p>>" +
+"<'row'<'col-sm-12'tr>>" +
+"<'row'<'col-sm-5'i><'col-sm-7'p>>",
+
+    });
+} );
+
+
+    </script>
   </body>
 </html>

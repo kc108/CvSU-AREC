@@ -119,6 +119,5 @@ if(isset($_POST["operation"]))
 		}
 	}
 }
-print_r($_POST);
-print_r($_REQUEST);
+
 ?>
