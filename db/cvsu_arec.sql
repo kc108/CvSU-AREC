@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2019 at 01:57 PM
+-- Generation Time: Apr 28, 2019 at 10:16 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -101,7 +101,7 @@ CREATE TABLE `news` (
 
 INSERT INTO `news` (`news_ID`, `news_Title`, `news_Content`, `news_Pub`) VALUES
 (1, 'Title1', 'Sixteen students from the Nagoya University for Foreign Studies (NUFS) in Japan graduated from a three-week Mobility Program in Adamson in colorful ceremonies held at the Miraculous Medal Garden last March 1, 2019. The program included a short course in English, immersion in offices and communities, participation in university activities, and tours of historical sites. University President Fr. Marcelo V. Manimtim, CM delivered a short message. I hope you had a good ', '2019-03-21 04:05:05'),
-(2, 'Title2', 'Sixteen students from the Nagoya University for Foreign Studies (NUFS) in Japan graduated from a three-week Mobility Program in Adamson in colorful ceremonies held at the Miraculous Medal Garden last March 1, 2019. The program included a short course in English, immersion in offices and communities, participation in university activities, and tours of historical sites. University President Fr. Marcelo V. Manimtim, CM delivered a short message. I hope you had a good ', '2019-03-21 04:05:08');
+(2, 'Title23', 'Sixteen students from the Nagoya University for Foreign Studies (NUFS) in Japan graduated from a three-week Mobility Program in Adamson in colorful ceremonies held at the Miraculous Medal Garden last March 1, 2019. The program included a short course in English, immersion in offices and communities, participation in university activities, and tours of historical sites. University President Fr. Marcelo V. Manimtim, CM delivered a short message. I hope you had a good ', '2019-03-21 04:05:08');
 
 -- --------------------------------------------------------
 
@@ -166,15 +166,13 @@ CREATE TABLE `research` (
 INSERT INTO `research` (`research_ID`, `user_ID`, `research_Title`, `research_Content`, `status_ID`, `research_Created`, `research_Attachment`) VALUES
 (2, 16, 'research2', 'content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample ', 1, '2019-03-20 19:14:26', ''),
 (3, 4, 'research3', 'content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample content content sample sample ', 1, '2019-03-20 19:14:26', ''),
-(4, 4, 'a31231231', 'asdasdasd', 2, '2019-03-28 11:23:37', 'doc1.docx'),
 (8, 4, 'a3123123', 'hkjhwrkjwher', 2, '2019-03-28 13:37:11', 'fifteen.png'),
 (9, 4, 'bagoooo', 'asdasdasd', 1, '2019-03-28 13:48:13', ''),
 (10, 4, 'zxczxczxc', 'zxczxczxc', 2, '2019-03-28 15:06:01', ''),
 (11, 4, 'asdasd', 'cxzxc', 2, '2019-03-28 15:06:48', ''),
 (13, 4, 'asdasd', 'asdasd', 2, '2019-03-28 15:10:15', ''),
 (21, 16, '234234', '24234', 1, '2019-03-28 18:55:06', ''),
-(22, 16, 'aaaa', 'aaaaa', 1, '2019-03-28 19:09:56', ''),
-(23, 4, 'new', 'new', 1, '2019-04-08 00:06:05', '19274752_631125553747581_8026380505966845222_n.jpg');
+(22, 16, 'aaaa', 'aaaaa', 2, '2019-03-28 19:09:56', '');
 
 -- --------------------------------------------------------
 
@@ -193,7 +191,8 @@ CREATE TABLE `research_status` (
 
 INSERT INTO `research_status` (`status_ID`, `status_Name`) VALUES
 (1, 'Pending'),
-(2, 'Approve');
+(2, 'Approve'),
+(3, 'Archive');
 
 -- --------------------------------------------------------
 
@@ -215,6 +214,29 @@ INSERT INTO `status` (`status_ID`, `status_Name`) VALUES
 (2, 'Receive'),
 (3, 'Ongoing'),
 (4, 'Complete');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `suggestion`
+--
+
+CREATE TABLE `suggestion` (
+  `s_ID` int(11) UNSIGNED NOT NULL,
+  `fname` varchar(85) NOT NULL,
+  `lname` varchar(85) DEFAULT NULL,
+  `email` varchar(85) DEFAULT NULL,
+  `subject` varchar(85) DEFAULT NULL,
+  `message` text,
+  `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `suggestion`
+--
+
+INSERT INTO `suggestion` (`s_ID`, `fname`, `lname`, `email`, `subject`, `message`, `date`) VALUES
+(5, 'fname', 'Sample', 'sample@sample.com', 'sample', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa ad iure porro mollitia architecto hic consequuntur. Distinctio nisi perferendis dolore, ipsa consectetur? Fugiat quaerat eos qui, libero neque sed nulla.', '2019-04-28 18:37:31');
 
 -- --------------------------------------------------------
 
@@ -330,6 +352,12 @@ ALTER TABLE `status`
   ADD PRIMARY KEY (`status_ID`);
 
 --
+-- Indexes for table `suggestion`
+--
+ALTER TABLE `suggestion`
+  ADD PRIMARY KEY (`s_ID`);
+
+--
 -- Indexes for table `user_accounts`
 --
 ALTER TABLE `user_accounts`
@@ -367,7 +395,7 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `news_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `news_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `project_monitoring`
 --
@@ -377,17 +405,22 @@ ALTER TABLE `project_monitoring`
 -- AUTO_INCREMENT for table `research`
 --
 ALTER TABLE `research`
-  MODIFY `research_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `research_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `research_status`
 --
 ALTER TABLE `research_status`
-  MODIFY `status_ID` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `status_ID` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `status`
 --
 ALTER TABLE `status`
   MODIFY `status_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `suggestion`
+--
+ALTER TABLE `suggestion`
+  MODIFY `s_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `user_accounts`
 --

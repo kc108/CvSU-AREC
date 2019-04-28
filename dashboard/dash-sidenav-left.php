@@ -112,6 +112,10 @@ function side_report(){
         </a>
         <ul class="ml-menu">
             <li>
+                <a href="#" class=" waves-effect waves-block" data-toggle="modal" data-target="#myModal">Project</a>
+
+            </li>
+            <li>
                 <a href="../assets/fpdf181/index.php?report=Accountlist" class=" waves-effect waves-block" target="_BLANK">List of account</a>
             </li>
         </ul>

@@ -74,7 +74,7 @@ else{
         <div class="row align-items-center">
           
           <div class="col-11 col-xl-4 site-logo">
-            <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0">CvSU AREC</a></h1>
+            <h1 class="mb-0"><a href="index.php" class="text-white h2 mb-0">CvSU AREC</a></h1>
           </div>
           <div class="col-12 col-md-8 d-none d-xl-block">
             <nav class="site-navigation position-relative text-right" role="navigation">
@@ -105,9 +105,121 @@ else{
           </div>
 
         </div>
-      </div>
+    <style type="text/css">
+      #anothernav_li li a {
+          color: #fff !important;
+      }
+      #anothernav_li li a:hover {
+          color: #f16821 !important;
+      }
+         #anothernav_li1 li a {
+          color: #343a40 !important;
+          width: 400px;
+      }
+          #anothernav_li1 li a:hover {
+          color: #f16821 !important;
+         
+      }
+  #myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #f16821; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 18px; /* Increase font size */
+}
+
+#myBtn:hover {
+    background-color: #343a40; /* Add a dark-grey background on hover */
+}
+    </style>
+      <div class="container anothernav" style="background-color: #607d8b; border-radius: 5px 5px 0px 0px; ">
+        <div class="row align-items-center">
+       
+          <div class="col-12 col-md-10 d-none d-xl-block">
+            <nav class="site-navigation position-relative text-center" role="navigation" id="anothernav_li">
+
+              <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
+                <li><a href="#section-instroduction" class="nav-link">INSTRODUCTION</a></li>
+                <li class="has-children">
+                  <a href="#section-ch1_1" class="nav-link" >Chapter 1</a>
+                  <ul class="dropdown" id="anothernav_li1">
+                   
+                    <li><a href="#section-ch1_1" class="nav-link">(HISTORICAL DEVELOPMENT OF BIOGAS TECHNOLOGY)</a></li>
+                    <li><a href="#section-ch1_1" class="nav-link"> History of Biogas Technology in the Philippines</a></li>
+                    <li><a href="#section-ch1_2" class="nav-link">CvSU-AREC: Revitalize Biogas Technology</a></li>
+                    <li><a href="#section-ch1_3" class="nav-link">BAI Experience in the Promotion of Biogas Technology</a></li>
+                    <li><a href="#section-ch1_4" class="nav-link">PhilBIO and Biogas Technology</a></li>
+                    <li><a href="#section-ch1_5" class="nav-link">Status of Biogas Technology in the Philippines</a></li>
+                  </ul>
+                </li>
+                 <li class="has-children">
+                  <a href="#section-ch2_1" class="nav-link" >Chapter 2</a>
+                  <ul class="dropdown"  id="anothernav_li1">
+                    <li><a href="#section-ch2_1" class="nav-link">(BIOGAS TECHNOLOGICAL PROCESS)</a></li>
+                    <li><a href="#section-ch2_1" class="nav-link">What is Biogas?</a></li>
+                    <li><a href="#section-ch2_2" class="nav-link">Biogas Technological Process</a></li>
+                    <li><a href="#section-ch2_3" class="nav-link">Stages of Biogas Fermentation</a></li>
+                    <li><a href="#section-ch2_4" class="nav-link">Classification of Biogas Fermentation Process</a></li>
+                    <li><a href="#section-ch2_5" class="nav-link">Factors that Influence Biogas Production</a></li>
+                  </ul>
+                </li>
+                <li class="has-children">
+                  <a href="#section-chv_1" class="nav-link" >CHAPTER V</a>
+                  <ul class="dropdown" id="anothernav_li1">
+                     <li><a href="#section-chv_1" class="nav-link">(DSAC-MODEL BIOGAS DIGESTER)</a></li>
+                    <li><a href="#section-chv_2" class="nav-link">Components of DSAC-Model Biogas Disaster</a></li>
+                    <li><a href="#section-chv_3" class="nav-link">Principles of Operation</a></li>
+                    <li><a href="#section-chv_4" class="nav-link">Design Formulas</a></li>
+                    <li><a href="#section-chv_5" class="nav-link">Sizing of Biogas Digester</a></li>
+                    <li><a href="#section-chv_6" class="nav-link">Pre-Construction Consideration</a></li>
+                    <li><a href="#section-chv_7" class="nav-link">Site Consideration</a></li>
+                    <li><a href="#section-chv_8" class="nav-link">Construction Techniques (DSAC-Model Rectangular-Fix Dome Register)</a></li>
+                     
+                     
+
+
+                  </ul>
+                </li>
+                <li class="has-children">
+                  <a href="#section-chviii_1" class="nav-link" >Chapter VIII</a>
+                  <ul class="dropdown"id="anothernav_li1">
+                    <li><a href="#section-chviii_1" class="nav-link">(OPERATION AND MAINTENANCE OF BIOGAS DIGESTER)</a></li>
+                    <li><a href="#section-chviii_1" class="nav-link">Initial Loading</a></li>
+                    <li><a href="#section-chviii_2" class="nav-link">Regular Loading</a></li>
+                    <li><a href="#section-chviii_3" class="nav-link">Stirring/Agitation of Slurry</a></li>
+                    <li><a href="#section-chviii_4" class="nav-link">Condensate Removal</a></li>
+                    <li><a href="#section-chviii_5" class="nav-link">Servicing Scum Problem</a></li>
+                    <li><a href="#section-chviii_6" class="nav-link">Periodic Maintenance of the Digester</a></li>
+
+                  </ul>
+                </li>
+
+
+                     
+                    
+                
+             
+              </ul>
+            </nav>
+          </div>
+
+
+          <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu h3"></span></a></div>
+
+          </div>
+
+        </div>
       
     </header>
+
 
   
 
@@ -126,96 +238,123 @@ else{
         </div>
       </div>
     </div> 
-     <div class="site-section" id="section-instroduction">
+    <div class="site-section" id="section-instroduction">
+      <div class="container">
+        <div class="row mb-5">
+          
+          
+            <p>&nbsp;</p>
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+              <h2 class="text-primary">Instroduction</h2>
+            </div>
+            <p>&nbsp;</p>
+
+            <p style="text-align: justify; "><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">The Philippines has 13.46 million pigs and 135.64 million chickens (BAS, 2007). Of the 13 million pigs, 9 million are found in the small hold raisers because livestock raising is secondary to crop production in terms of agriculture livelihood. The average number of pigs raised in the small hold sector is about 8 heads where households in the villages augment family income from the sale of pigs. With this number of heads, the total manure production reached to more than 30 thousand tons per day. The volume is quite tremendous and if not properly managed will become the major pollutant of air and water.</span></span></p>
+
+            <p style="text-align: justify; "><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Management of animal wastes is a big problem in the animal producing areas since very few raisers have biogas digesters. Wastes are allowed to flow freely to open fields, thus emitting foul odors and contaminating surface and underground water.</span></span></p>
+
+            <p>&nbsp;</p>
+
+            <p style="text-align: justify; "><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Agriculture (livestock and crop production) contributed 32% of the total greenhouse gases emissions (1994 Philippine GHG Inventory). These greenhouse gases consist of carbon dioxide (CO2), methane (CH4), nitrous oxide (N2O) and other gases which came mainly from livestock wastes.</span></span></p>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <h3 class="text-primary">Why Biogas Technology?</h3>
+
+
+
+            <ul>
+              <li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">There is a need for low cost waste treatment facility due to the growing animal industry.</span></span></li>
+              <li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">Waste treatment plus energy generation technology</span></span></li>
+              <li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">Waste utilization</span></span></li>
+              <li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">Environment-friendly alternative</span></span></li>
+            </ul>
+
+            <p>&nbsp;</p>
+
+            <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">Biogas technology provides solution to pollution problem being a &ldquo;waste-treatment facility&rdquo; and at the same time an &ldquo;energy-generating device&rdquo;.</span></span></p>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section" id="section-ch1_1">
+      <div class="container">
+        <div class="row mb-5">
+          
+          <p>&nbsp;</p>
+
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+              <h3 class="text-primary">Chapter 1</h3>
+            </div>
+          <div class="text-left pb-1 border-primary mb-12">
+            <h2 class="text-primary">HISTORICAL DEVELOPMENT OF BIOGAS TECHNOLOGY</h2>
+          </div>
+          <h3 class="text-primary">History of Biogas Technology in the Philippines</h3>
+
+
+          <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt">Interest in biogas development grew with the encouraging reports from the official mission of the Philippine Coconut Administration after its return from a European tour in 1965. The main interest in biogas stemmed from its pollution prevention and public health aspects rather than from its fuel energy generation potential, as firewood was abundantly available then.</span></span></span></p>
+
+          <p>&nbsp;</p>
+
+          <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt">In the early 70s, Dr. Felix D. Maramba, an Agricultural Engineer by the profession of Araneta University Foundation, pioneered the development of Biogas Technology at Maya Farms, an integrated livestock farm, meat processing and canning operation in the Antipolo Hills of Rizal Province. Demonstration models of Indian, Chinese and European types were set up by the farm in order to obtain the necessary experience and to assess the suitability of different types of plants. The models were later modified and used as pilot plants. Biogas produced at the farm supplies 40% of the total power requirement of the farm and was used for domestic applications, cooking vats in the canning plant, fuel of burners for heating and gasoline engines running a feed mill, operating a 60-KVA electric generator and running farm vehicles.</span></span></span></p>
+
+          <p style="text-align:justify">&nbsp;</p>
+
+          <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt">The late President Ferdinand E. Marcos directed the Energy Development Board (now Department of Energy) in the later part of 1976 to embark in a crash program to use biogas as substitute fuel. He instructed the establishment of model biogas plants in stock farms in every province and towns where there are breeding stations. In the early 80&rsquo;s, as part of the &ldquo;carsh programme&rdquo;, the Bureau of Animal Industry and the EDB, launched a program on &ldquo;Biogas ng Barangay&rdquo; (Village Biogas Project). Loans were made available to livestock owners through financial institutions. Demonstration projects at the regional and provincial level were established; 340 units of concrete biogas plant, 321 units in Luzon, 18 in Visayas and 1 in Mindanao. Available fresh pig in manure per year was estimated at 8.9 million tons, indicating a biogas production potential of 502 million cubic meters per year. The Indian design with a floating gas holder was more popular. The model did not last long because of the maintenance problem. Due to lack of government support on the technology and the series of reorganization in the government, the continuity and prioritization of the project became less important. Other organizations engaged in extension of biogas technology were the National Housing Authority, the Engineering Battalion of the military, and the Department of Community Development. The Development Bank of the Philippines granted loans to farmers at low interest rates for the biogas projects.</span></span></span></p>
+
+          <p>&nbsp;</p>
+
+          <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The Philippine Rural Life Center (PRLC), a non-government organization promoted a culvert model biogas system in the early 80s. The PRLC trained people from the government as well as the private sectors in the field of animal production and biogas technology. Many units of the model were copied and installed in same selected villages but the continuity ceased because the PRLC project was also terminated in the late 80s.</span></span></span></p>
+
+          <p>&nbsp;</p>
+
+          <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Also in the late 80&rsquo;s, the Affiliated Renewable Energy Centers (ARECs &ndash; formerly ANEC) were established at different state colleges and universities nationwide to serve as extension arm of the Department of Energy (DOE) in promoting renewable energy in the rural areas.</span></span></span></p>
+
+          <p style="text-align:justify">&nbsp;</p>
+
+          <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt">The Cavite State University (CvSU), formerly Don Severino Agricultural College (DSAC) was very active in the development of the design especially for semi-commercial pig raisers.</span></span></span></p>
+
+          <p>&nbsp;</p>
+          </div>
+    
+        </div>
+      </div>
+    </div>
+    <div class="site-section" id="section-ch1_2">
       <div class="container">
         <div class="row mb-5">
           
           
           <div class="col-md-12 order-md-1" data-aos="fade-up">
             <div class="text-left pb-1 border-primary mb-12">
-              <h2 class="text-primary">Instroduction</h2>
+             
             </div>
 
-
 <p>&nbsp;</p>
-
-<p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">The Philippines has 13.46 million pigs and 135.64 million chickens (BAS, 2007). Of the 13 million pigs, 9 million are found in the small hold raisers because livestock raising is secondary to crop production in terms of agriculture livelihood. The average number of pigs raised in the small hold sector is about 8 heads where households in the villages augment family income from the sale of pigs. With this number of heads, the total manure production reached to more than 30 thousand tons per day. The volume is quite tremendous and if not properly managed will become the major pollutant of air and water.</span></span></p>
-
-<p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Management of animal wastes is a big problem in the animal producing areas since very few raisers have biogas digesters. Wastes are allowed to flow freely to open fields, thus emitting foul odors and contaminating surface and underground water.</span></span></p>
-
-<p>&nbsp;</p>
-
-<p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Agriculture (livestock and crop production) contributed 32% of the total greenhouse gases emissions (1994 Philippine GHG Inventory). These greenhouse gases consist of carbon dioxide (CO2), methane (CH4), nitrous oxide (N2O) and other gases which came mainly from livestock wastes.</span></span></p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<h3 class="text-primary">Why Biogas Technology?</h3>
-
-
-
-<ul>
-  <li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">There is a need for low cost waste treatment facility due to the growing animal industry.</span></span></li>
-  <li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">Waste treatment plus energy generation technology</span></span></li>
-  <li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">Waste utilization</span></span></li>
-  <li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">Environment-friendly alternative</span></span></li>
-</ul>
-
-<p>&nbsp;</p>
-
-<p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">Biogas technology provides solution to pollution problem being a &ldquo;waste-treatment facility&rdquo; and at the same time an &ldquo;energy-generating device&rdquo;.</span></span></p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<h3 class="text-primary">Chapter 1</h3>
-<div class="text-left pb-1 border-primary mb-12">
-  <h2 class="text-primary">HISTORICAL DEVELOPMENT OF BIOGAS TECHNOLOGY</h2>
-</div>
-<h3 class="text-primary">History of Biogas Technology in the Philippines</h3>
-
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt">Interest in biogas development grew with the encouraging reports from the official mission of the Philippine Coconut Administration after its return from a European tour in 1965. The main interest in biogas stemmed from its pollution prevention and public health aspects rather than from its fuel energy generation potential, as firewood was abundantly available then.</span></span></span></p>
-
-<p>&nbsp;</p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt">In the early 70s, Dr. Felix D. Maramba, an Agricultural Engineer by the profession of Araneta University Foundation, pioneered the development of Biogas Technology at Maya Farms, an integrated livestock farm, meat processing and canning operation in the Antipolo Hills of Rizal Province. Demonstration models of Indian, Chinese and European types were set up by the farm in order to obtain the necessary experience and to assess the suitability of different types of plants. The models were later modified and used as pilot plants. Biogas produced at the farm supplies 40% of the total power requirement of the farm and was used for domestic applications, cooking vats in the canning plant, fuel of burners for heating and gasoline engines running a feed mill, operating a 60-KVA electric generator and running farm vehicles.</span></span></span></p>
-
-<p style="text-align:justify">&nbsp;</p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt">The late President Ferdinand E. Marcos directed the Energy Development Board (now Department of Energy) in the later part of 1976 to embark in a crash program to use biogas as substitute fuel. He instructed the establishment of model biogas plants in stock farms in every province and towns where there are breeding stations. In the early 80&rsquo;s, as part of the &ldquo;carsh programme&rdquo;, the Bureau of Animal Industry and the EDB, launched a program on &ldquo;Biogas ng Barangay&rdquo; (Village Biogas Project). Loans were made available to livestock owners through financial institutions. Demonstration projects at the regional and provincial level were established; 340 units of concrete biogas plant, 321 units in Luzon, 18 in Visayas and 1 in Mindanao. Available fresh pig in manure per year was estimated at 8.9 million tons, indicating a biogas production potential of 502 million cubic meters per year. The Indian design with a floating gas holder was more popular. The model did not last long because of the maintenance problem. Due to lack of government support on the technology and the series of reorganization in the government, the continuity and prioritization of the project became less important. Other organizations engaged in extension of biogas technology were the National Housing Authority, the Engineering Battalion of the military, and the Department of Community Development. The Development Bank of the Philippines granted loans to farmers at low interest rates for the biogas projects.</span></span></span></p>
-
-<p>&nbsp;</p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The Philippine Rural Life Center (PRLC), a non-government organization promoted a culvert model biogas system in the early 80s. The PRLC trained people from the government as well as the private sectors in the field of animal production and biogas technology. Many units of the model were copied and installed in same selected villages but the continuity ceased because the PRLC project was also terminated in the late 80s.</span></span></span></p>
-
-<p>&nbsp;</p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Also in the late 80&rsquo;s, the Affiliated Renewable Energy Centers (ARECs &ndash; formerly ANEC) were established at different state colleges and universities nationwide to serve as extension arm of the Department of Energy (DOE) in promoting renewable energy in the rural areas.</span></span></span></p>
-
-<p style="text-align:justify">&nbsp;</p>
-
-<p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt">The Cavite State University (CvSU), formerly Don Severino Agricultural College (DSAC) was very active in the development of the design especially for semi-commercial pig raisers.</span></span></span></p>
-
-<p>&nbsp;</p>
-
 <h3 class="text-primary">CvSU-AREC: Revitalize Biogas Technology</h3>
-<p>&nbsp;</p>
-
 <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cavite State University &ndash; Affiliated Renewable Energy Center (CvSU-AREC) was established in 1989 by the Department of Energy (DOE) in its effort to promote the use of Renewable Energy Technologies (RETs) in Region IV. There were other ARECs established in several strategically located colleges and universities (both private and public) in other regions of the country to serve as DOE&rsquo;s extension arm to the rural areas.</span></span></span></p>
 
 <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; During the first few years of the project, information awareness campaigns were conducted to promote the use of Renewable Energy resources such as wind, hydro, solar and biomass. The center was successful in arousing the interest of the people in the livestock sector but not that so successful in convincing them to invest in any of these technologies mainly because of the availability of grid electricity in their area and most clients lack needed capital and they were used to receiving dole out projects from the government.</span></span></span></p>
@@ -261,8 +400,22 @@ else{
 <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt">CvSU-AREC believes that it has done its share in promoting sustainable livestock industry development of the country and contributing to environmental protection. The center has earned recognition for its expert services in Biogas System as applied to Power Generation and Livestock Waste Management.</span></span></span></p>
 
 <p>&nbsp;</p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="site-section" id="section-ch1_3">
+      <div class="container">
+        <div class="row mb-5">
+          
+          
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+              <h2 class="text-primary"></h2>
+            </div><p>&nbsp;</p>
 
-<h3 class="text-primary">BAI Experience in the Promotion of Biogas Technology</h3>
+            <h3 class="text-primary">BAI Experience in the Promotion of Biogas Technology</h3>
 <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong></span></span></p>
 
 <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; In 1995, the low-cost Biogas Technology using Polyethylene tube was introduced in Philippines by the Bureau of Animal Industry (BAI). Modification of the plastic tube Biogas digester being introduced in Vietnam by Thomas R. Preston was done and applied by the research staff of BAI. With the advent of small and affordable unit (3 to 5 cu.m. at P6,500.00 &ndash; 13,000.00), BAI Tubular Polyethylene Digester (BAI-TPED) has gained popularity. The main breakthrough is the utilization of polyethylene plastic tube for the digester that is simple and easy to maintain.</span></span></span></p>
@@ -274,12 +427,43 @@ else{
 <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The biogas project gained small support from the Food and Agriculture Organizations. The farmers raising 10 to 20 pigs &amp; feeding sugarcane juice were tapped for the project &ldquo;Diversification of Sugarcane Juice&rdquo;. The project included the installation of biogas digesterto selected cooperators to manage the manure. The units installed served as demonstration or show window for other pig raisers in the locality. Through this project, other interested local government officials requested the BAI to conduct training for farmers and technicians in their respective localities. The project was coordinated with other regional offices where training was conducted. The project has trained 300 farmers, 25 key farmers and 200 agricultural technicians. Repair and maintenance of the digester became the major constraints due to the unavailability of materials and technicians to do the repair of the biogas system.</span></span></span></p>
 
 <p>&nbsp;</p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="site-section" id="section-ch1_4">
+      <div class="container">
+        <div class="row mb-5">
+          
+          
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+              <h2 class="text-primary"></h2>
+            </div><p>&nbsp;</p>
 
-<h3 class="text-primary">PhilBIO and Biogas Technology </h3>
+            <h3 class="text-primary">PhilBIO and Biogas Technology </h3>
 
 <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong><span style="font-size:12.0pt">Philippine Bio-Sciences Co., Inc. or PhilBIO was established in 1998 with the goal of promoting biogas technology utilization in the country. A subsidiary of AsiaBioGas Co. Ltd, with headquarter in Thailand, PhilBIO&rsquo;s first waste-to-energy project was constructed at the Rocky Farm in the Province of Rizal. To date, it has completed 60 Covered In-Ground Anaerobic Reactor (CIGAR) Projects.These systems treat waste water effectively through proper cultivation of microbial sludge to remove significantly COD in wastewater, and capturing biogas for an on-site power use.</span></span></span></p>
 
-<h3 class="text-primary">Status of Biogas Technology in the Philippines</h3>
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="site-section" id="section-ch1_5">
+      <div class="container">
+        <div class="row mb-5">
+          
+          
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+              <h2 class="text-primary"></h2>
+            </div>
+            <p>&nbsp;</p>
+
+            <h3 class="text-primary">Status of Biogas Technology in the Philippines</h3>
 
 <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; In 2006-2008, CvSU-AREC conducted a research entitled &ldquo;Validation of Biogas Technology and its Utilization in the Philippines&rdquo; which was funded by the Philippine Council for Industry and Energy Research and Development (PCIERD). Result of the study showed that there are more than 900 units of biogas digesters installed throughout the country. The total capacity of these digesters is estimated at 662,457 cu.m. </span></span></span></p>
 
@@ -297,7 +481,24 @@ else{
 
 <p>&nbsp;</p>
 
-<h3 class="text-primary">Chapter II</h3>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+
+
+     <div class="site-section" id="section-ch2_1">
+      <div class="container">
+        <div class="row mb-5">
+          
+          <p>&nbsp;</p>
+
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+              <h2 class="text-primary">Chapter II</h2>
+            </div>
 <div class="text-left pb-1 border-primary mb-12">
   <h2 class="text-primary">BIOGAS TECHNOLOGICAL PROCESS</h2>
 </div>
@@ -317,32 +518,64 @@ else{
 
 <p>&nbsp;</p>
 
-<h3 class="text-primary">Biogas Technological Process</h3>
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">The biogas technological process (Figure9) is accomplished by means of fermentation/digestion of organic materials (such as crop residues, human and animal wastes, distillery wastes) through the actions of a number of microorganisms under anaerobic condition to produce Biogas and sludge. Anaerobic condition is provided by a simple known as &ldquo;biogas digester&rdquo; (further discussion in Chapter IV)</span></span></p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+     <div class="site-section" id="section-ch2_2">
+      <div class="container">
+        <div class="row mb-5">
+          
+          <p>&nbsp;</p>
 
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+             
+            </div>
+             <h3 class="text-primary">Biogas Technological Process</h3>
+          <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">The biogas technological process (Figure9) is accomplished by means of fermentation/digestion of organic materials (such as crop residues, human and animal wastes, distillery wastes) through the actions of a number of microorganisms under anaerobic condition to produce Biogas and sludge. Anaerobic condition is provided by a simple known as &ldquo;biogas digester&rdquo; (further discussion in Chapter IV)</span></span></p>
+
+          <p>&nbsp;</p>
+
+          <table align="left" style="border:undefined">
+            <tbody>
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>&nbsp;</p>
+
+          <p>&nbsp;</p>
+
+          <p>&nbsp;</p>
+
+          <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">Figure 9. The biogas technological process</span></span></p>
+
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+     <div class="site-section" id="section-ch2_3">
+      <div class="container">
+        <div class="row mb-5">
+          
+          <p>&nbsp;</p>
+
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+            </div>
 <p>&nbsp;</p>
 
-<table align="left" style="border:undefined">
-  <tbody>
-    <tr>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">Figure 9. The biogas technological process</span></span></p>
-
-<h3 class="text-primary">Stages of Biogas Fermentation</h3>
+          <h3 class="text-primary">Stages of Biogas Fermentation</h3>
 
 <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">There are three important stages in biogas fermentation process: (1) liquefaction stage; (2) acid production stage; and (3) methane production stage (Figures 10 and 11). </span></span></p>
 
@@ -371,8 +604,23 @@ else{
 <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">In the third stage, methane production stage, then methane producing(methanogenic) bacteria utilize as substrate the simple compounds such as acetic acid, hydrogen, formic acid and CO2 to form methane and carbon dioxide.</span></span></p>
 
 <p style="text-align:justify">&nbsp;</p>
+          </div> 
 
-<h3 class="text-primary">Classification of Biogas Fermentation Process </h3>
+
+          
+        </div>
+      </div>
+    </div>
+     <div class="site-section" id="section-ch2_4">
+      <div class="container">
+        <div class="row mb-5">
+          
+          <p>&nbsp;</p>
+
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+              
+            </div><h3 class="text-primary">Classification of Biogas Fermentation Process </h3>
 
 <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">There are many processes which could be adopted for the fermentation of different wastes for various purposes. They can be divided according to the following:</span></span></p>
 
@@ -428,7 +676,21 @@ else{
 
 <p style="text-align:justify">&nbsp;</p>
 
-<h3 class="text-primary">Factors that Influence Biogas Production </h3>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+     <div class="site-section" id="section-ch2_5">
+      <div class="container">
+        <div class="row mb-5">
+          
+          <p>&nbsp;</p>
+
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+             
+            </div><h3 class="text-primary">Factors that Influence Biogas Production </h3>
 
 <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">There are several factors which affects or stimulate gas production. The operational success of the digesters depends on the following parameters:</span></span></p>
 
@@ -652,7 +914,26 @@ else{
 
 <p>&nbsp;</p>
 
-<h3 class="text-primary">CHAPTER V</h3>
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+
+
+
+      <div class="site-section" id="section-chv_1">
+      <div class="container">
+        <div class="row mb-5">
+          
+          <p>&nbsp;</p>
+
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+              <h2 class="text-primary">Chapter V</h2>
+            </div>
 <div class="text-left pb-1 border-primary mb-12">
   <h2 class="text-primary">DSAC-MODEL BIOGAS DIGESTER</h2>
 </div>
@@ -700,6 +981,22 @@ else{
 
 <p>&nbsp;</p>
 
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+<div class="site-section" id="section-chv_2">
+      <div class="container">
+        <div class="row mb-5">
+          
+          <p>&nbsp;</p>
+
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+              
+            </div>
 
 <h3 class="text-primary">Components of DSAC-Model Biogas Disaster</h3>
 
@@ -745,7 +1042,21 @@ else{
 
 <p>&nbsp;</p>
 
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="site-section" id="section-chv_3">
+      <div class="container">
+        <div class="row mb-5">
+          
+          <p>&nbsp;</p>
 
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+              
+            </div>
 <h3 class="text-primary">Principles of Operation</h3>
 <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>The biogas plant operates in a displacement principle. The slurry in the inlet pipe. Fermentation process occurs inside the digester due to the action of bacteria. During the fermentation process, biogas is generated and stored in the gas holder. The slurry is allowed to stay inside the digester for a certain number of days to allow the fermentation process to complete. Once digested, the slurry settles down as it becomes denser compared to the fresh slurry.</span></span></p>
 
@@ -774,6 +1085,22 @@ else{
 <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">&nbsp;</span></span></p>
 
 <p>&nbsp;</p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="site-section" id="section-chv_4">
+      <div class="container">
+        <div class="row mb-5">
+          
+          <p>&nbsp;</p>
+
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+              
+            </div>
+
 
 <h3 class="text-primary">DESIGN FORMULAS</h3>
 
@@ -850,6 +1177,21 @@ else{
 <p>&nbsp;</p>
 
 
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="site-section" id="section-chv_5">
+      <div class="container">
+        <div class="row mb-5">
+          
+          <p>&nbsp;</p>
+
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+              
+            </div>
 <h3 class="text-primary">Sizing of Biogas Digester</h3>
 
 <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>There are two approaches in determining the size of a biogas digester. The decision is made by the owner/ operator to fit his needs.</span></span></p>
@@ -895,6 +1237,21 @@ else{
 
 <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; = 21.01 cu.m. biogas per day</span></span></p>
 
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="site-section" id="section-chv_6">
+      <div class="container">
+        <div class="row mb-5">
+          
+          <p>&nbsp;</p>
+
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+              
+            </div>
 
 <h3 class="text-primary">Pre-Construction Consideration</h3>
 
@@ -955,6 +1312,21 @@ else{
 <p>&nbsp;</p>
 
 
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="site-section" id="section-chv_7">
+      <div class="container">
+        <div class="row mb-5">
+          
+          <p>&nbsp;</p>
+
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+              
+            </div>
 <h3 class="text-primary">Site Consideration</h3>
 
 <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">The following guidelines are helpful in choosing in ideal site for biogas project.</span></span></p>
@@ -978,6 +1350,22 @@ else{
 <p style="margin-left:48px; text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">9. The site should be close to where the effluent is to be used/stored like vegetable garden or drying bed.</span></span></p>
 
 <p>&nbsp;</p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  <div class="site-section" id="section-chv_8">
+      <div class="container">
+        <div class="row mb-5">
+          
+          <p>&nbsp;</p>
+
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+              
+            </div>
+
 
 
 <h3 class="text-primary">Construction Techniques (DSAC-Model Rectangular-Fix Dome Register)</h3>
@@ -1334,8 +1722,21 @@ else{
 
 <p>&nbsp;</p>
 
+          </div>
+          
+        </div>
+      </div>
+    </div>
+       <div class="site-section" id="section-chviii_1">
+      <div class="container">
+        <div class="row mb-5">
+          
+          <p>&nbsp;</p>
 
-<h3 class="text-primary">Chapter VIII</h3>
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+              <h2 class="text-primary">CHAPTER VIII</h2>
+            </div>
 <div class="text-left pb-1 border-primary mb-12">
   <h2 class="text-primary">OPERATION AND MAINTENANCE OF BIOGAS DIGESTER</h2>
 </div>
@@ -1371,7 +1772,22 @@ else{
 
 <p style="text-align:justify">&nbsp;</p>
 
+          </div>
+          
+        </div>
+      </div>
+    </div>
 
+      <div class="site-section" id="section-chviii_2">
+      <div class="container">
+        <div class="row mb-5">
+          
+          <p>&nbsp;</p>
+
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+              
+            </div>
 <h3 class="text-primary">Regular Loading</h3>
 
 <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; About 1 liter water is added to every kilogram of manure. The slurry should be mixed thoroughly until the right consistency is obtained. However, in actual practice, there is no fixed water-manure proportion since this will depend on the type of manure being used and its moisture content. The technique will be developed through experience.</span></span></p>
@@ -1382,12 +1798,44 @@ else{
 
 <p style="text-align:justify">&nbsp;</p>
 
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="site-section" id="section-chviii_3">
+      <div class="container">
+        <div class="row mb-5">
+          
+          <p>&nbsp;</p>
+
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+              
+            </div>
+
 
 <h3 class="text-primary">Stirring/Agitation of Slurry</h3>
 
 <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>Mechanically disturbing the slurry inside the digester with the use of stirrer performs two vital functions: first, to stimulate bacterial activity and second, to break the &ldquo;scum&rdquo; layer which forms a mat of vegetable/organic matter at the slurry surface and thus, restricts the gas flow. If left undisturbed, the scum would get thick and harden, which may require opening the digester to remove it. Stirring should be done daily &ndash; about 3 to 5 minutes in the afternoon. The stirring should be 360&deg; in one direction and 360&deg; in another direction. For the DSAC-Model, there is no need for stirring since the system operates on displacement principle (see Principle of Operation on page 58).</span></span></p>
 
 <p style="text-align:justify">&nbsp;</p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="site-section" id="section-chviii_4">
+      <div class="container">
+        <div class="row mb-5">
+          
+          <p>&nbsp;</p>
+
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+              
+            </div>
+
 
 
 <h3 class="text-primary">Condensate Removal</h3>
@@ -1395,6 +1843,22 @@ else{
 <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">&nbsp;&nbsp;&nbsp; The condensate or water that settles in the piping system must be removed monthly since condensate accumulation may obstruct gas flow. The condensate removal may be done by lifting the gas pipe so that the water in the pipe will be drained back into the digester. Another method is to provide the gas pipe system with condensate trap for easy removal of water.</span></span></p>
 
 <p style="text-align:justify">&nbsp;</p>
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="site-section" id="section-chviii_5">
+      <div class="container">
+        <div class="row mb-5">
+          
+          <p>&nbsp;</p>
+
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+              
+            </div>
 
 
 <h3 class="text-primary">Servicing Scum Problem</h3>
@@ -1412,6 +1876,22 @@ else{
 <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">&nbsp;&nbsp; CAUTION: In removing the scum, be cautious about the presence of the nearby. Smoking near the digester is dangerous. The digester may still contain gas and may explode. </span></span></p>
 
 <p style="text-align:justify">&nbsp;</p>
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="site-section" id="section-chviii_6">
+      <div class="container">
+        <div class="row mb-5">
+          
+          <p>&nbsp;</p>
+
+          <div class="col-md-12 order-md-1" data-aos="fade-up">
+            <div class="text-left pb-1 border-primary mb-12">
+              
+            </div>
 
 
 <h3 class="text-primary">Periodic Maintenance of the Digester </h3>
@@ -1483,8 +1963,8 @@ else{
         </div>
       </div>
     </div>
-    
-    
+
+    <a onclick="topFunction()" id="myBtn" title="Go to top" href="#section-instroduction"><i class="icon-arrow-up"></i></a>
     <footer class="site-footer">
       <div class="container">
         <div class="row">
@@ -1553,6 +2033,33 @@ else{
   <script src="front/js/aos.js"></script>
 
   <script src="front/js/main.js"></script>
-    
+   <script type="text/javascript">
+     $(window).scroll(function() {    
+    var scroll = $(window).scrollTop();
+
+    if (scroll >= 200) {
+        $(".anothernav").show();
+    } else {
+        $(".anothernav").hide();
+    }
+});
+
+     // When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+
+// // When the user clicks on the button, scroll to the top of the document
+// function topFunction() {
+//     document.body.scrollTop = 0; // For Safari
+//     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+// }
+   </script>
   </body>
 </html>

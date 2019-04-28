@@ -96,7 +96,7 @@
                                </div>
                                <div class="body">
                                    <div class="table-responsive" style="overflow-x: hidden;">
-                                          <table id="research_data" class="table table-bordered table-striped">
+                                          <table  id="research_data"  class="table table-bordered table-striped">
                                             <thead>
                                               <tr>
                                                 <th width="10%">ID</th>

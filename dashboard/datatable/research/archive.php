@@ -7,7 +7,7 @@ if(isset($_POST["research_ID"]))
 {
 	
 	$statement = $connection->prepare(
-		"UPDATE `research` SET `status_ID` = '2' WHERE `research`.`research_ID` = :research_ID;"
+		"UPDATE `research` SET `status_ID` = '3' WHERE `research`.`research_ID` = :research_ID;"
 	);
 	$result = $statement->execute(
 		array(
