@@ -48,6 +48,22 @@ function side_news(){
     </li>
     <?php
 }
+function side_suggestion(){
+    ?>
+     <li
+    <?php if ($GLOBALS["pagename"] == "Suggestion Management"): ?>
+        class="active"
+    <?php else: ?>
+        
+    <?php endif ?>
+    >
+        <a href="suggestion">
+            <i class="material-icons">info</i>
+            <span>Suggestion</span>
+        </a>
+    </li>
+    <?php
+}
 function side_researcher(){
     ?>
   <li
@@ -155,6 +171,7 @@ function side_report(){
                     else if ($login_level == 2){
                         side_account();
                         side_news();
+                        side_suggestion();
                         side_researcher();
                         side_projectmonitoring();
                         side_biogas();

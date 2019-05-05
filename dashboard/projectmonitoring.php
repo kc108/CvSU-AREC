@@ -85,13 +85,25 @@
                                    <div class="table-responsive" style="overflow-x: hidden;">
                                           <table id="project_data" class="table table-bordered table-striped">
                                             <thead>
-                                              <tr>
+                                              <tr> 
                                                 <th width="10%">Project Title</th>
                                                 <th width="10%">Project Owner</th>
                                                 <th width="10%">Date Started</th>
                                                 <th width="10%">Date Ended</th>
                                                 <th width="10%">Project Location</th>
-                                                <th width="10%">Project Progress</th>
+                                                <th width="10%">
+                                                  <select name="proj_stat" id="proj_stat" class="form-control">
+                                                     <option value="">Project Progress</option>
+                                                     <?php 
+                                                     $query = "SELECT * FROM `status` ";
+                                                    $result = mysqli_query($conn, $query);
+                                                     while($row = mysqli_fetch_array($result))
+                                                     {
+                                                      echo '<option value="'.$row["status_ID"].'">'.$row["status_Name"].'</option>';
+                                                     }
+                                                     ?>
+                                                    </select>
+                                                </th>
                                                 <th width="10%">Action</th>
                                               </tr>
                                             </thead>
@@ -308,24 +320,32 @@ $(document).ready(function(){
 
 
 
-  var dataTable = $('#project_data').DataTable({
+
+
+   load_data();
+
+function load_data(filter)
+ {
+
+    var dataTable = $('#project_data').DataTable({
     "processing":true,
     "serverSide":true,
     "order":[],
     "ajax":{
-      url:"datatable/project/fetch.php",
-      type:"POST"
-    },
-    "columnDefs":[
-      {
-        "targets":[0],
-        "orderable":false,
+        url:"datatable/project/fetch.php",
+        type:"POST",
+        data:{proj_status:filter}
       },
-    ],
+      "columnDefs":[
+        {
+          "targets":[0],
+          "orderable":false,
+        },
+      ],
 
-  });
+    });
 
-  $(document).on('submit', '#project_form', function(event){
+     $(document).on('submit', '#project_form', function(event){
     event.preventDefault();
     var project_title = $('#project_title').val();
     var project_owner = $('#project_owner').val();
@@ -449,6 +469,24 @@ $(document).on('click', '.view', function(){
       return false; 
     }
   });
+
+ }
+
+ $(document).on('change', '#proj_stat', function(){
+  var proj_stat = $(this).val();
+  $('#project_data').DataTable().destroy();
+  if(proj_stat != '')
+  {
+   load_data(proj_stat);
+  }
+  else
+  {
+   load_data();
+  }
+ });
+
+
+ 
   
   
 });

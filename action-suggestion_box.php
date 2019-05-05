@@ -7,7 +7,7 @@ if (isset($_POST["submit"])) {
 	$subject = $_POST["subject"];
 	$message = $_POST["message"];
 
-	$sql = "INSERT INTO `suggestion` (`s_ID`, `fname`, `lname`, `email`, `subject`, `message`) VALUES (NULL, 'fname', '$lname', '$email', '$subject', '$message');";
+	$sql = "INSERT INTO `suggestion` (`s_ID`, `fname`, `lname`, `email`, `subject`, `message`) VALUES (NULL, '$fname', '$lname', '$email', '$subject', '$message');";
 
 	if (mysqli_query($conn,$sql)) {
 		echo "<script>alert('Successfully Send');

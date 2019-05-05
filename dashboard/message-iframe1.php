@@ -173,21 +173,30 @@ img{ max-width:100%;}
           </div>
           <div class="inbox_chat" >
             <?php 
-
-            $sql = "SELECT * FROM `research`";
+            if ($_SESSION['login_level'] == 2) {
+             $sql = "SELECT user_ID,user_Name,user_Img  FROM `user_accounts` WHERE level_ID = 1";
+            }
+             if ($_SESSION['login_level'] == 1) {
+            $sql = "SELECT user_ID,user_Name,user_Img  FROM `user_accounts` WHERE level_ID = 2";
+          }
            $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result) > 0) {
                 // output data of each row
                 while($row = mysqli_fetch_assoc($result)) {
-                 $date = date_create($row["research_Created"]);
+                  if (!empty($row['user_Img'])) {
+                   $m_img = 'data:image/jpeg;base64,'.base64_encode($row['user_Img']);
+                  }
+                  else{
+                    $m_img = "../assets/images/user-profile.png";
+                  }
                     ?>
                  <!--    active_chat -->
             <div class="chat_list ">
               <div class="chat_people">
-                <div class="chat_img"> <img src="../assets/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib research" id="<?php echo $row["research_ID"];?>">
-                  <h5><?php echo $row["research_Title"];?><span class="chat_date"><?php echo  date_format($date,"Y/m/d H:i:s");?></span></h5>
+                <div class="chat_img"> <img src="<?php echo $m_img?>" alt="sunil"> </div>
+                <div class="chat_ib research" id="<?php echo $row["user_ID"];?>">
+                  <h5><?php echo $row["user_Name"];?></h5>
                   <p></p>
                 </div>
               </div>
@@ -224,13 +233,13 @@ $(document).ready(function(){
     $(document).on('click', '.research', function(){
     
 
-    var research_ID = $(this).attr("id");
+    var receiver_ID = $(this).attr("id");
    
   
       $.ajax({
         url:"message-content.php",
         type:"POST",
-        data:{research_ID:research_ID},
+        data:{receiver_ID:receiver_ID},
         dataType:"html",
         success:function(data)
         {
@@ -250,20 +259,20 @@ $(document).ready(function(){
 
     $(document).on('click', '.msg_send_btn', function(){
      var message_content = $('.write_msg').val();
-     var  conversation_ID = $('#conversation_ID').val();
+     var  receiver_ID = $('#conversation_ID').val();
      var sender_ID = <?php echo $_SESSION['login_id'];?>;
-     alert(conversation_ID);
-     // $.ajax({
-     //   url:"message-sent.php",
-     //   type:"POST",
-     //   data:{conversation_ID:conversation_ID,message_content:message_content,sender_ID:sender_ID},
-     //   dataType:"html",
-     //   success:function(data)
-     //   {
-     //      $('.msg_history').load('message-content.php?research_ID='+conversation_ID);
+
+     $.ajax({
+       url:"message-sent.php",
+       type:"POST",
+       data:{receiver_ID:receiver_ID,message_content:message_content,sender_ID:sender_ID},
+       dataType:"html",
+       success:function(data)
+       {
+          $('.msg_history').load('message-content.php?receiver_ID='+receiver_ID);
           
-     //   }
-     // });  
+       }
+     });  
   });
 
 

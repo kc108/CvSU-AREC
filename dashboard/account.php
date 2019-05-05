@@ -174,7 +174,7 @@
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
                           <div class="form-line">
-                              <input type="password" class="form-control" id="pass" name="pass" placeholder="Password">
+                              <input type="password" class="form-control" id="pass" name="pass" placeholder="Password" minlength="6">
                           </div>
                       </div>
                   </div>
@@ -187,7 +187,7 @@
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
                           <div class="form-line">
-                              <input type="password" class="form-control" id="con_pass" name="con_pass" placeholder="Confirm Your Password">
+                              <input type="password" class="form-control" id="con_pass" name="con_pass" placeholder="Confirm Your Password"  minlength="6">
                           </div>
                       </div>
                   </div>
@@ -216,6 +216,90 @@
           <input type="hidden" name="user_ID" id="user_ID" />
           <input type="hidden" name="operation" id="operation" value="Add" />
           <input type="submit" name="action" id="action" class="btn btn-success" value="Submit" />
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+          </form> 
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- /add modal -->
+
+
+
+
+
+
+
+
+
+    <!-- add modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="accountview_modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-plus-sign"></span> View Account Info</h4>
+          </div>
+          
+          <form class="form-horizontal" action="#" method="POST" id="account_form" enctype="multipart/form-data">
+
+          <div class="modal-body">
+              <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="username">First Name</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                              <input type="text" class="form-control" id="av_fname" placeholder="First Name" disabled="">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <br>
+                <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="username">Last Name</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                              <input type="text" class="form-control" id="av_lname" placeholder="Last Name" disabled="">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <br>
+                <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="username">Address</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                              <input type="text" class="form-control" id="av_address" placeholder="Address" disabled="">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <br>
+                <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="username">Contact</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                              <input type="text" class="form-control" id="av_contact" placeholder="Contact" disabled="">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <br>
+                    
+
+          </div>
+          <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
           </form> 
@@ -296,7 +380,7 @@ $(document).ready(function(){
       if (pass == con_pass) 
         {
 
-          if (pass.length > 6) {
+          if (pass.length >= 6) {
             $.ajax({
               url:"datatable/account/insert.php",
               type:'POST',
@@ -329,13 +413,36 @@ $(document).ready(function(){
     }
   });
 
+
+
+
+  $(document).on('click', '.view', function(){
+    var user_ID = $(this).attr("id");
+     
+    $.ajax({
+      url:"datatable/account/fetch_single.php",
+      type:"POST",
+      data:{view:'view',user_ID:user_ID},
+      dataType:"json",
+      success:function(data)
+      {
+       $('#accountview_modal').modal('show');
+       
+        $('#av_fname').val(data.reg_fname);
+        $('#av_lname').val(data.reg_lname);
+        $('#av_address').val(data.reg_address);
+        $('#av_contact').val(data.reg_contact);
+      
+      }
+    });
+  });
   $(document).on('click', '.update', function(){
     var user_ID = $(this).attr("id");
     
     $.ajax({
       url:"datatable/account/fetch_single.php",
       type:"POST",
-      data:{user_ID:user_ID},
+      data:{update:'update',user_ID:user_ID},
       dataType:"json",
       success:function(data)
       {

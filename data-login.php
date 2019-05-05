@@ -117,6 +117,13 @@ function register(){
 
 			include('dbconfig.php');
 			// Define $username and $password
+			
+
+			$r_fname = $_POST['r_fname'];
+			$r_lname = $_POST['r_lname'];
+			$r_address = $_POST['r_address'];
+
+			$r_contact = $_POST['r_contact'];
 			$r_username = $_POST['r_username'];
 			$r_password = $_POST['r_password'];
 			$r_cpassword = $_POST['r_cpassword'];
@@ -149,6 +156,13 @@ function register(){
 
 				$sql = "INSERT INTO `user_accounts` (`user_ID`, `level_ID`, `user_Name`, `user_Pass`, `user_Email`, `user_Registered`, `user_status`) VALUES (NULL, 1, '$r_username', '$encrypted', '$r_email', CURRENT_TIMESTAMP, 0);";
 
+				if(mysqli_query($conn,$sql))
+				{
+					
+				}
+				$last_id  = mysqli_insert_id($conn);
+				$sql = "INSERT INTO `register_info` (`reg_ID`, `user_ID`, `reg_fname`, `reg_lname`, `reg_address`,`reg_contact`) 
+				VALUES (NULL, '$last_id', '$r_fname', '$r_lname', '$r_address','$r_contact');";
 				if(mysqli_query($conn,$sql))
 				{
 					success_register();

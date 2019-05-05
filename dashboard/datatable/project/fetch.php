@@ -11,12 +11,19 @@ $output = array();
 
 $query .= "SELECT `pm`.*,`s`.`status_Name`";
 $query .= "FROM `project_monitoring` `pm` LEFT JOIN `status` `s` ON `pm`.`status_ID` = `s`.`status_ID` ";
+
+if (isset($_POST['proj_status'])) {
+	$proj_status = $_POST['proj_status'];
+ $query .= '  WHERE `pm`.`status_ID` = '.$proj_status.' AND';
+}
+else{
+	 $query .= ' WHERE';
+}
 if(isset($_POST["search"]["value"]))
 {
- $query .= 'WHERE proj_Title LIKE "%'.$_POST["search"]["value"].'%" ';
-    $query .= 'OR proj_Owner LIKE "%'.$_POST["search"]["value"].'%" ';
+ $query .= '(proj_Title LIKE "%'.$_POST["search"]["value"].'%" ';
+    $query .= 'OR proj_Owner LIKE "%'.$_POST["search"]["value"].'%" )';
 }
-
 
 if(isset($_POST["order"]))
 {

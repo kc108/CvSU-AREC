@@ -209,7 +209,7 @@ img{ max-width:100%;}
                                    <br>
                                </div>
                                <div class="body">
-                                <iframe src="message-iframe.php"  style="display:block; width:100%; height: 800px;" frameborder="0" ></iframe>
+                                <iframe src="message-iframe1.php"  style="display:block; width:100%; height: 800px;" frameborder="0" ></iframe>
                                        
                                    </div>
                                </div>

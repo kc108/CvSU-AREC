@@ -41,7 +41,7 @@ foreach($result as $row)
 	$sub_array[] = $row["user_Name"];
 	$sub_array[] = check_status_level($row["user_status"]);
 	$sub_array[] = $row["user_Registered"];
-	$sub_array[] = '<div class="dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Action<span class="caret"></span></button><ul class="dropdown-menu"><li><a href="#" id="'.$row["user_ID"].'" class="update">Update</a></li><li><a href="#" id="'.$row["user_ID"].'" class="delete">Delete</a></li></ul></div>';
+	$sub_array[] = '<div class="dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Action<span class="caret"></span></button><ul class="dropdown-menu"><li><a href="#" id="'.$row["user_ID"].'" class="view">View Info</a></li><li><a href="#" id="'.$row["user_ID"].'" class="update">Update</a></li><li><a href="#" id="'.$row["user_ID"].'" class="delete">Delete</a></li></ul></div>';
 	// $sub_array[] = '<button type="button" name="delete" id="'.$row["id"].'" class="btn btn-danger btn-xs delete">Delete</button>';
 	$data[] = $sub_array;
 }

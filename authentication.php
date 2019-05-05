@@ -67,7 +67,32 @@ include("inc/main-head.php");
                       <div id="register" class="tab-pane">
                         <form action="data-login.php" method="POST"  role="form">
                             
-                        
+                         <div class="input-group">
+                            <span class="input-group-addon">
+                            </span>
+                            <div class="form-line">
+                                <input type="text" class="form-control" name="r_fname" placeholder="First Name" id="r_fname" required autofocus>
+                            </div>
+                            <span class="input-group-addon">
+                            </span>
+                            <div class="form-line">
+                                <input type="text" class="form-control" name="r_lname" placeholder="Lastname" id="r_lname" required autofocus>
+                            </div>
+                        </div>
+                         <div class="input-group">
+                            <span class="input-group-addon">
+                            </span>
+                            <div class="form-line">
+                                <input type="text" class="form-control" name="r_address" placeholder="Address" id="r_address" required autofocus>
+                            </div>
+                        </div>
+                          <div class="input-group">
+                            <span class="input-group-addon">
+                            </span>
+                            <div class="form-line">
+                                <input type="text" class="form-control" name="r_contact" placeholder="Contact" id="r_contact" required autofocus>
+                            </div>
+                        </div>
                         <div class="input-group">
                             <span class="input-group-addon">
                                 <i class="material-icons">person</i>
@@ -81,7 +106,7 @@ include("inc/main-head.php");
                                 <i class="material-icons">lock</i>
                             </span>
                             <div class="form-line">
-                                <input type="password" class="form-control" name="r_password" id="r_password" placeholder="Password" required>
+                                <input type="password" class="form-control" name="r_password" id="r_password" placeholder="Password" minlength="6" required>
                             </div>
                         </div>
 
@@ -90,7 +115,7 @@ include("inc/main-head.php");
                                 <i class="material-icons">lock</i>
                             </span>
                             <div class="form-line">
-                                <input type="password" class="form-control" name="r_cpassword" id="r_cpassword" placeholder="Password" required>
+                                <input type="password" class="form-control" name="r_cpassword" id="r_cpassword" placeholder="Password"  min="6"  required>
                             </div>
                         </div>
                         <div class="input-group">

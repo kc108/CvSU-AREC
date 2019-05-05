@@ -4,18 +4,54 @@
 	include('../session.php');
 	$login_id = $_SESSION['login_id'];
 
-if (isset($_POST['research_ID']) || isset($_REQUEST['research_ID']) ) {
+if (isset($_POST['receiver_ID']) || isset($_REQUEST['receiver_ID']) || isset($_GET['receiver_ID']) ) {
 	
 	
-	if (isset($_POST['research_ID'])) {
-		$research_ID = $_POST['research_ID'];
+	if (isset($_POST['receiver_ID'])) {
+		$receiver_ID = $_POST['receiver_ID'];
 	} else {
-		$research_ID = $_REQUEST['research_ID'];
+		$receiver_ID = $_REQUEST['receiver_ID'];
 	}
 	
-	$sql = "SELECT * FROM `message`  `msg`
-			INNER JOIN `user_accounts` `ua` ON `msg`.user_ID = `ua`.user_ID
-			WHERE `research_ID` =$research_ID;";
+
+	// if ($_SESSION['login_level'] == 2) {
+		$sql = "
+
+
+
+
+SELECT  
+       sender.user_Name AS sender_user_name
+       ,recipient.user_Name AS recipient_user_name
+        ,sender_ID
+        ,receiver_ID
+       ,message_Date
+       ,message_Content
+
+FROM    
+       cvsu_arec.message 
+
+       INNER JOIN cvsu_arec.user_accounts AS sender 
+       ON sender.user_ID = sender_ID
+
+       INNER JOIN cvsu_arec.user_accounts AS recipient 
+       ON recipient.user_ID = receiver_ID
+
+WHERE   
+       sender_ID = $login_id AND  receiver_ID = $receiver_ID
+       OR receiver_ID = $login_id AND sender_ID = $receiver_ID 
+
+ORDER BY
+       message_Date ASC
+
+";
+// 	}
+// 	if ($_SESSION['login_level'] == 1) {
+
+// 	$sql = "SELECT * FROM `message`  `msg`
+// LEFT JOIN `user_accounts` `ua` ON `msg`.sender_ID = `ua`.user_ID
+// WHERE sender_ID = $receiver_ID or sender_ID = $login_id  AND receiver_ID = $login_id or receiver_ID = $receiver_ID;";
+// 	}
 	 $result = mysqli_query($conn, $sql);
 	 if (mysqli_num_rows($result) > 0) {
          // output data of each row
@@ -27,7 +63,7 @@ if (isset($_POST['research_ID']) || isset($_REQUEST['research_ID']) ) {
 			else{
 			  $message_sender_image = "../assets/images/user-profile.png";
 			}        	
-        	$message_Sender = $row['user_ID'];
+        	$message_Sender = $row['sender_ID'];
         	$message_Content = $row['message_Content'];
         	$message_Date = $row['message_Date'];
             $message_Date = date_create($message_Date);
@@ -66,4 +102,4 @@ if (isset($_POST['research_ID']) || isset($_REQUEST['research_ID']) ) {
 	
 ?>
 
-<input type="hidden" name="conversation_ID" id="conversation_ID" value="<?php echo $research_ID;?>">
+<input type="hidden" name="conversation_ID" id="conversation_ID" value="<?php echo $receiver_ID;?>">
