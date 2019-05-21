@@ -1,21 +1,10 @@
-AdminBSB - Material Design
+The Cavite State University - Affiliated Renewable Energy Center For Region IV (CvSU-AREC IV) System 
 =======================
-[![npm version](https://img.shields.io/npm/v/adminbsb-materialdesign.svg)](https://www.npmjs.com/package/adminbsb-materialdesign)
-![Bower version](https://img.shields.io/bower/v/adminbsb-materialdesign.svg)
 
-**AdminBSB - Material Design is a fully responsive and free admin template.** It was developed with [Bootstrap 3.x Framework](http://getbootstrap.com) and [Google Material Design](https://material.google.com) of powers.
 
-It's really easy to customize and usage. You can use for from 320px to large resolution pixels of new generation screens and mobile devices. (**Fully Responsive Material Design**)
+**CvSU-AREC IV - CvSU-AREC IV is a  system that provide information of  renewable energy for Region IV .** It was developed with [Bootstrap 3.x Framework](http://getbootstrap.com) and [Google Material Design](https://material.google.com) 
 
-Looking for Premium Templates?
-----------------
-**If you need more features please visit portfolio of mine which page link is [https://themeforest.net/user/gurayyarar/portfolio](http://bit.ly/2oPFpmQ)**
 
-Demo
-----------------
-You can check the website preview with **[this link](https://gurayyarar.github.io/AdminBSBMaterialDesign/)**  
-
-![AdminBSB - Free Admin Template With Material Design](https://raw.githubusercontent.com/gurayyarar/AdminBSBMaterialDesign/master/images/screenshot.png)
 
 Installation
 ----------------
@@ -25,22 +14,9 @@ You can choose one from multiple ways for installation.
 - Fork the repository ([here is the guide](https://help.github.com/articles/fork-a-repo/)).
 - Clone to your machine
 ```
-git clone https://github.com/gurayyarar/AdminBSBMaterialDesign.git
+git clone https://github.com/rhalp10/CvSU-AREC.git
 ```
 
-**npm**
-```
-npm install adminbsb-materialdesign
-```
-
-**bower**
-```
-bower install adminbsb-materialdesign
-```
-
-Documentation
-----------
-Visit the **[documentation](https://gurayyarar.github.io/AdminBSBMaterialDesign/documentation/)**
 
 Browser Support
 ----------
@@ -53,23 +29,23 @@ Browser Support
 
 Change Logs
 ----------
-You can display all release notes with **[this link](https://gurayyarar.github.io/AdminBSBMaterialDesign/pages/changelogs.html)**
+You can display all release notes with **[this link](https://github.com/rhalp10/CvSU-AREC/commits/master)**
 
 
-FAQ
-===
-**Can I use this template for personal or commercial websites/web projects?**  
-Sure, you can use both of personal and commercial websites/web projects.
+What's Included?
+----------
 
-**Is the attribution link required?**  
-No, not required. (Though very much appreciated)
+- [Bootstrap 3.3.6](https://getbootstrap.com) - An open source design system for HTML, CSS, and JS.
+- [FPDF](http://www.fpdf.org/) - An open source PHP class which allows to generate PDF files with pure PHP.
+- [OWL Carousel 2.3.4](https://owlcarousel2.github.io/OwlCarousel2/) - Touch enabled jQuery plugin that lets you create a beautiful responsive carousel slider.
+- [DataTables](https://datatables.net) - DataTables is a plug-in for the jQuery Javascript library. It is a highly flexible tool, built upon the foundations of progressive enhancement, that adds all of these advanced features to any HTML table.
+- [Jquery 3.3.1](https://jquery.com) - jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.
+- [AdminBSB - Material Design](https://github.com/gurayyarar/AdminBSBMaterialDesign) - AdminBSB - Material Design is a fully responsive and free admin template.** It was developed with [Bootstrap 3.x Framework](http://getbootstrap.com) and [Google Material Design](https://material.google.com) of powers.
+
+It's really easy to customize and usage. You can use for from 320px to large resolution pixels of new generation screens and mobile devices. (**Fully Responsive Material Design**)
 
 License
 ----------
-**AdminBSB - Material Design** is an open source project that is licensed under the [MIT license](http://opensource.org/licenses/MIT).
 
-Donations
-----------
-Donations are **greatly appreciated!**
+The Cavite State University - Affiliated Renewable Energy Center For Region IV (CvSU-AREC IV) System is open source software [licensed as MIT](https://github.com/rhalp10/saka_ecom-inv/blob/master/README.md).
 
-**[BUY ME A COFFEE](http://bit.ly/2yEjtx5)**
