@@ -146,6 +146,13 @@ img{ max-width:100%;}
   height: 516px;
   overflow-y: auto;
 }
+.active{
+  background-color: #2196F3; 
+  
+}
+.h5_active{
+  color: #ffffff !important;
+}
 </style>
 <html>
 <head>
@@ -171,7 +178,7 @@ img{ max-width:100%;}
               </div>
             </div>
           </div>
-          <div class="inbox_chat" >
+          <div class="inbox_chat" id="inbox_chat">
             <?php 
             if ($_SESSION['login_level'] == 2) {
              $sql = "SELECT user_ID,user_Name,user_Img  FROM `user_accounts` WHERE level_ID = 1";
@@ -192,11 +199,11 @@ img{ max-width:100%;}
                   }
                     ?>
                  <!--    active_chat -->
-            <div class="chat_list ">
+            <div class="chat_list" id="chat_list">
               <div class="chat_people">
                 <div class="chat_img"> <img src="<?php echo $m_img?>" alt="sunil"> </div>
                 <div class="chat_ib research" id="<?php echo $row["user_ID"];?>">
-                  <h5><?php echo $row["user_Name"];?></h5>
+                  <h5  class="h5_name"><?php echo $row["user_Name"];?></h5>
                   <p></p>
                 </div>
               </div>
@@ -215,7 +222,8 @@ img{ max-width:100%;}
           <div class="type_msg">
             <div class="input_msg_write">
               <form>
-              <input type="text" class="write_msg" placeholder="Type a message" />
+                 <!-- onkeypress="if(DetectEnterPressed(event)){LoadPage(1)}" -->
+              <input type="text" class="write_msg" placeholder="Type a message" id="write_msg" />
               
               <button class="msg_send_btn" type="button"><i class="material-icons" aria-hidden="true">send</i></button>
               </form>
@@ -255,6 +263,7 @@ $(document).ready(function(){
   
     
   });
+
    var msg_history =  $('.msg_history');
 
     $(document).on('click', '.msg_send_btn', function(){
@@ -274,11 +283,78 @@ $(document).ready(function(){
        }
      });  
   });
+$("#write_msg").keypress(function(e){
 
+if(e.which == 13) {
+    event.preventDefault();
+    var message_content = $('.write_msg').val();
+    var  receiver_ID = $('#conversation_ID').val();
+    var sender_ID = <?php echo $_SESSION['login_id'];?>;
 
+     $.ajax({
+       url:"message-sent.php",
+       type:"POST",
+       data:{receiver_ID:receiver_ID,message_content:message_content,sender_ID:sender_ID},
+       dataType:"html",
+       success:function(data)
+       {
+          $('.msg_history').load('message-content.php?receiver_ID='+receiver_ID);
+          
+           $('.write_msg').val('');
+          
+       }
+     }); 
+    }
+});
+  // function LoadPage() {
+  //      var message_content = $('.write_msg').val();
+  //      var  receiver_ID = $('#conversation_ID').val();
+  //      var sender_ID = <?php echo $_SESSION['login_id'];?>;
+
+  //      $.ajax({
+  //        url:"message-sent.php",
+  //        type:"POST",
+  //        data:{receiver_ID:receiver_ID,message_content:message_content,sender_ID:sender_ID},
+  //        dataType:"html",
+  //        success:function(data)
+  //        {
+  //           $('.msg_history').load('message-content.php?receiver_ID='+receiver_ID);
+            
+  //        }
+  //      }); 
+  //   }
+  // function DetectEnterPressed(e) {
+  //       var characterCode
+  //       if (e && e.which) { // NN4 specific code
+  //           e = e
+  //           characterCode = e.which
+  //       }
+  //       else {
+  //           e = event
+  //           characterCode = e.keyCode // IE specific code
+  //       }
+  //       if (characterCode == 13) return true // Enter key is 13
+  //       else return false
+  //   }
   
   
 });
+
+
+$(document).ready(function() {
+    var $msg_list = $('div.chat_list');
+    var $msg_name = $('h5.h5_name');
+
+    $msg_list.click(function() {
+        $msg_list.removeClass('active'); 
+        $(this).addClass('active'); 
+    });
+     $msg_name.click(function() {
+        $msg_name.removeClass('h5_active'); 
+        $(this).addClass('h5_active'); 
+    });
+ });
+
    </script>
     </body>
     </html>
