@@ -76,9 +76,23 @@
                            <div class="card">
                                <div class="header">
                                    <h2>LIST OF PROJECT</h2>
-                                   <div class="btn-group pull-right">
-                                    <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#project_modal">ADD PROJECT</button>
+
+                                   <div class="pull-right" >
+                                     <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#project_modal" style="min-height: 36px;">ADD PROJECT</button>
                                    </div>
+                              <div style="width: 150px; border:1px solid; " class="pull-right">
+                                        <select name="proj_stat" id="proj_stat" class="form-control">
+                                         <option value="">Project Progress</option>
+                                         <?php 
+                                         $query = "SELECT * FROM `status` ";
+                                        $result = mysqli_query($conn, $query);
+                                         while($row = mysqli_fetch_array($result))
+                                         {
+                                          echo '<option value="'.$row["status_ID"].'">'.$row["status_Name"].'</option>';
+                                         }
+                                         ?>
+                                        </select>
+                                    </div> 
                                    <br>
                                </div>
                                <div class="body">
@@ -92,17 +106,7 @@
                                                 <th width="10%">Date Ended</th>
                                                 <th width="10%">Project Location</th>
                                                 <th width="10%">
-                                                  <select name="proj_stat" id="proj_stat" class="form-control">
-                                                     <option value="">Project Progress</option>
-                                                     <?php 
-                                                     $query = "SELECT * FROM `status` ";
-                                                    $result = mysqli_query($conn, $query);
-                                                     while($row = mysqli_fetch_array($result))
-                                                     {
-                                                      echo '<option value="'.$row["status_ID"].'">'.$row["status_Name"].'</option>';
-                                                     }
-                                                     ?>
-                                                    </select>
+                                                  Project Progress
                                                 </th>
                                                 <th width="10%">Action</th>
                                               </tr>
@@ -301,6 +305,9 @@
     <script src="../assets/js/admin.js"></script>
     <script src="../assets/js/pages/tables/jquery-datatable.js"></script>
 
+
+
+
     <!-- Demo Js -->
     <script src="../assets/js/demo.js"></script>
     <script type="text/javascript" language="javascript" >
@@ -342,8 +349,30 @@ function load_data(filter)
           "orderable":false,
         },
       ],
+       dom: 'Bfrtip',
+         "buttons": [
+        {
+            extend: 'print',
+            text: 'Print',
+            autoPrint: true,
+            exportOptions: {
+                columns: ':visible',
+            },
+            customize: function (win) {
+                $(win.document.body).find('table').addClass('display').css('font-size', '9px');
+                $(win.document.body).find('tr:nth-child(odd) td').each(function(index){
+                    $(this).css('background-color','#D0D0D0');
+                });
+                $(win.document.body).find('h1').css('text-align','center');
+                $(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
+            }
+        }
+    ],
+   
 
     });
+    
+
 
      $(document).on('submit', '#project_form', function(event){
     event.preventDefault();
