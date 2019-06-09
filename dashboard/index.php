@@ -149,7 +149,7 @@
         </div>
     </section>
     <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+<div id="report_project_modal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -215,11 +215,11 @@
 
   </div>
 </div>
-
     <?php 
         include("dash-js.php");
     ?>
-
+    
+   
     <script type="text/javascript">
     
 $(document).on('change', '#fil_location', function(){
@@ -236,6 +236,7 @@ function print_project(){
      window.open('../assets/fpdf181/index.php?report=project&location='+fil_location+'&status='+fil_status);
 }
 </script>
+
 </body>
 
 </html>

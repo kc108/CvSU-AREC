@@ -189,6 +189,25 @@
         </form>
     </div>
 </div>
+
+<!-- Large Size -->
+<div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-cyan">
+                <h4 class="modal-title" id="largeModalLabel">MAP</h4>
+            </div>
+            <div class="modal-body">
+                <i>Note: Right Click For Mark and Left Click For Remove </i> 
+               <iframe src="map/user-map.php" style=" display:block; width:100%; height: 800px;"></iframe>
+            </div>
+            <div class="modal-footer " style="background-color: #e4e4e4;">
+                <button type="button" class="btn btn-link btn-danger waves-effect" data-dismiss="modal" style=" color: white;">CLOSE</button>
+            </div>
+        </div>
+    </div>
+</div>
+
     <!-- Jquery Core Js -->
     <script src="../assets/plugins/jquery/jquery.min.js"></script>
 
@@ -240,6 +259,25 @@ $(document).ready(function(){
                 "orderable":false,
             },
         ],
+       dom: 'Bfrtip',
+         "buttons": [
+        {
+            extend: 'print',
+            text: 'Print',
+            autoPrint: true,
+            exportOptions: {
+                columns: ':visible',
+            },
+            customize: function (win) {
+                $(win.document.body).find('table').addClass('display').css('font-size', '9px');
+                $(win.document.body).find('tr:nth-child(odd) td').each(function(index){
+                    $(this).css('background-color','#D0D0D0');
+                });
+                $(win.document.body).find('h1').css('text-align','center');
+                $(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
+            }
+        }
+    ],
 
     });
     $(document).on('submit', '#biogas_form', function(event){
@@ -319,6 +357,19 @@ $(document).ready(function(){
     
     
 });
+$(document).on('change', '#fil_location', function(){
+  var fil_location = $(this).val();
+
+ });
+$(document).on('change', '#fil_status', function(){
+  var fil_status = $(this).val();
+
+ });
+function print_project(){
+     var fil_location = $('#fil_location').val();
+      var fil_status = $('#fil_status').val();
+     window.open('../assets/fpdf181/index.php?report=project&location='+fil_location+'&status='+fil_status);
+}
 </script>
 </body>
 

@@ -128,7 +128,7 @@ function side_report(){
         </a>
         <ul class="ml-menu">
             <li>
-                <a href="#" class=" waves-effect waves-block" data-toggle="modal" data-target="#myModal">Project</a>
+                <a href="#" class=" waves-effect waves-block" data-toggle="modal" data-target="#report_project_modal">Project</a>
 
             </li>
             <li>
