@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2019 at 09:32 AM
+-- Generation Time: Jul 01, 2019 at 11:45 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -333,7 +333,7 @@ INSERT INTO `research` (`research_ID`, `user_ID`, `research_Title`, `research_Co
 (31, 16, 'Evaluation of Gas and Wastewater Quality from Biogas Using Different Animal Manures', 'Conducted to evaluate the gas and wastewater quality produced from different animal manures (chicken, cow, pig)', 1, '2012-12-31 19:14:26', NULL),
 (32, 16, 'Development and Evaluation of Low-Cost Battery Control Unit (BCU)', 'Conducted to develop a low-cost and durable BCU which could replace the costly BCUs available in the market', 1, '2012-12-31 19:14:26', NULL),
 (33, 16, 'Biogas Purification', 'Conducted to evaluate different biogas purification systems for the improvement of biogas quality', 1, '2012-12-31 19:14:26', NULL),
-(34, 16, 'Biogas Technology Assessment in the Philippines', 'Conducted to assess the existing biogas technology in the Philippines', 1, '2012-12-31 19:14:26', NULL);
+(34, 16, 'Biogas Technology Assessment in the Philippines', 'Conducted to assess the existing biogas technology in the Philippines', 2, '2012-12-31 19:14:26', NULL);
 
 -- --------------------------------------------------------
 

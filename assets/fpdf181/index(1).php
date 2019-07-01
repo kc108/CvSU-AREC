@@ -120,6 +120,25 @@ class PDF extends FPDF
 		else
 			return strlen($s);
 	}
+	function myCell($w,$h,$x,$t){
+        $height=$h/3;
+        $first=$height+2;
+        $second=$height+$height+$height+3;
+        $len=strlen($t);
+        if($len>15){
+            $txt=str_split($t,15);
+            $this->SetX($x);
+            $this->Cell($w,$first,$txt[0],'','','');
+            $this->SetX($x);
+            $this->Cell($w,$second,$txt[1],'','','');
+            $this->SetX($x);
+            $this->Cell($w,$h,'','LTRB',0,'L',0);
+        }
+        else{
+            $this->SetX($x);
+            $this->Cell($w,$h,$t,'LTRB',0,'L',0);
+        }
+    }
 
 //Patrick Benny script Fit text to cell end
 function Header()
@@ -305,16 +324,19 @@ if (isset($_REQUEST['report'])) {
 			$filter = $_REQUEST["filter"];
 		}
 	 	$sql = mysqli_query($con,"SELECT * FROM `news` WHERE news_Title LIKE '%$filter%' ORDER BY `news_Pub` DESC");
-	    while ($student_data = mysqli_fetch_array($sql)) 
+
+	 	$w=60;
+		$h=15;
+
+	    while ($news_data = mysqli_fetch_array($sql)) 
 	    {
-		
-		// $this->Cell(75,-15,'TITLE',0,0,'C');
-		// $this->Cell(30,-15,'DATE',0,0,'C');
-		// $this->Cell(0,-15,'DESCRIPTION',0,1,'C');
-	    
-		$pdf->MultiCell(75,5,$student_data['news_Title'],1,0,'');
-		$pdf->cell(30,90,$student_data['news_Pub'],1,0,'C');
-		$pdf->cell(0,5,$student_data['news_Content'],1,1,'C');
+		$x=$pdf->getx();
+		$pdf->myCell($w,$h,$x,"".$news_data['news_Title']."");
+		$x=$pdf->getx();
+		$pdf->myCell($w,$h,$x,$news_data['news_Pub']);
+		$x=$pdf->getx();
+		$pdf->myCell($w,$h,$x,$news_data['news_Content']);
+		$pdf->Ln();
 	    }
 	}
 	if($_REQUEST['report'] == "Suggestion"){

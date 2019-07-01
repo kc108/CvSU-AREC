@@ -23,7 +23,7 @@
 
 <!DOCTYPE html>
 <html>
-
+ 
  <?php
     include("dash-head.php");
     ?>
@@ -271,9 +271,8 @@ $(document).ready(function(){
     $(this).val(this.getAttribute("value"));
   });
 $(document).on('click', '#proj_print', function(){
-          var filter_Search = $('#filter_Search').val();
-        
-          window.open('../assets/fpdf181/index.php?report=News&filter='+filter_Search);
+        var filter_Search = $('#filter_Search').val();
+        window.open('../assets/fpdf181/print?report=News&filter='+filter_Search);
       });
 
   var dataTable = $('#news_data').DataTable({

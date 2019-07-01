@@ -76,23 +76,27 @@
                            <div class="card">
                                <div class="header">
                                    <h2>LIST OF RESEARCH</h2>
-                                   <div class="btn-group pull-right">
-                                   
-                                   <?php 
-                                   if ($login_level == 1) {
-                                     ?>
-                                     <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#research1_modal">ADD RESEARCH</button>
-                                     <?php
-                                   }
-                                   else{
-                                    ?>
-                                     <button type="button" class="btn btn-info waves-effect add" data-toggle="modal" data-target="#archiveresearch_modal">VIEW ARCHIVE</button>
-                                     <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#research_modal">ADD RESEARCH</button>
-                                     <?php
-                                   }
-                                   ?>
-                                   </div>
-                                   <br>
+
+                                    <div class="btn-group pull-right" >
+                                        <?php 
+                                        if ($login_level == 1) {
+                                          ?>
+                                          <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#research1_modal">ADD RESEARCH</button>
+                                          <?php
+                                        }
+                                        else{
+                                         ?>
+                                          <button type="button" class="btn btn-info waves-effect add" data-toggle="modal" data-target="#archiveresearch_modal">VIEW ARCHIVE</button>
+                                          <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#research_modal">ADD RESEARCH</button>
+                                          <?php
+                                        }
+                                        ?>
+                                      <button type="button" class="btn btn-primary" id="proj_print">PRINT</button>
+                                  
+                                    </div>
+                                  <input type="hidden" name="filter_Search" id="filter_Search" value="">
+                                  <input type="hidden" name="filter_Search" id="filter_Stats" value="1_2">
+                                  
                                </div>
                                <div class="body">
                                    <div class="table-responsive" style="overflow-x: hidden;">
@@ -424,7 +428,12 @@ $(document).ready(function(){
         option = option.nextElementSibling;
     }
 }
-
+$(document).on('click', '#proj_print', function(){
+          var filter_Search = $('#filter_Search').val();
+          var filter_Stats = $('#filter_Stats').val();
+        
+          window.open('../assets/fpdf181/print?report=Research&filter='+filter_Search+'&stats='+filter_Stats);
+      });
 
 
   var dataTable = $('#research_data').DataTable({
@@ -442,25 +451,25 @@ $(document).ready(function(){
         "orderable":false,
       },
     ],
-       dom: 'Bfrtip',
-         "buttons": [
-        {
-            extend: 'print',
-            text: 'Print',
-            autoPrint: true,
-            exportOptions: {
-                columns: ':visible',
-            },
-            customize: function (win) {
-                $(win.document.body).find('table').addClass('display').css('font-size', '9px');
-                $(win.document.body).find('tr:nth-child(odd) td').each(function(index){
-                    $(this).css('background-color','#D0D0D0');
-                });
-                $(win.document.body).find('h1').css('text-align','center');
-                $(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
-            }
-        }
-    ],
+    //    dom: 'Bfrtip',
+    //      "buttons": [
+    //     {
+    //         extend: 'print',
+    //         text: 'Print',
+    //         autoPrint: true,
+    //         exportOptions: {
+    //             columns: ':visible',
+    //         },
+    //         customize: function (win) {
+    //             $(win.document.body).find('table').addClass('display').css('font-size', '9px');
+    //             $(win.document.body).find('tr:nth-child(odd) td').each(function(index){
+    //                 $(this).css('background-color','#D0D0D0');
+    //             });
+    //             $(win.document.body).find('h1').css('text-align','center');
+    //             $(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
+    //         }
+    //     }
+    // ],
 
   });
 
@@ -580,6 +589,52 @@ $(document).on('click', '.update', function(){
       }
     });
   });
+$(document).on('click', '.approve', function(){
+
+
+  var research_ID = $(this).attr("id");
+    if(confirm("Are you sure you want to approve this?"))
+    {
+      $.ajax({
+        url:"datatable/research/approve.php",
+        method:"POST",
+        data:{research_ID:research_ID},
+        success:function(data)
+        {
+          alert(data);
+          dataTable.ajax.reload();
+          
+        }
+      });
+    }
+    else
+    {
+      return false; 
+    }
+  });
+$(document).on('click', '.disapprove', function(){
+
+
+  var research_ID = $(this).attr("id");
+    if(confirm("Are you sure you want to disapprove this?"))
+    {
+      $.ajax({
+        url:"datatable/research/disapprove.php",
+        method:"POST",
+        data:{research_ID:research_ID},
+        success:function(data)
+        {
+          alert(data);
+          dataTable.ajax.reload();
+          
+        }
+      });
+    }
+    else
+    {
+      return false; 
+    }
+  });
 
 $(document).on('click', '.archive', function(){
 
@@ -655,20 +710,11 @@ $(document).on('click', '.unarchive', function(){
 
 
 });
-
-$(document).on('change', '#fil_location', function(){
-  var fil_location = $(this).val();
-
- });
-$(document).on('change', '#fil_status', function(){
-  var fil_status = $(this).val();
-
- });
-function print_project(){
-     var fil_location = $('#fil_location').val();
-      var fil_status = $('#fil_status').val();
-     window.open('../assets/fpdf181/index.php?report=project&location='+fil_location+'&status='+fil_status);
-}
+ $('#news_data').on('search.dt', function() {
+              var value = $('.dataTables_filter input').val();
+              console.log(value);
+              $('#filter_Search').val(value);
+          }); 
 </script>
 </body>
 

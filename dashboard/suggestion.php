@@ -270,8 +270,7 @@ $(document).ready(function(){
   });
 $(document).on('click', '#proj_print', function(){
           var filter_Search = $('#filter_Search').val();
-        
-          window.open('../assets/fpdf181/index.php?report=Suggestion&filter='+filter_Search);
+          window.open('../assets/fpdf181/print?report=Suggestion&filter='+filter_Search);
       });
 
   var dataTable = $('#news_data').DataTable({

@@ -44,12 +44,18 @@ foreach($result as $row)
 {
 	
 	
+	$asd = '<li><a href="#" id="'.$row["research_ID"].'" class="archive">Archive</a></li>';
 	if ($row["rssn"] == "Pending") {
-		$asd = '<li><a href="#" id="'.$row["research_ID"].'" class="delete">Delete</a></li>';
+		$asd = '
+		<li><a href="#" id="'.$row["research_ID"].'" class="approve">Approve</a></li>
+		<li><a href="#" id="'.$row["research_ID"].'" class="delete">Delete</a></li>';
 	}
-	else{
-		$asd = '<li><a href="#" id="'.$row["research_ID"].'" class="archive">Archive</a></li>';
+	if ($row["rssn"] == "Approve") {
+		$asd = '<li><a href="#" id="'.$row["research_ID"].'" class="disapprove">Disapprove</a></li>';
 	}
+	
+		
+	
 	if ($login_level == 1) {
 		$button = '<div class="dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Action<span class="caret"></span></button><ul class="dropdown-menu"><li><a href="#" id="'.$row["research_ID"].'" class="view">View</a></li>';
 		if ($row["user_ID"] == $_SESSION['login_id']) {
