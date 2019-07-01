@@ -246,7 +246,7 @@ if ($report == "Research") {
 			//write data using Row() method containing array of values.
 			$pdf->Row(Array(
 				$item['research_Title'],
-				$item['research_Created'],
+				$item['research_yrConduct'],
 				$item['research_Content'],
 				$item['rssn'],
 			));
