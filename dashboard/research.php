@@ -91,11 +91,12 @@
                                           <?php
                                         }
                                         ?>
+
                                       <button type="button" class="btn btn-primary" id="proj_print">PRINT</button>
                                   
                                     </div>
                                   <input type="hidden" name="filter_Search" id="filter_Search" value="">
-                                  <input type="hidden" name="filter_Search" id="filter_Stats" value="1_2">
+                                  <input type="hidden" name="filter_Search" id="filter_Search1" value="">
                                   
                                </div>
                                <div class="body">
@@ -107,7 +108,7 @@
                                                 <th width="10%">Researcher</th>
                                                 <th width="10%">Title</th>
                                                 <th width="10%">Status</th>
-                                                <th width="10%">Date Create</th>
+                                                <th width="10%">Year Conduct</th>
                                                 <th width="10%">Action</th>
                                               </tr>
                                             </thead>
@@ -137,6 +138,10 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title"><span class="fa fa-eye"></span> View Archive</h4>
+            <br>
+              <div class="btn-group pull-right" >
+                <button type="button" class="btn btn-primary" id="proj_print1">PRINT</button>
+              </div>
           </div>
           <div class="modal-body archiveresearch">
           <div class="table-responsive" style="overflow-x: hidden;">
@@ -172,7 +177,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title mview"><span class="glyphicon glyphicon-plus-sign"></span> Add Account</h4>
+            <h4 class="modal-title mview"><span class="glyphicon glyphicon-plus-sign"></span> Add Research</h4>
           </div>
           
           <form class="form-horizontal" action="#" method="POST" id="research_form" enctype="multipart/form-data">
@@ -199,6 +204,19 @@
                       <div class="form-group">
                           <div class="form-line">
                             <textarea  class="form-control " id="research_Content" name="research_Content" placeholder="Content" style="width: 482px;height: 237px;"></textarea>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <br>
+                <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="research_yrconduct">Year Conduct</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                              <input type="text" class="form-control" id="research_yrconduct" name="research_yrconduct" placeholder="Year Conduct">
                           </div>
                       </div>
                   </div>
@@ -364,11 +382,16 @@ $(document).ready(function(){
 }
 $(document).on('click', '#proj_print', function(){
           var filter_Search = $('#filter_Search').val();
-          var filter_Stats = $('#filter_Stats').val();
-        
+          var filter_Stats = "1_2";
+
           window.open('../assets/fpdf181/print?report=Research&filter='+filter_Search+'&stats='+filter_Stats);
       });
-
+$(document).on('click', '#proj_print1', function(){
+          var filter_Search = $('#filter_Search1').val();
+          var filter_Stats = "3";
+          
+          window.open('../assets/fpdf181/print?report=Research&filter='+filter_Search+'&stats='+filter_Stats);
+      });
 
   var dataTable = $('#research_data').DataTable({
     "processing":true,
@@ -422,25 +445,25 @@ $(document).on('click', '#proj_print', function(){
         "orderable":false,
       },
     ],
-       dom: 'Bfrtip',
-         "buttons": [
-        {
-            extend: 'print',
-            text: 'Print',
-            autoPrint: true,
-            exportOptions: {
-                columns: ':visible',
-            },
-            customize: function (win) {
-                $(win.document.body).find('table').addClass('display').css('font-size', '9px');
-                $(win.document.body).find('tr:nth-child(odd) td').each(function(index){
-                    $(this).css('background-color','#D0D0D0');
-                });
-                $(win.document.body).find('h1').css('text-align','center');
-                $(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
-            }
-        }
-    ],
+    //    dom: 'Bfrtip',
+    //      "buttons": [
+    //     {
+    //         extend: 'print',
+    //         text: 'Print',
+    //         autoPrint: true,
+    //         exportOptions: {
+    //             columns: ':visible',
+    //         },
+    //         customize: function (win) {
+    //             $(win.document.body).find('table').addClass('display').css('font-size', '9px');
+    //             $(win.document.body).find('tr:nth-child(odd) td').each(function(index){
+    //                 $(this).css('background-color','#D0D0D0');
+    //             });
+    //             $(win.document.body).find('h1').css('text-align','center');
+    //             $(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
+    //         }
+    //     }
+    // ],
 
   });
 
@@ -478,11 +501,15 @@ $(document).on('click', '#proj_print', function(){
 $(document).on('click', '.add', function(){
         $("#research_Title").prop("disabled", false);
         $("#research_Content").prop("disabled", false);
+        $("#research_yrconduct").prop("disabled", false);
         $('#research_Title').val('');
         $('#research_Content').val('');
+        $('#research_yrconduct').val('');
         $('#research_Attachment').val('');
         $('#research_Status').val('');
         document.getElementById("research_form").reset('');
+
+        $('.modal-title.mview').text(" Add Research");
   });
     $(document).on('click', '.view', function(){
     var research_ID = $(this).attr("id");
@@ -646,8 +673,11 @@ $(document).on('click', '.unarchive', function(){
 });
  $('#research_data').on('search.dt', function() {
               var value = $('.dataTables_filter input').val();
-              console.log(value);
               $('#filter_Search').val(value);
+          }); 
+ $('#archiveresearch_data').on('search.dt', function() {
+              var value = $('.dataTables_filter input').val();
+              $('#filter_Search1').val(value);
           }); 
 </script>
 </body>

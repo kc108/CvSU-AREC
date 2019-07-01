@@ -17,7 +17,8 @@ WHERE research_ID = '".$_POST["research_ID"]."'
 
 		$output["research_Title"] = $row["research_Title"];
 		$output["research_Content"] = $row["research_Content"];
-		 $output["research_Attachment"] = 'datatable/research/uploads/'.$row["research_Attachment"];
+    $output["research_yrConduct"] = $row["research_yrConduct"];
+		$output["research_Attachment"] = 'datatable/research/uploads/'.$row["research_Attachment"];
 		$output["research_Status"] = $row["status_ID"];
 		$output["research_Created"] = $row["research_Created"];
 
@@ -52,6 +53,20 @@ WHERE research_ID = '".$_POST["research_ID"]."'
                       </div>
                   </div>
               </div>
+
+                <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="research_yrconduct">Year Conduct</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                              <input type="text" class="form-control" id="research_yrconduct" name="research_yrconduct" value="<?php echo $output["research_yrConduct"] ;?>" disabled="">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <br>
               <br>
               <div class="row clearfix">
                   <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">

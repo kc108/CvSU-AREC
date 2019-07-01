@@ -44,14 +44,15 @@ foreach($result as $row)
 {
 	
 	
-	$asd = '<li><a href="#" id="'.$row["research_ID"].'" class="archive">Archive</a></li>';
+	
 	if ($row["rssn"] == "Pending") {
 		$asd = '
 		<li><a href="#" id="'.$row["research_ID"].'" class="approve">Approve</a></li>
 		<li><a href="#" id="'.$row["research_ID"].'" class="delete">Delete</a></li>';
 	}
 	if ($row["rssn"] == "Approve") {
-		$asd = '<li><a href="#" id="'.$row["research_ID"].'" class="disapprove">Disapprove</a></li>';
+		$asd = '<li><a href="#" id="'.$row["research_ID"].'" class="archive">Archive</a></li>';
+		$asd .= '<li><a href="#" id="'.$row["research_ID"].'" class="disapprove">Disapprove</a></li>';
 	}
 	
 		
@@ -79,7 +80,7 @@ foreach($result as $row)
 	$sub_array[] = $row["user_Name"];
 	$sub_array[] = $row["research_Title"];
 	$sub_array[] = $row["rssn"];
-	$sub_array[] = $row["research_Created"];
+	$sub_array[] = $row["research_yrConduct"];
 	$sub_array[] = $button;
 	// $sub_array[] = '<button type="button" name="delete" id="'.$row["id"].'" class="btn btn-danger btn-xs delete">Delete</button>';
 	$data[] = $sub_array;

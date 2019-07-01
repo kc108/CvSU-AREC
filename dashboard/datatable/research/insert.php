@@ -30,6 +30,8 @@ if(isset($_POST["operation"]))
 		$login_id = $_SESSION["login_id"];
 		$research_Title = $_POST["research_Title"];
 		$research_Content = $_POST["research_Content"];
+		$research_yrConduct = $_POST["research_yrconduct"];
+		
 		$research_Status = $_POST["research_Status"];
 		
 		if ($_FILES['research_Attachment']['error'] > 0) {
@@ -72,11 +74,12 @@ if(isset($_POST["operation"]))
 		
 
 
-		echo 	$sql = "INSERT INTO `research` 
+		 	$sql = "INSERT INTO `research` 
 		(`research_ID`,
 		 `research_Title`,
 		  `research_Content`,
 		   `status_ID`,
+		    `research_yrConduct`,
 		    `research_Created`,
 		     `research_Attachment`,
 		     `user_ID`) 
@@ -85,6 +88,7 @@ if(isset($_POST["operation"]))
 		 :research_Title,
 		  :research_Content,
 		   :research_Status,
+		   :research_yrConduct,
 		    CURRENT_TIMESTAMP,
 		     :filename,
 		     :login_id);";
@@ -96,6 +100,7 @@ if(isset($_POST["operation"]))
 					':research_Content'		=>	$research_Content,
 					':filename'	 		=>	$filename,
 					':research_Status'	 		=>	$research_Status,
+					':research_yrConduct'	 		=>	$research_yrConduct,
 					':login_id'	 		=>	$login_id
 				)
 			);
