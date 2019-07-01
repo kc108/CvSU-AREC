@@ -22,7 +22,9 @@ else{
 if(isset($_POST["search"]["value"]))
 {
  $query .= '(proj_Title LIKE "%'.$_POST["search"]["value"].'%" ';
-    $query .= 'OR proj_Owner LIKE "%'.$_POST["search"]["value"].'%" )';
+    $query .= 'OR proj_Owner LIKE "%'.$_POST["search"]["value"].'%" ';
+    $query .= 'OR proj_Location LIKE "%'.$_POST["search"]["value"].'%" ';
+    $query .= 'OR proj_Head LIKE "%'.$_POST["search"]["value"].'%" )';
 }
 
 if(isset($_POST["order"]))
@@ -47,7 +49,7 @@ foreach($result as $row)
 	
 
 
-		$button = '<div class="dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Action<span class="caret"></span></button><ul class="dropdown-menu"><li><a href="#" id="'.$row["proj_ID"].'" class="view">View</a></li><li><a href="#" id="'.$row["proj_ID"].'" class="update">Update</a></li><li><a href="#" id="'.$row["proj_ID"].'" class="delete">Delete</a></li></ul></div>';
+	$button = '<div class="dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Action<span class="caret"></span></button><ul class="dropdown-menu"><li><a href="#" data-id="'.$row["proj_ID"].'" id="proj_view">View</a></li><li><a href="#" data-id="'.$row["proj_ID"].'" id="proj_edit">Update</a></li><li><a href="#" data-id="'.$row["proj_ID"].'" id="proj_delete">Delete</a></li></ul></div>';
 	
 	$sub_array = array();
 	$sub_array[] = $row["proj_Title"];

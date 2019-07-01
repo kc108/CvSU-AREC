@@ -175,7 +175,7 @@ function side_report(){
                         side_researcher();
                         side_projectmonitoring();
                         side_biogas();
-                        side_report();
+                        // side_report();
                     }
                     else {
                         # code...

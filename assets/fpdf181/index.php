@@ -1,6 +1,5 @@
 <?php
 $con = mysqli_connect("localhost", "root", "","cvsu_arec");
-
 require('fpdf.php');
 	function numberToRomanRepresentation($number) {
 	    $map = array('M' => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400, 'C' => 100, 'XC' => 90, 'L' => 50, 'XL' => 40, 'X' => 10, 'IX' => 9, 'V' => 5, 'IV' => 4, 'I' => 1);
@@ -16,7 +15,6 @@ require('fpdf.php');
 	    }
 	    return $returnValue;
 	}
-
 /*******************************************************************************
 * FPDF Plugin  by Olivier PLATHEY                                              *
 *                                                                              *
@@ -27,7 +25,6 @@ require('fpdf.php');
 *******************************************************************************/
 class PDF extends FPDF
 {
-
 	// Page footer
 // function Footer()
 // {
@@ -37,11 +34,9 @@ class PDF extends FPDF
 // 	$this->SetFont('Arial','I',8);
 // 	// Page number
 // 	$this->Cell(0,5,"3rd Floor, Room 1. No. 3B jasmin Street. Roxas District,1103",0,1,'C');
-
 // 	$this->Cell(0,5,"Tel. No. 414-7547 Telefax No: 441-4726, 045-6850833",0,1,'C');
 // 	$this->Cell(0,5,"3Mobile No. 0918-8672767",0,1,'C');
 // 	$this->Cell(0,10,$this->PageNo()."'/{nb}'",0,0,'R');
-
 // }
 	/*******************************************************************************
 	* HEADER STYLE                                             						*
@@ -52,12 +47,10 @@ class PDF extends FPDF
 	{
 		//Get string width
 		$str_width=$this->GetStringWidth($txt);
-
 		//Calculate ratio to fit cell
 		if($w==0)
 			$w = $this->w-$this->rMargin-$this->x;
 		$ratio = ($w-$this->cMargin*2)/$str_width;
-
 		$fit = ($ratio < 1 || ($ratio > 1 && $force));
 		if ($fit)
 		{
@@ -78,40 +71,33 @@ class PDF extends FPDF
 			//Override user alignment (since text will fill up cell)
 			$align='';
 		}
-
 		//Pass on to Cell method
 		$this->Cell($w,$h,$txt,$border,$ln,$align,$fill,$link);
-
 		//Reset character spacing/horizontal scaling
 		if ($fit)
 			$this->_out('BT '.($scale ? '100 Tz' : '0 Tc').' ET');
 	}
-
 	//Cell with horizontal scaling only if necessary
 	function CellFitScale($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='')
 	{
 		$this->CellFit($w,$h,$txt,$border,$ln,$align,$fill,$link,true,false);
 	}
-
 	//Cell with horizontal scaling always
 	function CellFitScaleForce($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='')
 	{
 		$this->CellFit($w,$h,$txt,$border,$ln,$align,$fill,$link,true,true);
 	}
-
 	//Cell with character spacing only if necessary
 	function CellFitSpace($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='')
 	{
 		$this->CellFit($w,$h,$txt,$border,$ln,$align,$fill,$link,false,false);
 	}
-
 	//Cell with character spacing always
 	function CellFitSpaceForce($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='')
 	{
 		//Same as calling CellFit directly
 		$this->CellFit($w,$h,$txt,$border,$ln,$align,$fill,$link,false,true);
 	}
-
 	//Patch to also work with CJK double-byte text
 	function MBGetStringLength($s)
 	{
@@ -134,74 +120,143 @@ class PDF extends FPDF
 		else
 			return strlen($s);
 	}
+function MultiCell($w, $h, $txt, $border=0, $ln=0, $align='J', $fill=false)
+{
+    // Custom Tomaz Ahlin
+    if($ln == 0) {
+        $current_y = $this->GetY();
+        $current_x = $this->GetX();
+    }
 
+    // Output text with automatic or explicit line breaks
+    $cw = &$this->CurrentFont['cw'];
+    if($w==0)
+        $w = $this->w-$this->rMargin-$this->x;
+    $wmax = ($w-2*$this->cMargin)*1000/$this->FontSize;
+    $s = str_replace("\r",'',$txt);
+    $nb = strlen($s);
+    if($nb>0 && $s[$nb-1]=="\n")
+        $nb--;
+    $b = 0;
+    if($border)
+    {
+        if($border==1)
+        {
+            $border = 'LTRB';
+            $b = 'LRT';
+            $b2 = 'LR';
+        }
+        else
+        {
+            $b2 = '';
+            if(strpos($border,'L')!==false)
+                $b2 .= 'L';
+            if(strpos($border,'R')!==false)
+                $b2 .= 'R';
+            $b = (strpos($border,'T')!==false) ? $b2.'T' : $b2;
+        }
+    }
+    $sep = -1;
+    $i = 0;
+    $j = 0;
+    $l = 0;
+    $ns = 0;
+    $nl = 1;
+    while($i<$nb)
+    {
+        // Get next character
+        $c = $s[$i];
+        if($c=="\n")
+        {
+            // Explicit line break
+            if($this->ws>0)
+            {
+                $this->ws = 0;
+                $this->_out('0 Tw');
+            }
+            $this->Cell($w,$h,substr($s,$j,$i-$j),$b,2,$align,$fill);
+            $i++;
+            $sep = -1;
+            $j = $i;
+            $l = 0;
+            $ns = 0;
+            $nl++;
+            if($border && $nl==2)
+                $b = $b2;
+            continue;
+        }
+        if($c==' ')
+        {
+            $sep = $i;
+            $ls = $l;
+            $ns++;
+        }
+        $l += $cw[$c];
+        if($l>$wmax)
+        {
+            // Automatic line break
+            if($sep==-1)
+            {
+                if($i==$j)
+                    $i++;
+                if($this->ws>0)
+                {
+                    $this->ws = 0;
+                    $this->_out('0 Tw');
+                }
+                $this->Cell($w,$h,substr($s,$j,$i-$j),$b,2,$align,$fill);
+            }
+            else
+            {
+                if($align=='J')
+                {
+                    $this->ws = ($ns>1) ?     ($wmax-$ls)/1000*$this->FontSize/($ns-1) : 0;
+                    $this->_out(sprintf('%.3F Tw',$this->ws*$this->k));
+                }
+                $this->Cell($w,$h,substr($s,$j,$sep-$j),$b,2,$align,$fill);
+                $i = $sep+1;
+            }
+            $sep = -1;
+            $j = $i;
+            $l = 0;
+            $ns = 0;
+            $nl++;
+            if($border && $nl==2)
+                $b = $b2;
+        }
+        else
+            $i++;
+    }
+    // Last chunk
+    if($this->ws>0)
+    {
+        $this->ws = 0;
+        $this->_out('0 Tw');
+    }
+    if($border && strpos($border,'B')!==false)
+        $b .= 'B';
+    $this->Cell($w,$h,substr($s,$j,$i-$j),$b,2,$align,$fill);
+    $this->x = $this->lMargin;
+
+    // Custom Tomaz Ahlin
+    if($ln == 0) {
+        $this->SetXY($current_x + $w, $current_y);
+    }
+}
 //Patrick Benny script Fit text to cell end
-
 function Header()
 {
     // Logo
-
-
 		$con = mysqli_connect("localhost", "root", "","cvsu_arec");
     	
 	
-	if ($_REQUEST["report"] == "project") {
-		$this->Image('../images/cvsu_arec.png',10,16,15);
-		$this->SetFont('Times','',16);
-		$this->Cell(80);
-		$this->Cell(150,10,'CvSU AREC',0,1,'C');
-		$this->Cell(80);
-		$this->Cell(150,10,'LIST OF PROJECT',0,1,'C');
-		$this->Cell(80);
-		$this->SetFont('Times','B',8);
-		if (isset($_REQUEST["location"])) {
-		
-		$this->Cell(150,10,'Fiter location:'.$_REQUEST["location"] ,0,1,'C');
-		}
-		if (isset($_REQUEST["status"])) {
-
-			$status = $_REQUEST["status"];
-			$query = "SELECT * FROM `status` WHERE status_ID = '$status' ";
-            $result = mysqli_query($con, $query);
-            while($row = mysqli_fetch_array($result))
-            {
-            $status_Name = $row["status_Name"];
-            }
-				$this->Cell(80);
-		$this->Cell(150,0,'Fiter Status:'.$status_Name,0,1,'C');
-		}
-
-		$this->Cell(30,10,'',0,1,'C');
-		$this->Cell(80);
-		$this->Cell(30,0,'',0,1,'C');
-		$this->Cell(80);
-		$this->Cell(30,10,'',0,1,'C');
-		$this->SetFont('Times','',8);
-		$this->Cell(80);
-		$this->Cell(30,0,'',0,1,'C');
-		$this->Ln(20);
-		$this->SetTextColor(0, 128, 0);
-		
-		// $this->Line(0, 45, 600, 45);
-		$this->Cell(10,-15,'ID',0,0,'C');
-		$this->Cell(125,-15,'TITLE',0,0,'C');
-		$this->Cell(80,-15,'OWNER',0,0,'C');
-		$this->Cell(35,-15,'COSTING',0,0,'C');
-		$this->Cell(25,-15,'STARTED',0,0,'C');
-		$this->Cell(25,-15,'ENDED',0,0,'C');
-		$this->Cell(25,-15,'STATUS',0,1,'C');
-			$this->Line(0, 45, 600, 45);
-
-		$this->Ln(10);
-		
-	}
-	else{
+	if ($_REQUEST["report"] == "Account") {
 		$this->Image('../images/cvsu_arec.png',10,16,15);
 		$this->SetFont('Times','',16);
 		$this->Cell(80);
 		$this->Cell(30,10,'CvSU AREC',0,1,'C');
 		$this->Cell(80);
-	$this->Line(15, 45, 200, 45);
+		$this->Line(15, 45, 200, 45);
 		$this->Cell(30,10,'LIST OF ACCOUNT',0,1,'C');
 		$this->Cell(30,10,'',0,1,'C');
 		$this->Cell(80);
@@ -222,9 +277,106 @@ function Header()
 		$this->Cell(0,-15,'REGISTER',0,1,'C');
 		$this->Ln(10);
 	}
+	if ($_REQUEST["report"] == "News") {
+		$this->Image('../images/cvsu_arec.png',10,16,15);
+		$this->SetFont('Times','',16);
+		$this->Cell(80);
+		$this->Cell(30,10,'CvSU AREC',0,1,'C');
+		$this->Cell(80);
+		$this->Line(15, 45, 200, 45);
+		$this->Cell(30,10,'LIST OF NEWS',0,1,'C');
+		$this->Cell(30,10,'',0,1,'C');
+		$this->Cell(80);
+		$this->Cell(30,0,'',0,1,'C');
+		$this->Cell(80);
+		$this->Cell(30,10,'',0,1,'C');
+		$this->SetFont('Times','',8);
+		$this->Cell(80);
+		$this->Cell(30,0,'',0,1,'C');
+		$this->Ln(20);
+		$this->SetTextColor(0, 128, 0);
+		
+		// $this->Line(0, 45, 600, 45);
+		$this->Cell(75,-15,'TITLE',0,0,'C');
+		$this->Cell(30,-15,'DATE',0,0,'C');
+		$this->Cell(0,-15,'DESCRIPTION',0,1,'C');
+		$this->Ln(10);
+	}
+	if ($_REQUEST["report"] == "Suggestion") {
+		$this->Image('../images/cvsu_arec.png',10,16,15);
+		$this->SetFont('Times','',16);
+		$this->Cell(80);
+		$this->Cell(30,10,'CvSU AREC',0,1,'C');
+		$this->Cell(80);
+		$this->Line(15, 45, 200, 45);
+		$this->Cell(30,10,'LIST OF SUGGESTION',0,1,'C');
+		$this->Cell(30,10,'',0,1,'C');
+		$this->Cell(80);
+		$this->Cell(30,0,'',0,1,'C');
+		$this->Cell(80);
+		$this->Cell(30,10,'',0,1,'C');
+		$this->SetFont('Times','',8);
+		$this->Cell(80);
+		$this->Cell(30,0,'',0,1,'C');
+		$this->Ln(20);
+		$this->SetTextColor(0, 128, 0);
+		
+		// $this->Line(0, 45, 600, 45);
+		$this->Cell(75,-15,'NAME',0,0,'C');
+		$this->Cell(60,-15,'SUBJECT',0,0,'C');
+		$this->Cell(0,-15,'DATE',0,1,'C');
+		$this->Ln(10);
+	}
+
+	if ($_REQUEST["report"] == "project") {
+		$this->Image('../images/cvsu_arec.png',10,16,15);
+		$this->SetFont('Times','',16);
+		$this->Cell(80);
+		$this->Cell(150,10,'CvSU AREC',0,1,'C');
+		$this->Cell(80);
+		$this->Cell(150,10,'LIST OF PROJECT',0,1,'C');
+		$this->Cell(80);
+		$this->SetFont('Times','B',8);
+		if (isset($_REQUEST["location"])) {
+		
+		$this->Cell(150,10,'Fiter location:'.$_REQUEST["location"] ,0,1,'C');
+		}
+		if (isset($_REQUEST["status"])) {
+			$status = $_REQUEST["status"];
+			$query = "SELECT * FROM `status` WHERE status_ID = '$status' ";
+            $result = mysqli_query($con, $query);
+            while($row = mysqli_fetch_array($result))
+            {
+            $status_Name = $row["status_Name"];
+            }
+				$this->Cell(80);
+		$this->Cell(150,0,'Fiter Status:'.$status_Name,0,1,'C');
+		}
+		$this->Cell(30,10,'',0,1,'C');
+		$this->Cell(80);
+		$this->Cell(30,0,'',0,1,'C');
+		$this->Cell(80);
+		$this->Cell(30,10,'',0,1,'C');
+		$this->SetFont('Times','',8);
+		$this->Cell(80);
+		$this->Cell(30,0,'',0,1,'C');
+		$this->Ln(20);
+		$this->SetTextColor(0, 128, 0);
+		
+		// $this->Line(0, 45, 600, 45);
+		$this->Cell(10,-15,'ID',0,0,'C');
+		$this->Cell(125,-15,'TITLE',0,0,'C');
+		$this->Cell(80,-15,'OWNER',0,0,'C');
+		$this->Cell(35,-15,'COSTING',0,0,'C');
+		$this->Cell(25,-15,'STARTED',0,0,'C');
+		$this->Cell(25,-15,'ENDED',0,0,'C');
+		$this->Cell(25,-15,'STATUS',0,1,'C');
+			$this->Line(0, 45, 600, 45);
+		$this->Ln(10);
+		
+	}
 		
 }
-
 // Page footer
 function Footer()
 {
@@ -235,10 +387,7 @@ function Footer()
     // Page number
     $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
 }
-
-
 	}
-
 // function Footer()
 // {
 //     // Go to 1.5 cm from bottom
@@ -248,17 +397,10 @@ function Footer()
 //     // Print centered page number
 //     $this->Cell(0,10,'Page '.$this->PageNo(),0,0,'C');
 // }
-
-
 // Instanciation of inherited class
-
-
 	$pdf = new PDF();
-
 if (isset($_REQUEST['report'])) {
-
-	if($_REQUEST['report'] == "Accountlist"){
-
+	if($_REQUEST['report'] == "Account"){
 		$pdf->AliasNbPages();
 		$pdf->AddPage();
 		$pdf->SetFont('Times','',12);
@@ -266,10 +408,8 @@ if (isset($_REQUEST['report'])) {
 	INNER JOIN `user_level` `ul` ON `ua`.`level_ID` = `ul`.`level_ID`
 	INNER JOIN `user_status` `us` ON `ua`.`user_status` = `us`.`status_ID`
 	");
-
 	    while ($student_data = mysqli_fetch_array($sql)) 
 	    {
-
 		
 	    
 		$pdf->CellFitSpace(15,5,$student_data[0],1,0,'C');
@@ -279,35 +419,73 @@ if (isset($_REQUEST['report'])) {
 		$pdf->Cell(0,5,$student_data['user_Registered'],1,1,'C');
 	    }
 	}
-	if($_REQUEST['report'] == "project"){
+	if($_REQUEST['report'] == "News"){
+		$pdf->AliasNbPages();
+		$pdf->AddPage();
+		$pdf->SetFont('Times','',12);
+		if (isset($_REQUEST["filter"])) {
+			$filter = $_REQUEST["filter"];
+		}
+	 	$sql = mysqli_query($con,"SELECT * FROM `news` WHERE news_Title LIKE '%$filter%' ORDER BY `news_Pub` DESC");
+	    while ($student_data = mysqli_fetch_array($sql)) 
+	    {
+		
+		// $this->Cell(75,-15,'TITLE',0,0,'C');
+		// $this->Cell(30,-15,'DATE',0,0,'C');
+		// $this->Cell(0,-15,'DESCRIPTION',0,1,'C');
+	    
+		$pdf->MultiCell(75,5,$student_data['news_Title'],1,0,'');
+		$pdf->MultiCell(30,5,$student_data['news_Pub'],1,0,'C');
+		$pdf->MultiCell(30,5,$student_data['news_Pub'],1,0,'C');
+		$pdf->MultiCell(0,5,$student_data['news_Content'],1,1,'C');
+	    }
+	}
+	if($_REQUEST['report'] == "Suggestion"){
+		$pdf->AliasNbPages();
+		$pdf->AddPage();
+		$pdf->SetFont('Times','',12);
+		if (isset($_REQUEST["filter"])) {
+			$filter = $_REQUEST["filter"];
+		}
 
+	 	$sql = mysqli_query($con,"SELECT * FROM `suggestion` WHERE subject LIKE '%$filter%' ORDER BY `suggestion`.`date` DESC");
+	    while ($student_data = mysqli_fetch_array($sql)) 
+	    {
+		
+		// $this->Cell(75,-15,'TITLE',0,0,'C');
+		// $this->Cell(30,-15,'DATE',0,0,'C');
+		// $this->Cell(0,-15,'DESCRIPTION',0,1,'C');
+	    
+		$pdf->MultiCell(70,5,$student_data['fname'].' '.$student_data['lname'],1,0,'');
+		$pdf->MultiCell(60,5,$student_data['subject'],1,0,'C');
+		$pdf->MultiCell(0,5,$student_data['date'],1,1,'C');
+	    }
+	}
+	
+	if($_REQUEST['report'] == "project"){
 	
 		$location = $_REQUEST['location'];
 		$status = $_REQUEST['status'];
-		if ($location =="null") {
-			$sql = mysqli_query($con,"SELECT * FROM `project_monitoring` WHERE status_ID = '$status' ");
-		}
-		else if ($status == "null"){
-			$sql = mysqli_query($con,"SELECT * FROM `project_monitoring` WHERE proj_Location  = '$location' ");
+		if ($location == "null") {
+			$sql = mysqli_query($con,"
+				SELECT * FROM `project_monitoring` `pm` 
+				INNER JOIN `status` `s` ON  `pm`.status_ID = `s`.status_ID
+				WHERE `pm`.status_ID = $status");
 		}
 		else{
-			$sql = mysqli_query($con,"SELECT * FROM `project_monitoring` WHERE status_ID = '$status' AND proj_Location  = '$location' ");
+			$sql = mysqli_query($con,"SELECT * FROM `project_monitoring` WHERE status_ID = '$status' AND proj_Location  LIKE '%$location%'");
+		
 		}
+
 		$pdf->AliasNbPages();
 		$pdf->AddPage('L','Legal');
 		$pdf->SetFont('Times','',12);
 	 
-
 		    while ($proj_data = mysqli_fetch_array($sql)) 
 		    {
 		    $status_ID = $proj_data['status_ID'];
-			$query = "SELECT * FROM `status` WHERE status_ID = '$status_ID' ";
-            $result = mysqli_query($con, $query);
-            while($row = mysqli_fetch_array($result))
-            {
-            $status_Name = $row["status_Name"];
-            }
-		    
+		    $status_Name = $proj_data['status_Name'];
+			
 			$pdf->CellFitSpace(10,5,$proj_data['proj_ID'],1,0,'C');
 			$pdf->Cell(125,5,$proj_data['proj_Title'],1,0,'C');
 			$pdf->CellFitSpace(80,5,$proj_data['proj_Owner'],1,0,'C');
@@ -316,11 +494,7 @@ if (isset($_REQUEST['report'])) {
 			$pdf->Cell(25,5,$proj_data['proj_DateEnded'],1,0,'C');
 			$pdf->Cell(25,5,$status_Name,1,1,'C');
 		    }
-
 	}
 }
-
-
 	$pdf->Output();
-
 ?>

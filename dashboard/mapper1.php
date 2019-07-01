@@ -124,7 +124,7 @@
             </div>
             <div class="modal-body">
                 <i>Note: Right Click For Mark and Left Click For Remove </i> 
-               <iframe src="map/user-map.php" style=" display:block; width:100%; height: 800px;"></iframe>
+               <iframe src="map/geomap.php" style=" display:block; width:100%; height: 800px;"></iframe>
             </div>
             <div class="modal-footer " style="background-color: #e4e4e4;">
                 <button type="button" class="btn btn-link btn-danger waves-effect" data-dismiss="modal" style=" color: white;">CLOSE</button>
@@ -199,7 +199,7 @@
             </div>
             <div class="modal-body">
                 <i>Note: Right Click For Mark and Left Click For Remove </i> 
-               <iframe src="map/user-map.php" style=" display:block; width:100%; height: 800px;" id="iframe_map_cont"></iframe>
+               <iframe src="map/user-map.php" style=" display:block; width:100%; height: 800px;"></iframe>
             </div>
             <div class="modal-footer " style="background-color: #e4e4e4;">
                 <button type="button" class="btn btn-link btn-danger waves-effect" data-dismiss="modal" style=" color: white;">CLOSE</button>
@@ -353,7 +353,6 @@ $(document).ready(function(){
     
     $(document).on('click', '.reload_table', function(){
         dataTable.ajax.reload();
-        document.getElementById('iframe_map_cont').contentWindow.location.reload();
     });
     
     

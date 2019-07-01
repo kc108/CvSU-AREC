@@ -76,9 +76,12 @@
                            <div class="card">
                                <div class="header">
                                    <h2>LIST OF News</h2>
-                                   <div class="btn-group pull-right">
-                                   <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#news_modal">ADD NEWS</button>
-                                   </div>
+                                    <div class="btn-group pull-right" >
+                                      <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#news_modal">ADD NEWS</button>
+                                      <button type="button" class="btn btn-primary" id="proj_print">PRINT</button>
+                                  
+                                    </div>
+                                  <input type="hidden" name="filter_Search" id="filter_Search" value="null">
                                    <br>
                                </div>
                                <div class="body">
@@ -267,7 +270,11 @@ $(document).ready(function(){
   $("select[value]").each(function(){
     $(this).val(this.getAttribute("value"));
   });
-
+$(document).on('click', '#proj_print', function(){
+          var filter_Search = $('#filter_Search').val();
+        
+          window.open('../assets/fpdf181/index.php?report=News&filter='+filter_Search);
+      });
 
   var dataTable = $('#news_data').DataTable({
 
@@ -285,25 +292,25 @@ $(document).ready(function(){
         "orderable":false,
       },
     ],
-       dom: 'Bfrtip',
-         "buttons": [
-        {
-            extend: 'print',
-            text: 'Print',
-            autoPrint: true,
-            exportOptions: {
-                columns: ':visible',
-            },
-            customize: function (win) {
-                $(win.document.body).find('table').addClass('display').css('font-size', '9px');
-                $(win.document.body).find('tr:nth-child(odd) td').each(function(index){
-                    $(this).css('background-color','#D0D0D0');
-                });
-                $(win.document.body).find('h1').css('text-align','center');
-                $(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
-            }
-        }
-    ],
+    //    dom: 'Bfrtip',
+    //      "buttons": [
+    //     {
+    //         extend: 'print',
+    //         text: 'Print',
+    //         autoPrint: true,
+    //         exportOptions: {
+    //             columns: ':visible',
+    //         },
+    //         customize: function (win) {
+    //             $(win.document.body).find('table').addClass('display').css('font-size', '9px');
+    //             $(win.document.body).find('tr:nth-child(odd) td').each(function(index){
+    //                 $(this).css('background-color','#D0D0D0');
+    //             });
+    //             $(win.document.body).find('h1').css('text-align','center');
+    //             $(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
+    //         }
+    //     }
+    // ],
 
   });
 
@@ -427,19 +434,11 @@ $(document).on('click', '.view', function(){
   
   
 });
-$(document).on('change', '#fil_location', function(){
-  var fil_location = $(this).val();
-
- });
-$(document).on('change', '#fil_status', function(){
-  var fil_status = $(this).val();
-
- });
-function print_project(){
-     var fil_location = $('#fil_location').val();
-      var fil_status = $('#fil_status').val();
-     window.open('../assets/fpdf181/index.php?report=project&location='+fil_location+'&status='+fil_status);
-}
+ $('#news_data').on('search.dt', function() {
+              var value = $('.dataTables_filter input').val();
+              console.log(value);
+              $('#filter_Search').val(value);
+          }); 
 </script>
 </body>
 
