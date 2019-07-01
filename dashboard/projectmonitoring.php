@@ -155,7 +155,7 @@
                                   
                                   </div>
                                   <input type="hidden" name="filter_projStat" id="filter_projStat" value="3">
-                                  <input type="hidden" name="filter_projSearch" id="filter_projSearch" value="null">
+                                  <input type="hidden" name="filter_projSearch" id="filter_projSearch" value="">
                                    <br>
                                </div>
                                <div class="body">
@@ -381,7 +381,7 @@
           var projStat = $('#filter_projStat').val();
           var projSearch = $('#filter_projSearch').val();
         
-          window.open('../assets/fpdf181/index.php?report=project&location='+projSearch+'&status='+projStat);
+          window.open('../assets/fpdf181/print?report=Project&filter='+projSearch+'&status='+projStat);
       });
     load_data();
     function load_data(filter)
@@ -401,25 +401,25 @@
                 "orderable":false,
               },
             ],
-             dom: 'Bfrtip',
-               "buttons": [
-              {
-                  extend: 'print',
-                  text: 'Print',
-                  autoPrint: true,
-                  exportOptions: {
-                      columns: ':visible',
-                  },
-                  customize: function (win) {
-                      $(win.document.body).find('table').addClass('display').css('font-size', '9px');
-                      $(win.document.body).find('tr:nth-child(odd) td').each(function(index){
-                          $(this).css('background-color','#D0D0D0');
-                      });
-                      $(win.document.body).find('h1').css('text-align','center');
-                      $(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
-                  }
-              }
-          ],
+          //    dom: 'Bfrtip',
+          //      "buttons": [
+          //     {
+          //         extend: 'print',
+          //         text: 'Print',
+          //         autoPrint: true,
+          //         exportOptions: {
+          //             columns: ':visible',
+          //         },
+          //         customize: function (win) {
+          //             $(win.document.body).find('table').addClass('display').css('font-size', '9px');
+          //             $(win.document.body).find('tr:nth-child(odd) td').each(function(index){
+          //                 $(this).css('background-color','#D0D0D0');
+          //             });
+          //             $(win.document.body).find('h1').css('text-align','center');
+          //             $(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
+          //         }
+          //     }
+          // ],
          
 
           });

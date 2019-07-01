@@ -30,6 +30,14 @@ if (isset($_REQUEST["report"]))
 	if ($report == "Research") {
 		$pdf->SetWidths(Array(75,30,50,40));
 	}
+	if ($report == "Biogas") {
+		$pdf->SetWidths(Array(55,60,65));
+	}
+	if ($report == "Project") {
+		$pdf->SetWidths(Array(20,30,25,25,30,20,20,20));
+	}
+	
+	
 	
 
 }
@@ -98,6 +106,35 @@ if ($report == "Research") {
 
 	$sql = mysqli_query($con,$query);
 }
+if ($report == "Biogas") {
+	$sql = mysqli_query($con,'SELECT * FROM `locations` WHERE title LIKE "%'.$_REQUEST["filter"].'%" ORDER BY `locations`.`date` DESC');
+}
+if ($report == "Project") {
+
+	$query = '';
+
+	$query .= "SELECT `pm`.*,`s`.`status_Name`";
+	$query .= "FROM `project_monitoring` `pm` LEFT JOIN `status` `s` ON `pm`.`status_ID` = `s`.`status_ID` ";
+
+	if(isset($_REQUEST["status"])) {
+	$status = $_REQUEST["status"];
+	 $query .= '  WHERE `pm`.`status_ID` = '.$status.' AND ';
+	}
+	else{
+		 $query .= ' WHERE ';
+	}
+	if(isset($_REQUEST["filter"]))
+	{
+	 $query .= '(proj_Title LIKE "%'.$_REQUEST["filter"].'%" ';
+	    $query .= 'OR proj_Owner LIKE "%'.$_REQUEST["filter"].'%" ';
+	    $query .= 'OR proj_Location LIKE "%'.$_REQUEST["filter"].'%" ';
+	    $query .= 'OR proj_Head LIKE "%'.$_REQUEST["filter"].'%" )';
+	}
+		$query .= 'ORDER BY date_added DESC ';
+
+	$sql = mysqli_query($con,$query);
+}
+
 
 
 
@@ -119,17 +156,17 @@ else{
 
 //add table heading using standard cells
 //set font to bold
-$pdf->SetFont('Arial','B',14);
-if ($report == "Account") {
 
+if ($report == "Account") {
+	$pdf->SetFont('Arial','B',10);
 	$pdf->Cell(15,5,"ID",1,0,'C');
-	$pdf->Cell(45,5,"LEVEL",1,0,'C');
-	$pdf->Cell(45,5,"USER",1,0,'C');
-	$pdf->Cell(45,5,"STATUS",1,0,'C');
-	$pdf->Cell(45,5,"REGISTER",1,0,'C');
+	$pdf->Cell(45,5,"Level",1,0,'C');
+	$pdf->Cell(45,5,"User",1,0,'C');
+	$pdf->Cell(45,5,"Status",1,0,'C');
+	$pdf->Cell(45,5,"Register",1,0,'C');
 	$pdf->Ln();
 	//reset font
-	$pdf->SetFont('Arial','',14);
+	$pdf->SetFont('Arial','',9);
 
 	if ($if_has_content != 0) {
 		//loop the data
@@ -147,12 +184,13 @@ if ($report == "Account") {
 	}
 }
 if ($report == "News") {
-	$pdf->Cell(75,5,"TITLE",1,0,'C');
-	$pdf->Cell(40,5,"DATE",1,0,'C');
-	$pdf->Cell(75,5,"DESCRIPTION",1,0,'C');
+	$pdf->SetFont('Arial','B',10);
+	$pdf->Cell(75,5,"Title",1,0,'C');
+	$pdf->Cell(40,5,"Date",1,0,'C');
+	$pdf->Cell(75,5,"Description",1,0,'C');
 	$pdf->Ln();
 	//reset font
-	$pdf->SetFont('Arial','',14);
+	$pdf->SetFont('Arial','',9);
 
 	if ($if_has_content != 0) {
 		//loop the data
@@ -169,12 +207,13 @@ if ($report == "News") {
 
 }
 if ($report == "Suggestion") {
-	$pdf->Cell(75,5,"TITLE",1,0,'C');
-	$pdf->Cell(40,5,"DATE",1,0,'C');
-	$pdf->Cell(75,5,"DESCRIPTION",1,0,'C');
+	$pdf->SetFont('Arial','B',10);
+	$pdf->Cell(75,5,"Title",1,0,'C');
+	$pdf->Cell(40,5,"Date",1,0,'C');
+	$pdf->Cell(75,5,"Description",1,0,'C');
 	$pdf->Ln();
 	//reset font
-	$pdf->SetFont('Arial','',14);
+	$pdf->SetFont('Arial','',9);
 
 	if ($if_has_content != 0) {
 		//loop the data
@@ -191,13 +230,15 @@ if ($report == "Suggestion") {
 
 }
 if ($report == "Research") {
+	$pdf->SetFont('Arial','B',10);
+
 	$pdf->Cell(75,5,"Title",1,0,'C');
 	$pdf->Cell(30,5,"Year",1,0,'C');
 	$pdf->Cell(50,5,"Content",1,0,'C');
 	$pdf->Cell(40,5,"Status",1,0,'C');
 	$pdf->Ln();
 	//reset font
-	$pdf->SetFont('Arial','',14);
+	$pdf->SetFont('Arial','',9);
 
 	if ($if_has_content != 0) {
 		//loop the data
@@ -213,6 +254,63 @@ if ($report == "Research") {
 		}
 	}
 
+}
+if ($report == "Biogas") {
+	$pdf->SetFont('Arial','B',10);
+	$pdf->Cell(55,5,"Name",1,0,'C');
+	$pdf->Cell(60,5,"Description",1,0,'C');
+	$pdf->Cell(65,5,"Location",1,0,'C');
+	$pdf->Ln();
+	//reset font
+	$pdf->SetFont('Arial','',9);
+
+	if ($if_has_content != 0) {
+		//loop the data
+		foreach($data as $item){
+			//write data using Row() method containing array of values.
+			$pdf->Row(Array(
+				$item['title'],
+				$item['description'],
+				$item['address'],
+			));
+			
+		}
+	}
+ 
+}
+if ($report == "Project") {
+	$pdf->SetFont('Arial','B',10);
+	$pdf->Cell(20,5,"Title",1,0,'C');
+	$pdf->Cell(30,5,"Owner/ Sponsor",1,0,'C');
+	$pdf->Cell(25,5,"Started",1,0,'C');
+	$pdf->Cell(25,5,"Ended",1,0,'C');
+	$pdf->Cell(30,5,"Location",1,0,'C');
+	$pdf->Cell(20,5,"Details",1,0,'C');
+	$pdf->Cell(20,5,"Head",1,0,'C');
+	$pdf->Cell(20,5,"Progress",1,0,'C');
+
+	$pdf->Ln();
+	//reset font
+	$pdf->SetFont('Arial','',9);
+
+	if ($if_has_content != 0) {
+		//loop the data
+		foreach($data as $item){
+			//write data using Row() method containing array of values.
+			$pdf->Row(Array(
+				$item['proj_Title'],
+				$item['proj_Owner'],
+				$item['proj_DateStarted'],
+				$item['proj_DateEnded'],
+				$item['proj_Location'],
+				$item['proj_Scope'],
+				$item['proj_Head'],
+				$item['status_Name'],
+			));
+			
+		}
+	}
+ 
 }
 
 //output the pdf

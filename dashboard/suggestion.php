@@ -162,73 +162,7 @@
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     <!-- /add modal -->
-         <!-- Modal -->
-<div id="report_project_modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Project Report</h4>
-      </div>
-      <div class="modal-body">
-        <div class="row clearfix">
-            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                <label for="loc_stat">Status</label>
-            </div>
-            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                <div class="form-group">
-                    <div class="form-line">
-                             <select class="form-control"  id="fil_status">
-                             <option value="null">~~SELECT~~</option>
-                             <?php 
-                             $query = "SELECT * FROM `status` ";
-                            $result = mysqli_query($conn, $query);
-                             while($row = mysqli_fetch_array($result))
-                             {
-                              echo '<option value="'.$row["status_ID"].'">'.$row["status_Name"].'</option>';
-                             }
-                             ?>
-                           </select>
-                    </div>
-                </div>
-            </div>
-        </div> 
-
-           <div class="row clearfix">
-            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                <label for="loc_stat">Location</label>
-            </div>
-            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                <div class="form-group">
-                    <div class="form-line">
-                             <select class="form-control" id="fil_location">
-                             <option value="null">~~SELECT~~</option>
-                             <?php 
-                             $query = "SELECT DISTINCT(proj_Location) FROM `project_monitoring`";
-                            $result = mysqli_query($conn, $query);
-                             while($row = mysqli_fetch_array($result))
-                             {
-                              echo '<option value="'.$row["proj_Location"].'">'.$row["proj_Location"].'</option>';
-                             }
-                             ?>
-                           </select>
-                    </div>
-                </div>
-            </div>
-        </div> 
-        <div class="text-center">
-            <button type="button" class="btn btn-primary" onclick="print_project();">PRINT</button>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
     <!-- Jquery Core Js -->
     <script src="../assets/plugins/jquery/jquery.min.js"></script>
 

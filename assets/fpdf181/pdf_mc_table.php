@@ -208,31 +208,14 @@ class PDF_MC_Table extends FPDF {
 		$this->Ln(10);
 		$this->SetTextColor(0, 128, 0);
 	}
-
-	if ($_REQUEST["report"] == "project") {
+	if ($_REQUEST["report"] == "Biogas") {
 		$this->Image('../images/cvsu_arec.png',10,16,15);
 		$this->SetFont('Times','',16);
 		$this->Cell(80);
-		$this->Cell(150,10,'CvSU AREC',0,1,'C');
+		$this->Cell(30,10,'CvSU AREC',0,1,'C');
 		$this->Cell(80);
-		$this->Cell(150,10,'LIST OF PROJECT',0,1,'C');
-		$this->Cell(80);
-		$this->SetFont('Times','B',8);
-		if (isset($_REQUEST["location"])) {
-		
-		$this->Cell(150,10,'Fiter location:'.$_REQUEST["location"] ,0,1,'C');
-		}
-		if (isset($_REQUEST["status"])) {
-			$status = $_REQUEST["status"];
-			$query = "SELECT * FROM `status` WHERE status_ID = '$status' ";
-            $result = mysqli_query($con, $query);
-            while($row = mysqli_fetch_array($result))
-            {
-            $status_Name = $row["status_Name"];
-            }
-				$this->Cell(80);
-		$this->Cell(150,0,'Fiter Status:'.$status_Name,0,1,'C');
-		}
+		$this->Line(15, 45, 200, 45);
+		$this->Cell(30,10,'LIST OF BIOGAS',0,1,'C');
 		$this->Cell(30,10,'',0,1,'C');
 		$this->Cell(80);
 		$this->Cell(30,0,'',0,1,'C');
@@ -241,21 +224,29 @@ class PDF_MC_Table extends FPDF {
 		$this->SetFont('Times','',8);
 		$this->Cell(80);
 		$this->Cell(30,0,'',0,1,'C');
-		$this->Ln(20);
-		$this->SetTextColor(0, 128, 0);
-		
-		// $this->Line(0, 45, 600, 45);
-		$this->Cell(10,-15,'ID',0,0,'C');
-		$this->Cell(125,-15,'TITLE',0,0,'C');
-		$this->Cell(80,-15,'OWNER',0,0,'C');
-		$this->Cell(35,-15,'COSTING',0,0,'C');
-		$this->Cell(25,-15,'STARTED',0,0,'C');
-		$this->Cell(25,-15,'ENDED',0,0,'C');
-		$this->Cell(25,-15,'STATUS',0,1,'C');
-			$this->Line(0, 45, 600, 45);
 		$this->Ln(10);
-		
+		$this->SetTextColor(0, 128, 0);
 	}
+	if ($_REQUEST["report"] == "Project") {
+		$this->Image('../images/cvsu_arec.png',10,16,15);
+		$this->SetFont('Times','',16);
+		$this->Cell(80);
+		$this->Cell(30,10,'CvSU AREC',0,1,'C');
+		$this->Cell(80);
+		$this->Line(15, 45, 200, 45);
+		$this->Cell(30,10,'LIST OF PROJECT',0,1,'C');
+		$this->Cell(30,10,'',0,1,'C');
+		$this->Cell(80);
+		$this->Cell(30,0,'',0,1,'C');
+		$this->Cell(80);
+		$this->Cell(30,10,'',0,1,'C');
+		$this->SetFont('Times','',8);
+		$this->Cell(80);
+		$this->Cell(30,0,'',0,1,'C');
+		$this->Ln(10);
+		$this->SetTextColor(0, 128, 0);
+	}
+
 		
 }
 // Page footer

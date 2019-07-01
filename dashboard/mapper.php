@@ -84,7 +84,10 @@
                                    <div class="btn-group pull-right">
                                    <button type="button" class="btn btn-info waves-effect" data-toggle="modal" data-target="#largeModal">BIOGAS MAPPER</button>
                                    <button type="button" class="btn btn-info waves-effect reload_table">RELOAD TABLE</button>
-                                   </div>
+                                      <button type="button" class="btn btn-primary" id="proj_print">PRINT</button>
+                                  
+                                    </div>
+                                  <input type="hidden" name="filter_Search" id="filter_Search" value="">
                                    <br>
                                </div>
                                <div class="body">
@@ -244,7 +247,11 @@
 $(document).ready(function(){
 
 
-
+$(document).on('click', '#proj_print', function(){
+          var filter_Search = $('#filter_Search').val();
+        
+          window.open('../assets/fpdf181/print?report=Biogas&filter='+filter_Search);
+      });
     var dataTable = $('#biogas_data').DataTable({
         "processing":true,
         "serverSide":true,
@@ -259,25 +266,25 @@ $(document).ready(function(){
                 "orderable":false,
             },
         ],
-       dom: 'Bfrtip',
-         "buttons": [
-        {
-            extend: 'print',
-            text: 'Print',
-            autoPrint: true,
-            exportOptions: {
-                columns: ':visible',
-            },
-            customize: function (win) {
-                $(win.document.body).find('table').addClass('display').css('font-size', '9px');
-                $(win.document.body).find('tr:nth-child(odd) td').each(function(index){
-                    $(this).css('background-color','#D0D0D0');
-                });
-                $(win.document.body).find('h1').css('text-align','center');
-                $(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
-            }
-        }
-    ],
+    //    dom: 'Bfrtip',
+    //      "buttons": [
+    //     {
+    //         extend: 'print',
+    //         text: 'Print',
+    //         autoPrint: true,
+    //         exportOptions: {
+    //             columns: ':visible',
+    //         },
+    //         customize: function (win) {
+    //             $(win.document.body).find('table').addClass('display').css('font-size', '9px');
+    //             $(win.document.body).find('tr:nth-child(odd) td').each(function(index){
+    //                 $(this).css('background-color','#D0D0D0');
+    //             });
+    //             $(win.document.body).find('h1').css('text-align','center');
+    //             $(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
+    //         }
+    //     }
+    // ],
 
     });
     $(document).on('submit', '#biogas_form', function(event){
@@ -358,19 +365,11 @@ $(document).ready(function(){
     
     
 });
-$(document).on('change', '#fil_location', function(){
-  var fil_location = $(this).val();
-
- });
-$(document).on('change', '#fil_status', function(){
-  var fil_status = $(this).val();
-
- });
-function print_project(){
-     var fil_location = $('#fil_location').val();
-      var fil_status = $('#fil_status').val();
-     window.open('../assets/fpdf181/index.php?report=project&location='+fil_location+'&status='+fil_status);
-}
+ $('#biogas_data').on('search.dt', function() {
+              var value = $('.dataTables_filter input').val();
+              console.log(value);
+              $('#filter_Search').val(value);
+          });
 </script>
 </body>
 
