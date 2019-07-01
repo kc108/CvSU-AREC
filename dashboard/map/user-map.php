@@ -85,10 +85,14 @@ include 'locations_model.php';
                 id: 'marker_' + markerId,
                 html: "    <div id='info_"+markerId+"'>\n" +
                 "        <table class=\"map1\">\n" +
-                  "            <tr>\n" +
-                "                <td><a>title:</a></td>\n" +
-                "                <td><textarea  id='manual_title' placeholder='Title'></textarea></td></tr>\n" +
-                "            <tr><td></td></tr>\n" +
+                "            <tr>\n" +
+                "                <td><a>Title:</a></td>\n" +
+                "                <td><textarea  id='manual_title' placeholder='Title'></textarea></td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "             <td><a>Location:</a></td>\n" +
+                "             <td><textarea  id='manual_location' placeholder='Location'></textarea></td>\n" +
+                "            </tr>\n" +
                 "            <tr>\n" +
                 "                <td><a>Description:</a></td>\n" +
                 "                <td><textarea  id='manual_description' placeholder='Description'></textarea></td></tr>\n" +
@@ -183,8 +187,9 @@ include 'locations_model.php';
          */
         function saveData(lat,lng) {
             var biomap_title = document.getElementById('manual_title').value;
+            var biomap_location = document.getElementById('manual_location').value;
             var description = document.getElementById('manual_description').value;
-            var url = 'locations_model.php?add_location&description=' + description + '&lat=' + lat + '&lng=' + lng + '&title=' + biomap_title ;
+            var url = 'locations_model.php?add_location&description=' + description + '&lat=' + lat + '&lng=' + lng + '&title=' + biomap_title+'&address='+biomap_location ;
             downloadUrl(url, function(data, responseCode) {
                 if (responseCode === 200  && data.length > 1) {
                     var markerId = getMarkerUniqueId(lat,lng); // get marker id by using clicked point's coordinate

@@ -16,15 +16,17 @@ function add_location(){
     $lat = $_GET['lat'];
     $lng = $_GET['lng'];
     $title =$_GET['title'];
+    $address =$_GET['address'];
     $description =$_GET['description'];
     // Inserts new row with place data.
     $query = sprintf("INSERT INTO locations " .
-        " (id, lat, lng, title, description,location_status) " .
-        " VALUES (NULL, '%s', '%s', '%s', '%s', '1');",
+        " (id, lat, lng, title, description,location_status,address) " .
+        " VALUES (NULL, '%s', '%s', '%s', '%s', '1','%s');",
         mysqli_real_escape_string($conn,$lat),
         mysqli_real_escape_string($conn,$lng),
         mysqli_real_escape_string($conn,$title),
-        mysqli_real_escape_string($conn,$description));
+        mysqli_real_escape_string($conn,$description),
+        mysqli_real_escape_string($conn,$address));
 
     $result = mysqli_query($conn,$query);
     echo"Inserted Successfully";
