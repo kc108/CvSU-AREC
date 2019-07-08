@@ -19,6 +19,10 @@ WHERE research_ID = '".$_POST["research_ID"]."'
 		$output["research_Content"] = $row["research_Content"];
     $output["research_yrConduct"] = $row["research_yrConduct"];
 		$output["research_Attachment"] = 'datatable/research/uploads/'.$row["research_Attachment"];
+
+    $output["research_AttchMIME"] = $row["research_AttchMIME"];
+
+    $output["research_AttchData"] = $row["research_AttchData"];
 		$output["research_Status"] = $row["status_ID"];
 		$output["research_Created"] = $row["research_Created"];
 
@@ -87,13 +91,18 @@ WHERE research_ID = '".$_POST["research_ID"]."'
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
                         <?php 
-                        if (empty($row["research_Attachment"])) {
-                          ?>No Attachment Available<?php
+                        if (empty($row["research_AttchData"])) {
+
+                          if (empty($row["research_Attachment"])) {
+                            ?>No Attachment Available<?php
+                          }
+                          else{
+                           ?>
+                           <a class="btn btn-primary" href="<?php echo $output["research_Attachment"] ;?>" download>DOWNLOAD</a>
+                           <?php
+                          }
                         } else {
-                         
-                         ?>
-                         <a class="btn btn-primary" href="<?php echo $output["research_Attachment"] ;?>" download>DOWNLOAD</a>
-                         <?php
+                            echo "<a  class='btn btn-primary' href='datatable/research/File_Download.php?id=".$_POST["research_ID"]."' target='_blank'>Download</a>";
                         }
                         
                         ?>

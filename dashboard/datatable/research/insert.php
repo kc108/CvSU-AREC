@@ -43,6 +43,7 @@ if(isset($_POST["operation"]))
 			$target_file = basename($_FILES["research_Attachment"]["name"]);
 			
 			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+			$imageFileTypeMIME = basename($_FILES["research_Attachment"]["type"]);
 			
 		
 			echo $filename = file_newname($target_dir,$target_file);
@@ -53,7 +54,7 @@ if(isset($_POST["operation"]))
 			}
 			// Allow certain file formats
 			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-			&& $imageFileType != "gif" && $imageFileType != "zip" && $imageFileType != "rar" && $imageFileType != "docx" && $imageFileType != "doc" && $imageFileType != "pdf" ) {
+			&& $imageFileType != "gif" && $imageFileType != "zip" && $imageFileType != "rar" && $imageFileType != "docx" && $imageFileType != "doc" && $imageFileType != "pdf" && $imageFileType != "txt"  && $imageFileType != "msword"  && $imageFileType != "vnd.openxmlformats-officedocument.wordprocessingml.document" ) {
 			    echo "Sorry, this type of files are allowed.";
 			    $uploadOk = 0;
 			}
@@ -71,8 +72,8 @@ if(isset($_POST["operation"]))
 			}
 		}
 		
-		
-
+		$research_AttchMIME = $_FILES["research_Attachment"]["type"];
+		$research_AttchData = file_get_contents($target_dir.'/'.$filename);
 
 		 	$sql = "INSERT INTO `research` 
 		(`research_ID`,
@@ -82,6 +83,8 @@ if(isset($_POST["operation"]))
 		    `research_yrConduct`,
 		    `research_Created`,
 		     `research_Attachment`,
+		     `research_AttchMIME`,
+		     `research_AttchData`,
 		     `user_ID`) 
 		VALUES 
 		(NULL,
@@ -91,6 +94,8 @@ if(isset($_POST["operation"]))
 		   :research_yrConduct,
 		    CURRENT_TIMESTAMP,
 		     :filename,
+		     :research_AttchMIME,
+		     :research_AttchData,
 		     :login_id);";
 			$statement = $connection->prepare($sql);
 			
@@ -99,15 +104,32 @@ if(isset($_POST["operation"]))
 					':research_Title'			=>	$research_Title,
 					':research_Content'		=>	$research_Content,
 					':filename'	 		=>	$filename,
+					':research_AttchMIME'	 		=>	$research_AttchMIME,
+					':research_AttchData'	 		=>	$research_AttchData,
 					':research_Status'	 		=>	$research_Status,
 					':research_yrConduct'	 		=>	$research_yrConduct,
 					':login_id'	 		=>	$login_id
 				)
 			);
 
+			$notif = "INSERT INTO `notification` (`notif_ID`, `user_ID`, `notif_Msg`, `notif_Date`, `notif_State`) VALUES 
+			(NULL,
+			 :login_id,
+			  :notif_msg,
+			   CURRENT_TIMESTAMP,
+			    NULL);";
+			$statement1 = $connection->prepare($notif);
+			
+			$result1 = $statement1->execute(
+				array(
+					':notif_msg'		=>	"Research Added: (".$research_Title.")",
+					':login_id'	 		=>	$login_id
+				)
+			);
+
 			if(!empty($result))
 			{
-				echo 'Successfully User Added';
+				echo 'Successfully Research Added';
 			}
 
 
@@ -158,11 +180,17 @@ if(isset($_POST["operation"]))
 			    }
 			}
 		}
+
+		$research_AttchMIME = $_FILES["research_Attachment"]["type"];
+		$research_AttchData = file_get_contents($target_dir.'/'.$filename);
+		
 		 $sql ="UPDATE `research` SET 
 		 `research_Title` = :research_Title,
 		 `research_Content` = :research_Content,
 		 `status_ID` = :research_Status,
-		 `research_Attachment` = :filename
+		 `research_Attachment` = :filename,
+		 `research_AttchMIME` = :research_AttchMIME,
+		 `research_AttchData` = :research_AttchData
 		  WHERE `research`.`research_ID` = :research_ID";
 		
 		$statement = $connection->prepare($sql);
@@ -173,9 +201,45 @@ if(isset($_POST["operation"]))
 					':research_Title'		=>	$research_Title,
 					':research_Content'		=>	$research_Content,
 					':filename'	 		=>	$filename,
+					':research_AttchMIME'	 		=>	$research_AttchMIME,
+					':research_AttchData'	 		=>	$research_AttchData,
 					':research_Status'	 		=>	$research_Status
 				)
 			);
+
+		if ($research_Status == 2) {
+			$za = " Approved";
+		}
+		if ($research_Status == 3) {
+			$za = " Archive";
+		}
+
+		$statementz = $connection->prepare(
+		"SELECT research_Title,user_ID FROM `research`  WHERE research_ID =".$_POST["research_ID"]
+		);
+		 $statementz->execute();
+		 $resultz = $statementz->fetchAll();
+		 foreach($resultz as $rowz)
+		 {
+		   $research_Title = $rowz["research_Title"];
+		   $user_IDz = $rowz["user_ID"];
+		 }
+		$notif = "INSERT INTO `notification` (`notif_ID`, `user_ID`, `notif_Msg`, `notif_Date`, `notif_State`,`notif_Type`) VALUES 
+				(NULL,
+				 :login_id,
+				  :notif_msg,
+				   CURRENT_TIMESTAMP,
+				    NULL,
+					2);";
+
+				$statement1 = $connection->prepare($notif);
+				
+				$result1 = $statement1->execute(
+					array(
+						':notif_msg'		=>	$research_Title.$za,
+						':login_id'	 		=>	$user_IDz
+					)
+				);
 		if(!empty($result))
 		{
 			echo 'Data Updated';

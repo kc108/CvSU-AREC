@@ -213,25 +213,33 @@
          $("#profileimg").change(function() {
            readURL(this);
          });
-           $(document).on('submit', '#changepass_form', function(event){
+           $(document).on('submit', '#changepass_form', function(event){ 
               event.preventDefault();
                   
                 var oldpassword = $('#oldpassword').val();
                 var newpassword = $('#newpassword').val();
                 var newpasswordconfirm = $('#newpasswordconfirm').val();
-                      $.ajax({
-                        url:"update_profile_pass.php",
-                        type:'POST',
-                        data:new FormData(this),
-                        cache: false,
-                        contentType:false,
-                        processData:false,
-                        success:function(data)
-                        {
-                          alert(data);
-                          
-                        }
-                      }); 
+                if(confirm("Are you sure you want to Change password?"))
+                {
+                    $.ajax({
+                      url:"update_profile_pass.php",
+                      type:'POST',
+                      data:new FormData(this),
+                      cache: false,
+                      contentType:false,
+                      processData:false,
+                      success:function(data)
+                      {
+                        alert(data);
+                        
+                      }
+                    });
+                }
+                else
+                {
+                  return false; 
+                }
+                       
               
             });
            
@@ -279,6 +287,20 @@
                }); 
               
             });
+                     $(document).on('click', '#notif_seen', function(){
+   
+       
+        $.ajax({
+          url:"notif_seen.php",
+          method:"POST",
+          success:function(data)
+          {
+            $('#label_count').html('0');
+          }
+        });
+    
+  
+  });
 </script>
 </body>
 

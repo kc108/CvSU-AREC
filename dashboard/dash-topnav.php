@@ -4,7 +4,8 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="index.php">CvSU AREC</a>
+                <a class="navbar-brand" href="index.php">MIS CvSU</a>
+                <img src="../assets/images/cvsu_arec.png" alt="CvSU Logo" style="width: 30px; margin-top: 10px;">
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">

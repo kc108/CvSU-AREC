@@ -21,10 +21,13 @@ else{
 }
 if(isset($_POST["search"]["value"]))
 {
- $query .= '(proj_Title LIKE "%'.$_POST["search"]["value"].'%" ';
-    $query .= 'OR proj_Owner LIKE "%'.$_POST["search"]["value"].'%" ';
-    $query .= 'OR proj_Location LIKE "%'.$_POST["search"]["value"].'%" ';
-    $query .= 'OR proj_Head LIKE "%'.$_POST["search"]["value"].'%" )';
+ $query .= '(proj_Title LIKE "'.$_POST["search"]["value"].'%" ';
+    $query .= 'OR proj_Owner LIKE "'.$_POST["search"]["value"].'%" ';
+    $query .= 'OR proj_Location LIKE "'.$_POST["search"]["value"].'%" ';
+    $query .= 'OR proj_DateStarted LIKE "'.$_POST["search"]["value"].'%" ';
+    $query .= 'OR proj_DateEnded LIKE "'.$_POST["search"]["value"].'%" ';
+    $query .= 'OR status_Name LIKE "'.$_POST["search"]["value"].'%" ';
+    $query .= 'OR proj_Head LIKE "'.$_POST["search"]["value"].'%" )';
 }
 
 if(isset($_POST["order"]))

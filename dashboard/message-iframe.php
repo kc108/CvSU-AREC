@@ -208,6 +208,7 @@ img{ max-width:100%;}
               <form>
               <input type="text" class="write_msg" placeholder="Type a message" />
               
+              
               <button class="msg_send_btn" type="button"><i class="material-icons" aria-hidden="true">send</i></button>
               </form>
             </div>

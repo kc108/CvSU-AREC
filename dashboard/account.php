@@ -525,6 +525,20 @@ $(document).on('click', '#proj_print', function(){
               console.log(value);
               $('#filter_Search').val(value);
           }); 
+       $(document).on('click', '#notif_seen', function(){
+   
+       
+        $.ajax({
+          url:"notif_seen.php",
+          method:"POST",
+          success:function(data)
+          {
+            $('#label_count').html('0');
+          }
+        });
+    
+  
+  });
 </script>
 
 </body>

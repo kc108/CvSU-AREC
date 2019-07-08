@@ -225,25 +225,25 @@ $(document).on('click', '#proj_print', function(){
         "orderable":false,
       },
     ],
-       dom: 'Bfrtip',
-         "buttons": [
-        {
-            extend: 'print',
-            text: 'Print',
-            autoPrint: true,
-            exportOptions: {
-                columns: ':visible',
-            },
-            customize: function (win) {
-                $(win.document.body).find('table').addClass('display').css('font-size', '9px');
-                $(win.document.body).find('tr:nth-child(odd) td').each(function(index){
-                    $(this).css('background-color','#D0D0D0');
-                });
-                $(win.document.body).find('h1').css('text-align','center');
-                $(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
-            }
-        }
-    ],
+    //    dom: 'Bfrtip',
+    //      "buttons": [
+    //     {
+    //         extend: 'print',
+    //         text: 'Print',
+    //         autoPrint: true,
+    //         exportOptions: {
+    //             columns: ':visible',
+    //         },
+    //         customize: function (win) {
+    //             $(win.document.body).find('table').addClass('display').css('font-size', '9px');
+    //             $(win.document.body).find('tr:nth-child(odd) td').each(function(index){
+    //                 $(this).css('background-color','#D0D0D0');
+    //             });
+    //             $(win.document.body).find('h1').css('text-align','center');
+    //             $(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
+    //         }
+    //     }
+    // ],
 
   });
 
@@ -374,6 +374,20 @@ $(document).on('click', '.view', function(){
               console.log(value);
               $('#filter_Search').val(value);
           }); 
+       $(document).on('click', '#notif_seen', function(){
+   
+       
+        $.ajax({
+          url:"notif_seen.php",
+          method:"POST",
+          success:function(data)
+          {
+            $('#label_count').html('0');
+          }
+        });
+    
+  
+  });
 </script>
 </body>
 

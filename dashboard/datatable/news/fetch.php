@@ -7,7 +7,7 @@ $query .= "SELECT *";
 $query .= " FROM `news`";
 if(isset($_POST["search"]["value"]))
 {
- $query .= 'WHERE news_Title LIKE "%'.$_POST["search"]["value"].'%" ';
+ $query .= 'WHERE news_Title LIKE "'.$_POST["search"]["value"].'%" ';
 }
 
 

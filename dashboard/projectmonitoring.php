@@ -213,7 +213,7 @@
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
                           <div class="form-line">
-                              <input type="text" class="form-control" id="project_title" name="project_title" placeholder="Project Title">
+                              <input type="text" class="form-control" id="project_title" name="project_title" placeholder="Project Title" required="">
                           </div>
                       </div>
                   </div>
@@ -226,7 +226,7 @@
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
                           <div class="form-line">
-                              <input type="text" class="form-control" id="project_owner" name="project_owner" placeholder="Project Owner">
+                              <input type="text" class="form-control" id="project_owner" name="project_owner" placeholder="Project Owner" required="">
                           </div>
                       </div>
                   </div>
@@ -239,7 +239,7 @@
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
                           <div class="form-line">
-                              <input type="text" class="form-control" id="project_location" name="project_location" placeholder="Project Location">
+                              <input type="text" class="form-control" id="project_location" name="project_location" placeholder="Project Location" required="">
                           </div>
                       </div>
                   </div>
@@ -253,7 +253,7 @@
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
                           <div class="form-line">
-                              <input type="date" class="form-control" id="project_start" name="project_start" >
+                              <input type="date" class="form-control" id="project_start" name="project_start" required="">
                           </div>
                       </div>
                   </div>
@@ -266,7 +266,7 @@
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
                           <div class="form-line">
-                              <input type="date" class="form-control" id="project_end" name="project_end" >
+                              <input type="date" class="form-control" id="project_end" name="project_end" required="">
                           </div>
                       </div>
                   </div>
@@ -280,7 +280,7 @@
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
                           <div class="form-line">
-                              <input type="text" class="form-control" id="project_scope" name="project_scope" placeholder="Project Scope">
+                              <input type="text" class="form-control" id="project_scope" name="project_scope" placeholder="Project Scope" required="">
                           </div>
                       </div>
                   </div>
@@ -294,7 +294,7 @@
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
                           <div class="form-line">
-                              <input type="text" class="form-control" id="project_head" name="project_head" placeholder="Name ">
+                              <input type="text" class="form-control" id="project_head" name="project_head" placeholder="Name " required="">
                           </div>
                       </div>
                   </div>
@@ -307,7 +307,7 @@
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
                           <div class="form-line">
-                               <select class="form-control" name="project_status" id="project_status" >
+                               <select class="form-control" name="project_status" id="project_status" required="">
                                 <option value="">~~SELECT~~</option>
                               <?php 
                                 $query = mysqli_query($conn,"SELECT * FROM `status`");
@@ -568,7 +568,20 @@
            load_data();
           }
       });
-
+      $(document).on('click', '#notif_seen', function(){
+   
+       
+        $.ajax({
+          url:"notif_seen.php",
+          method:"POST",
+          success:function(data)
+          {
+            $('#label_count').html('0');
+          }
+        });
+    
+  
+  });
     </script>
 </body>
 

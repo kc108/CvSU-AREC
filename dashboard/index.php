@@ -1,33 +1,33 @@
-﻿ <?php 
+﻿<?php 
     include('../session.php');
     include('dash-global-function.php');
 
    
     $pagename = "Dashboard";
-    $username = $_SESSION['login_user'];
+    $username = $_SESSION['user_Name'];
+    $script_for_specific_page = "";
     $user_img = "../assets/images/user.png";
     $user_email = "mail@gmail.com";
-    $script_for_specific_page = "index";
     if(isset($_SESSION['login_level']) )
     {      
-     $login_level = $_SESSION['login_level'];
-       
+        $login_level = $_SESSION['login_level'];
+        //if the user is not admin go to 404
+        if ($login_level != 2) {
+         
+          // header('location: error404.php');
+        }
          
     }
-
-
-    if (empty($_REQUEST['page'])) {
-        $page = "";
-    }
-    else{
-        $page = $_REQUEST['page'];
-    }
+ 
 ?>
+
 <!DOCTYPE html>
 <html>
+
  <?php
     include("dash-head.php");
     ?>
+
 <body class="theme-green ">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
@@ -49,7 +49,6 @@
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
-    
     <?php 
         include('dash-topnav.php');
     ?>
@@ -60,7 +59,7 @@
 
     </section>
 
-    <section class="content">
+   <section class="content">
         <div class="container-fluid">
             <div class="block-header">
                 <h2>DASHBOARD</h2>
@@ -142,6 +141,7 @@
                            <br>for excellence in the development of globally 
                            <br>competitive and morally upright individuals.
                          </div>
+                           
                      </div>
                  </div>
          
@@ -149,27 +149,58 @@
         </div>
     </section>
 
-    <?php 
-        include("dash-js.php");
-    ?>
-    
-   
+
+
+ 
+
+    <!-- Jquery Core Js -->
+    <script src="../assets/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="../assets/plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="../assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="../assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="../assets/plugins/node-waves/waves.js"></script>
+
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="../assets/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="../assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="../assets/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="../assets/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="../assets/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="../assets/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="../assets/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="../assets/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="../assets/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
+    <!-- Custom Js -->
+    <script src="../assets/js/admin.js"></script>
+    <script src="../assets/js/pages/tables/jquery-datatable.js"></script>
+
+    <!-- Demo Js -->
+    <script src="../assets/js/demo.js"></script>
     <script type="text/javascript">
+      $(document).on('click', '#notif_seen', function(){
+   
+       
+        $.ajax({
+          url:"notif_seen.php",
+          method:"POST",
+          success:function(data)
+          {
+            $('#label_count').html('0');
+          }
+        });
     
-$(document).on('change', '#fil_location', function(){
-  var fil_location = $(this).val();
-
- });
-$(document).on('change', '#fil_status', function(){
-  var fil_status = $(this).val();
-
- });
-function print_project(){
-     var fil_location = $('#fil_location').val();
-      var fil_status = $('#fil_status').val();
-     window.open('../assets/fpdf181/index.php?report=project&location='+fil_location+'&status='+fil_status);
-}
-</script>
+  
+  });
+    </script>
 
 </body>
 

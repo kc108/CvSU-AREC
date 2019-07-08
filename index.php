@@ -138,9 +138,9 @@ else{
             <div class="text-left pb-1 border-primary mb-4">
               <h2 class="text-primary">About Us</h2>
             </div>
-            <p>There are two (2) benefits that we can derived from using the biogas system. First are the tangible benefits in which we can put money value on it.  These include energy  generation and production of feed materials and high quality fertilizer for crops. In most cases , these benefits are in the form of savings because the amount allocated for the purpose was not spent because of available biogas and its by-products. However, in larger applications, the technology becomes a source of income especially when used in producing high quality fertilizer.
-  The other type of benefit is the intangible benefit which we cannot put money value such as promotion of the conservation of natural resources by not cutting trees for firewood, controlling pollution by proper waste disposal, thereby reducing odor, ground  and surface water contamination and reduction of greenhouse gas emissions. This benefits are more rewarding because man is given the right to live in a fresh, clean and beautiful environment
-</p>
+            <p style="text-align: justify;">AREC formerly known as Affiliated Nonconventional Energy Center (ANEC) is a center which serves as the extension arm of the Department of Energy – Renewable Energy Management Division (DOE-REMD) to the rural areas to promote the use of new and renewable energy resources and technologies.
+            As part of DOE’s extension services and effective   information dissemination program, its former Nonconventional Energy Division (NCED) had established ANECs in strategically located colleges and universities in various regions in the country. For Southern Tagalog, ANEC was established at Cavite State University (Formerly Don Severino Agricultural College), Indang, Cavites, Philippines in 1988.
+            </p>
           </div>
           
         </div>
@@ -153,9 +153,9 @@ else{
           
           <div class="col-md-12 order-md-1" data-aos="fade-up">
             <div class="text-left pb-1 border-primary mb-12">
-              <h2 class="text-primary">Instroduction</h2>
+              <h2 class="text-primary">Introduction</h2>
             </div>
-            <p>The Philippines has 13.46 million pigs and 135.64 million chickens (BAS, 2007). Of the 13 million pigs, 9 million are found in the small hold raisers because livestock raising is secondary to crop production in terms of agriculture livelihood. The average number of pigs raised in the small hold sector is about 8 heads where households in the villages augment family income from the sale of pigs. With this number of heads, the total manure production reached to more than 30 thousand tons per day. The volume is quite tremendous and if not properly managed will become the major pollutant of air and water.
+            <p  style="text-align: justify;">The Philippines has 13.46 million pigs and 135.64 million chickens (BAS, 2007). Of the 13 million pigs, 9 million are found in the small hold raisers because livestock raising is secondary to crop production in terms of agriculture livelihood. The average number of pigs raised in the small hold sector is about 8 heads where households in the villages augment family income from the sale of pigs. With this number of heads, the total manure production reached to more than 30 thousand tons per day. The volume is quite tremendous and if not properly managed will become the major pollutant of air and water.
     Management of animal wastes is a big problem in the animal producing areas since very few raisers have biogas digesters. Wastes are allowed to flow freely to open fields, thus emitting foul odors and contaminating surface and underground water.</p>
 <p>
   Agriculture (livestock and crop production) contributed 32% of the total greenhouse gases emissions (1994 Philippine GHG Inventory). These greenhouse gases consist of carbon dioxide (CO2), methane (CH4), nitrous oxide (N2O) and other gases which came mainly from livestock wastes.
@@ -195,13 +195,8 @@ else{
             <div class="how-it-work-item">
               <span class="number">1</span>
               <div class="how-it-work-body">
-                <h2>Make An Order</h2>
-                <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt praesentium dicta consectetur fuga neque fugit a at. Cum quod vero assumenda iusto.</p>
-                <ul class="ul-check list-unstyled success">
-                  <li class="text-white">Error minus sint nobis dolor</li>
-                  <li class="text-white">Voluptatum porro expedita labore esse</li>
-                  <li class="text-white">Voluptas unde sit pariatur earum</li>
-                </ul>
+                <h2>BIOGAS TECHNOLOGY</h2>
+                <p class="mb-5"  style="text-align: justify;">This utilizes anaerobic fermentation of organic matter to produce methane gas that can be used as a fuel for cooking, lighting and other applications. This also produces organic fertilizer and feeds. The system also serves as an anti-pollution device.</p>
               </div>
             </div>
           </div>
@@ -210,13 +205,12 @@ else{
             <div class="how-it-work-item">
               <span class="number">2</span>
               <div class="how-it-work-body">
-                <h2>Make A Payment</h2>
-                <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt praesentium dicta consectetur fuga neque fugit a at. Cum quod vero assumenda iusto.</p>
-                <ul class="ul-check list-unstyled success">
-                  <li class="text-white">Error minus sint nobis dolor</li>
-                  <li class="text-white">Voluptatum porro expedita labore esse</li>
-                  <li class="text-white">Voluptas unde sit pariatur earum</li>
-                </ul>
+                <h2>SOLAR ENERGY TECHNOLOGY</h2>
+                <p class="mb-5"  style="text-align: justify;">The radiation coming from the sun is an enormous energy resource which can be utilized into two ways: solar heating and electricity generation.
+                SOLAR HOME SYSTEM-PV STREETLIGHT
+                This utilizes and converts solar radiation into DC electricity with the use of solar cells. The electricity generated is used for lighting and to power other home appliances.
+                </p>
+                
               </div>
             </div>
           </div>
@@ -225,13 +219,10 @@ else{
             <div class="how-it-work-item">
               <span class="number">3</span>
               <div class="how-it-work-body">
-                <h2>Track Your Order</h2>
-                <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt praesentium dicta consectetur fuga neque fugit a at. Cum quod vero assumenda iusto.</p>
-                <ul class="ul-check list-unstyled success">
-                  <li class="text-white">Error minus sint nobis dolor</li>
-                  <li class="text-white">Voluptatum porro expedita labore esse</li>
-                  <li class="text-white">Voluptas unde sit pariatur earum</li>
-                </ul>
+                <h2>HYDRO POWER TECHNOLOGY</h2>
+                <p class="mb-5"  style="text-align: justify;">Flowing water creates energy that can be captured and turned into electricity. This is called hydropower. The most common type of hydropower plant uses a dam on a river to store water in a reservoir. Water released from the reservoir flows through a turbine, spinning it, which in turn, activates a generator to produce electricity.
+                Hydropower utilization makes use of potential and kinetic energy which may either be used immediately for motive power or be transformed into electricity for distribution to distant end-user.
+                </p>
               </div>
             </div>
           </div>
@@ -253,7 +244,10 @@ else{
               <img src="front/images/person_1.jpg" alt="Image" class="img-fluid rounded mb-5 w-75 rounded-circle">
               <h3>Arvin Francis Dillo</h3>
               <!-- <p class="position text-muted">Co-Founder, President</p> -->
-              <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi at consequatur unde molestiae quidem provident voluptatum deleniti quo iste error eos est praesentium distinctio cupiditate tempore suscipit inventore deserunt tenetur.</p>
+              <p class="mb-4" style="text-align: justify;">Arvin Francis Dillo was born on October 04, 1998 in Brgy. Anuling Mendez, Cavite. He is the third son of Mrs. Josephine G. Dillo and Mr. Vicente S. Dillo. He presently resides in Brgy. Anuling Mendez, Cavite.
+				He obtained his primary education at Anuling Elementary School in march 2011. He finished his secondary education at Tagaytay City National High School in the year 2015.
+				In the same year, he enrolled at Cavite State University – Don Severino de las Alas Campus (Main-Campus) with the degree of Bachelor of Science in Information Technology.
+				</p>
               <ul class="ul-social-circle">
                 <li><a href="#"><span class="icon-facebook"></span></a></li>
                 <li><a href="#"><span class="icon-twitter"></span></a></li>
@@ -267,7 +261,10 @@ else{
               <img src="front/images/person_2.jpg" alt="Image" class="img-fluid rounded mb-5 w-75 rounded-circle">
               <h3>Lalaine Quijano</h3>
               <!-- <p class="position text-muted">Co-Founder, COO</p> -->
-              <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi at consequatur unde molestiae quidem provident voluptatum deleniti quo iste error eos est praesentium distinctio cupiditate tempore suscipit inventore deserunt tenetur.</p>
+              <p class="mb-4" style="text-align: justify;">Lalaine P. Quijano was born on July 30, 1999 in Sta.Elena, Camarines Norte. She is the bread winner of her family, daughter of Mr. Ricardo V. Quijano and Lerma P. Quijano. She presently resides in Brgy. Inocencio, Trece Martirez City,Cavite.
+				She obtained her primary education at Southville Elementary School in March 2011. She finished her secondary education at Luis Aguado National High School in the year 2015.
+				In the same year, she enrolled at Cavite State University – Don Severino de las Alas Campus (Main-Campus) with the degree of Bachelor of Science in Information Technology.
+				</p>
               <ul class="ul-social-circle">
                 <li><a href="#"><span class="icon-facebook"></span></a></li>
                 <li><a href="#"><span class="icon-twitter"></span></a></li>
@@ -281,7 +278,10 @@ else{
               <img src="front/images/person_4.jpg" alt="Image" class="img-fluid rounded mb-5 w-75 rounded-circle">
               <h3>Kendramae Sahaji Consigo</h3>
               <!-- <p class="position text-muted">Marketing</p> -->
-              <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi at consequatur unde molestiae quidem provident voluptatum deleniti quo iste error eos est praesentium distinctio cupiditate tempore suscipit inventore deserunt tenetur.</p>
+              <p class="mb-4" style="text-align: justify;">Kendra Mae S. Consigo was born on July 5,1998 in Brgy. Cogunan, Nasugbu, Batangas. She , daughter of Mr. Ariel C. Consigo and Anna S. Consigo. She presently resides in Brgy. Cogunan, Nasugbu, Batangas 
+				She obtained her primary education at Cogonan Elementary School in March 2011. She finished her secondary education at Bilaran  National High School in the year 2015.
+				In the same year, he enrolled at Cavite State University – Don Severino de las Alas Campus (Main-Campus) with the degree of Bachelor of Science in Information Technology.
+				</p>
               <ul class="ul-social-circle">
                 <li><a href="#"><span class="icon-facebook"></span></a></li>
                 <li><a href="#"><span class="icon-twitter"></span></a></li>
@@ -293,7 +293,11 @@ else{
         </div>
       </div>
     </div>
-    
+    <style type="text/css">
+  .grow {transition: all .2s ease-in-out;}
+.grow:hover {transform: scale(1.1);}
+ .owl-stage-outer {padding: 10px;}
+    </style>
 
     <div class="site-section block-13" id="section-industries">
 
@@ -301,22 +305,22 @@ else{
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center border-primary">
             <h2 class="mb-0 text-primary">Images</h2>
-            <p class="color-black-opacity-5">Lorem ipsum dolor sit amet.</p>
+            <p class="color-black-opacity-5">CvSU AREC Projects </p>
           </div>
         </div>
       </div>
 
-      <div class="owl-carousel nonloop-block-13">
-        <div>
+      <div id="owl-demo_images" class="owl-carousel nonloop-block-13 ">
+        <div class="grow">
           <a href="#" class="unit-1 text-center">
-            <img src="assets/images/image-gallery/pic1.jpg" alt="Image" class="img-fluid">
+            <img src="assets/images/image-gallery/pic1.jpg" alt="Image" class="img-fluid " >
             <div class="unit-1-text">
               <h3 class="unit-1-heading">Picture 1</h3>
             </div>
           </a>
         </div>
 
-        <div>
+        <div   class="grow">
           <a href="#" class="unit-1 text-center">
             <img src="assets/images/image-gallery/pic2.jpg" alt="Image" class="img-fluid">
             <div class="unit-1-text">
@@ -325,7 +329,7 @@ else{
           </a>
         </div>
 
-        <div>
+        <div  class="grow">
           <a href="#" class="unit-1 text-center">
             <img src="assets/images/image-gallery/pic3.jpg" alt="Image" class="img-fluid">
             <div class="unit-1-text">
@@ -334,7 +338,7 @@ else{
           </a>
         </div>
 
-        <div>
+        <div  class="grow">
           <a href="#" class="unit-1 text-center">
             <img src="assets/images/image-gallery/pic4.jpg" alt="Image" class="img-fluid">
             <div class="unit-1-text">
@@ -343,7 +347,7 @@ else{
           </a>
         </div>
 
-        <div>
+        <div  class="grow">
           <a href="#" class="unit-1 text-center">
             <img src="assets/images/image-gallery/pic5.jpg" alt="Image" class="img-fluid">
             <div class="unit-1-text">
@@ -351,7 +355,7 @@ else{
             </div>
           </a>
         </div>
-         <div>
+         <div  class="grow">
           <a href="#" class="unit-1 text-center">
             <img src="assets/images/image-gallery/pic6.jpg" alt="Image" class="img-fluid">
             <div class="unit-1-text">
@@ -359,7 +363,7 @@ else{
             </div>
           </a>
         </div>
-         <div>
+         <div  class="grow">
           <a href="#" class="unit-1 text-center">
             <img src="assets/images/image-gallery/pic7.jpg" alt="Image" class="img-fluid">
             <div class="unit-1-text">
@@ -367,7 +371,7 @@ else{
             </div>
           </a>
         </div>
-         <div>
+         <div  class="grow">
           <a href="#" class="unit-1 text-center">
             <img src="assets/images/image-gallery/pic8.jpg" alt="Image" class="img-fluid">
             <div class="unit-1-text">
@@ -375,7 +379,7 @@ else{
             </div>
           </a>
         </div>
-         <div>
+         <div  class="grow">
           <a href="#" class="unit-1 text-center">
             <img src="assets/images/image-gallery/pic11.jpg" alt="Image" class="img-fluid">
             <div class="unit-1-text">
@@ -383,7 +387,7 @@ else{
             </div>
           </a>
         </div>
-         <div>
+         <div  class="grow">
           <a href="#" class="unit-1 text-center">
             <img src="assets/images/image-gallery/pic15.jpg" alt="Image" class="img-fluid">
             <div class="unit-1-text">
@@ -391,7 +395,7 @@ else{
             </div>
           </a>
         </div>
-         <div>
+         <div  class="grow">
           <a href="#" class="unit-1 text-center">
             <img src="assets/images/image-gallery/pic16.jpg" alt="Image" class="img-fluid">
             <div class="unit-1-text">
@@ -437,7 +441,7 @@ ORDER BY `news`.`news_Pub` DESC LIMIT 3";
               <div class="meta mb-4">&bullet; <?php echo $news_Pub?> <span class="mx-2">&bullet;</span></div>
               <p><?php echo $news_Content?></p>
             </div> 
-            <p class="mb-0"><a href="news?news_ID=<?php echo $news_ID?>" class="btn btn-primary btn-sm text-white">Read Me</a></p>
+            <!-- <p class="mb-0"><a href="news?news_ID=<?php echo $news_ID?>" class="btn btn-primary btn-sm text-white">Read Me</a></p> -->
           </div>
               <?php
           }
@@ -448,7 +452,7 @@ ORDER BY `news`.`news_Pub` DESC LIMIT 3";
         </div>
         <div class="row">
           <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="300">
-            <p class="mb-0"><a href="news" class="btn btn-primary py-3 px-5 text-white">View All Blog Posts</a></p>
+            <p class="mb-0"><a href="news" class="btn btn-primary py-3 px-5 text-white">View All News</a></p>
           </div>
         </div>
       </div>
@@ -520,7 +524,7 @@ ORDER BY `news`.`news_Pub` DESC LIMIT 3";
               <p class="mb-4"> Cavite State University | Indang, Cavite, Philippines</p>
 
               <p class="mb-0 font-weight-bold">Phone</p>
-              <p class="mb-4"><a href="#">+63 915-526-0819</a></p>
+              <p class="mb-4"><a href="#">+63 955-307-5888</a></p>
 
               <p class="mb-0 font-weight-bold">Email Address</p>
               <p class="mb-0"><a href="#">cvsu@edu.ph</a></p>
@@ -529,8 +533,8 @@ ORDER BY `news`.`news_Pub` DESC LIMIT 3";
             
             <div class="p-4 mb-3 bg-white">
               <h3 class="h5 text-black mb-3">More Info</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa ad iure porro mollitia architecto hic consequuntur. Distinctio nisi perferendis dolore, ipsa consectetur? Fugiat quaerat eos qui, libero neque sed nulla.</p>
-              <p><a href="#" class="btn btn-primary px-4 py-2 text-white">Learn More</a></p>
+              <p>The Department of Energy (DOE) settled an effective information dissemination program to establish Affiliated Nonconventional Energy Centre’s (ANEC) that is strategically located every colleges and universities to promote the widespread use of renewable energy (RE).</p>
+              <p><a href="#" class="btn btn-primary px-4 py-2 text-white">HOMEPAGE</a></p>
             </div>
 
           </div>
@@ -546,7 +550,7 @@ ORDER BY `news`.`news_Pub` DESC LIMIT 3";
             <div class="row">
               <div class="col-md-5 mr-auto">
                 <h2 class="footer-heading mb-4">About Us</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam iure deserunt ut architecto dolores quo beatae laborum aliquam ipsam rem impedit obcaecati ea consequatur.</p>
+                <p>AREC formerly known as Affiliated Nonconventional Energy Center (ANEC) is a center which serves as the extension arm of the Department of Energy – Renewable Energy Management Division (DOE-REMD) to the rural areas to promote the use of new and renewable energy resources and technologies.</p>
               </div>
               
             <!--   <div class="col-md-3">
@@ -607,6 +611,20 @@ ORDER BY `news`.`news_Pub` DESC LIMIT 3";
   <script src="front/js/aos.js"></script>
 
   <script src="front/js/main.js"></script>
-    
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#owl-demo_images').owlCarousel({
+            items : 4,
+            autoPlay: 3000, //Set AutoPlay to 3 seconds
+          navigation : false, // Show next and prev buttons
+          stopOnHover : true,
+          pagination : false,
+            itemsDesktop : [1199,3],
+            itemsDesktopSmall : [979,3]
+        });
+     
+  }); 
+
+    </script>
   </body>
 </html>
