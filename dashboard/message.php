@@ -167,7 +167,7 @@ img{ max-width:100%;}
   overflow-y: auto;
 }
     </style>
-<body class="theme-green">
+<body class="theme-green" >
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -198,18 +198,18 @@ img{ max-width:100%;}
         ?>
 
     </section>
-    <section class="content">
-        <div class="container-fluid">
+    <section class="content" >
+        <div class="container-fluid" >
 
-            <div class="row clearfix">
+            <div class="row clearfix" >
                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                            <div class="card">
                                <div class="header">
                                    <h2>Message</h2>
                                    <br>
                                </div>
-                               <div class="body">
-                                <iframe src="message-iframe1.php"  style="display:block; width:100%; height: 800px;" frameborder="0" ></iframe>
+                               <div class="body" style="padding: 0px; ">
+                                <iframe src="message-iframe1.php"  style="display:block; width:100%; height: 680px;" frameborder="0"  style=""></iframe>
                                        
                                    </div>
                                </div>
@@ -237,6 +237,20 @@ img{ max-width:100%;}
         $(".nano").nanoScroller();
     });
 });
+              $(document).on('click', '#notif_seen', function(){
+   
+       
+        $.ajax({
+          url:"notif_seen.php",
+          method:"POST",
+          success:function(data)
+          {
+            $('#label_count').html('0');
+          }
+        });
+    
+  
+  });
     </script>
 </body>
 

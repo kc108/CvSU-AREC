@@ -90,14 +90,19 @@
                                           <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#research_modal">ADD RESEARCH</button>
                                           <?php
                                         }
+                                        if ($login_level != 1) {
+
                                         ?>
 
                                       <button type="button" class="btn btn-primary" id="proj_print">PRINT</button>
-                                  
+                                    <?php
+                                        }
+                                        ?>
+
                                     </div>
                                   <input type="hidden" name="filter_Search" id="filter_Search" value="">
                                   <input type="hidden" name="filter_Search" id="filter_Search1" value="">
-                                  
+                                  <br>                                  
                                </div>
                                <div class="body">
                                    <div class="table-responsive" style="overflow-x: hidden;">
@@ -190,7 +195,7 @@
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
                           <div class="form-line">
-                              <input type="text" class="form-control" id="research_Title" name="research_Title" placeholder="Research Title">
+                              <input type="text" class="form-control" id="research_Title" name="research_Title" placeholder="Research Title" required="">
                           </div>
                       </div>
                   </div>
@@ -203,7 +208,7 @@
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
                           <div class="form-line">
-                            <textarea  class="form-control " id="research_Content" name="research_Content" placeholder="Content" style="width: 482px;height: 237px;"></textarea>
+                            <textarea  class="form-control " id="research_Content" name="research_Content" placeholder="Content" style="width: 482px;height: 237px;" required=""></textarea>
                           </div>
                       </div>
                   </div>
@@ -229,7 +234,7 @@
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
                           <div class="form-line">
-                               <select class="form-control" name="research_Status" id="research_Status" >
+                               <select class="form-control" name="research_Status" id="research_Status" required="">
                                 <option value="">~~SELECT~~</option>
                                 <option value="1">Pending</option>
                                 <option value="2">Approve</option>
@@ -286,7 +291,7 @@
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
                           <div class="form-line">
-                              <input type="text" class="form-control" id="research_Title" name="research_Title" placeholder="Research Title">
+                              <input type="text" class="form-control" id="research_Title" name="research_Title" placeholder="Research Title" required="">
                           </div>
                       </div>
                   </div>
@@ -299,7 +304,21 @@
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
                           <div class="form-line">
-                            <textarea  class="form-control " id="research_Content" name="research_Content" placeholder="Content" style="width: 482px;height: 237px;"></textarea>
+                            <textarea  class="form-control " id="research_Content" name="research_Content" placeholder="Content" style="width: 482px;height: 237px;" required=""></textarea>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <br>
+
+                <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="research_yrconduct">Year Conduct</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                              <input type="text" class="form-control" id="research_yrconduct" name="research_yrconduct" placeholder="Year Conduct">
                           </div>
                       </div>
                   </div>
@@ -508,7 +527,9 @@ $(document).on('click', '.add', function(){
         $('#research_Attachment').val('');
         $('#research_Status').val('');
         document.getElementById("research_form").reset('');
-
+        $('#action').val("Add");
+        $('#operation').val("Add");
+        $('#action').show();
         $('.modal-title.mview').text(" Add Research");
   });
     $(document).on('click', '.view', function(){
@@ -679,7 +700,22 @@ $(document).on('click', '.unarchive', function(){
               var value = $('.dataTables_filter input').val();
               $('#filter_Search1').val(value);
           }); 
+      $(document).on('click', '#notif_seen', function(){
+   
+       
+        $.ajax({
+          url:"notif_seen.php",
+          method:"POST",
+          success:function(data)
+          {
+            $('#label_count').html('0');
+          }
+        });
+    
+  
+  });
 </script>
+
 </body>
 
 </html>

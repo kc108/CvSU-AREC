@@ -3,6 +3,8 @@ include('db.php');
 include('function.php');
 session_start();
 $login_level = $_SESSION['login_level'];
+$login_id = $_SESSION['login_id'];
+
 $query = '';
 $output = array();
 $query .= "SELECT `r`.*,`rs`.`status_Name`  `rssn`,`ua`.`user_Name`";
@@ -10,7 +12,7 @@ $query .= " FROM `research` as `r`
 LEFT JOIN `research_status` as `rs` ON `r`.`status_ID` = `rs`.`status_ID`
 LEFT JOIN `user_accounts` `ua` ON `r`.user_ID = `ua`.`user_ID`";
 if ($login_level == 1) {
- $query .= " WHERE `rs`.`status_ID` = '2' AND";
+ $query .= " WHERE `rs`.`status_ID` = '2' OR ua.user_ID = '$login_id'  AND";
 }
 else{
 	 $query .= " WHERE  `rs`.`status_ID` = '1' OR `rs`.`status_ID` = '2' AND";
