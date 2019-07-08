@@ -129,7 +129,7 @@ img{ max-width:100%;}
 
 .type_msg {border-top: 1px solid #c4c4c4;position: relative;}
 .msg_send_btn {
- /* background: #05728f none repeat scroll 0 0;
+  background: #05728f none repeat scroll 0 0;
   border: medium none;
   border-radius: 50%;
   color: #fff;
@@ -139,7 +139,7 @@ img{ max-width:100%;}
   position: absolute;
   right: 0;
   top: 11px;
-  width: 33px;*/
+  width: 33px;
 }
 .messaging { padding: 0 0 50px 0;}
 .msg_history {
@@ -153,24 +153,6 @@ img{ max-width:100%;}
 .h5_active{
   color: #ffffff !important;
 }
-.btn-file {
-    position: relative;
-    overflow: hidden;
-}
-.btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;   
-    cursor: inherit;
-    display: block;
-}
 </style>
 <html>
 <head>
@@ -178,10 +160,10 @@ img{ max-width:100%;}
 <link href="msg/font-awesome.css" type="text/css" rel="stylesheet">
 
 </head>
-<body >
-<div class="container" >
+<body>
+<div class="container">
 <div class="messaging">
-      <div class="inbox_msg" >
+      <div class="inbox_msg">
         <div class="inbox_people">
           <div class="headind_srch">
             <div class="recent_heading">
@@ -239,33 +221,15 @@ img{ max-width:100%;}
           </div>
           <div class="type_msg">
             <div class="input_msg_write">
-            <form class='uploader' action='/echo/json/'>
+              <form>
                  <!-- onkeypress="if(DetectEnterPressed(event)){LoadPage(1)}" -->
-             
-            
-         
-              <!-- <button class="msg_send_btn" type="button"><i class="material-icons" aria-hidden="true">send</i></button> -->
-
-             <div class="input-group">
-                <!-- <input type="text" class="form-control" aria-label="Text input with segmented dropdown button"> -->
-                 <input type="text" class="form-control write_msg" placeholder="Type a message" id="write_msg"   />
-                <div class="input-group-append">
-                  
-                  <span class="btn btn-primary btn-file">
-                    <i class="material-icons" aria-hidden="true">attach_file</i> <input type="file" multiple='multiple'/>
-                  </span>
-                  <button type="button" class="btn btn-outline-secondary msg_send_btn"><i class="material-icons" aria-hidden="true">send</i></button>
-                </div>
-              </div>
-
-             </form>
+              <input type="text" class="write_msg" placeholder="Type a message" id="write_msg" />
+              
+              <button class="msg_send_btn" type="button"><i class="material-icons" aria-hidden="true">send</i></button>
+              </form>
             </div>
           </div>
         </div>
-        <h2>Files</h2>
-<div class='alert alert-info'><strong>Hey.</strong> Upload a file!</div>
-<ul class='unordered files'>
-</ul>
       </div>
       
       
@@ -319,8 +283,6 @@ $(document).ready(function(){
        }
      });  
   });
-
-    // msg_sendattach_btn
 $("#write_msg").keypress(function(e){
 
 if(e.which == 13) {
@@ -344,112 +306,6 @@ if(e.which == 13) {
      }); 
     }
 });
-// document.getElementById("file").onchange = function(event) {
-//     event.preventDefault();
-//       document.getElementById("attach_file").submit();
-//       this.form.submit();
-   
-//       $.ajax({
-//         url:"message-attachment.php",
-//         method:'POST',
-//         data:new FormData(this),
-//         contentType:false,
-//         processData:false,
-//         success:function(data)
-//         {
-//           alert("Success");
-//         }
-//       });
-// }
-$('.upload').on('click', function() {
-    $('.uploader input:file').click();
-});
-
-$('.uploader input:file').on('change', function() {
-    $this = $(this);
-
-    $('.alert').remove();
-
-    $.each($this[0].files, function(key, file) {
-        var fnz = file.name;
-        $('.files').append('<li>' + file.name + '</li>');
-
-        var data = new FormData();
-        data.append(file.name, file);
-        
-        $.ajax({
-            url: $('.uploader').attr('action'),
-            type: 'POST',
-            dataType: 'json',
-            processData: false,
-            data: data
-        });
-    });
-
-
-    var  receiver_ID = $('#conversation_ID').val();
-    var sender_ID = <?php echo $_SESSION['login_id'];?>;
-    $.ajax({
-       url:"message-sent.php",
-       type:"POST",
-       data:{receiver_ID:receiver_ID,message_content:fnz,sender_ID:sender_ID},
-       dataType:"html",
-       success:function(data)
-       {
-          $('.msg_history').load('message-content.php?receiver_ID='+receiver_ID);
-          
-           $('.write_msg').val('');
-          
-       }
-     }); 
-});
-
-      // $(document).on('submit', '#attach_file', function(event){
-      //       event.preventDefault();
-      //       alert("submit");
-      //       // var project_title = $('#project_title').val();
-      //       // var project_owner = $('#project_owner').val();
-      //       // var project_location = $('#project_location').val();
-      //       // var project_start = $('#project_start').val();
-      //       // var project_end = $('#project_end').val();
-      //       // var project_scope = $('#project_scope').val();
-      //       // var project_head = $('#project_head').val();
-      //       // var project_status = $('#project_status').val();
-
-
-      //       // $.ajax({
-      //       //           url:"datatable/project/insert.php",
-      //       //           method:'POST',
-      //       //           data:new FormData(this),
-      //       //           contentType:false,
-      //       //           processData:false,
-      //       //           success:function(data)
-      //       //           {
-      //       //             $('#action').val("Add");
-      //       //             $('#operation').val("Add");
-
-      //       //             alert(data);
-                        
-      //       //             document.getElementById("project_form").reset();
-      //       //             $('#project_modal').modal('hide');
-      //       //             dataTable.ajax.reload();
-      //       //           }
-      //       //         });
-      //     });
- // $(document).on('click', '#proj_filter', function(){
- //          var proj_stat = $(this).attr("data-id");
- //          $('#filter_projStat').val(proj_stat);
-          
- //          $('#project_data').DataTable().destroy();
- //          if(proj_stat != '0')
- //          {
- //           load_data(proj_stat);
- //          }
- //          else
- //          {
- //           load_data();
- //          }
- //      });
   // function LoadPage() {
   //      var message_content = $('.write_msg').val();
   //      var  receiver_ID = $('#conversation_ID').val();

@@ -84,7 +84,7 @@ else{
                 <li class="has-children">
                   <a href="#section-about" class="nav-link">About Us</a>
                   <ul class="dropdown">
-                    <li><a href="#section-introduction" class="nav-link">Introduction</a></li>
+                    <li><a href="#section-instroduction" class="nav-link">Introduction</a></li>
                     <li><a href="index.php" class="nav-link">How It Works</a></li>
                     <li><a href="index.php" class="nav-link">Our Team</a></li>
                   </ul>
@@ -147,7 +147,7 @@ else{
             <nav class="site-navigation position-relative text-center" role="navigation" id="anothernav_li">
 
               <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
-                <li><a href="#section-introduction" class="nav-link">INTRODUCTION</a></li>
+                <li><a href="#section-instroduction" class="nav-link">INSTRODUCTION</a></li>
                 <li class="has-children">
                   <a href="#section-ch1_1" class="nav-link" >Chapter 1</a>
                   <ul class="dropdown" id="anothernav_li1">
@@ -232,13 +232,13 @@ else{
 
             <h1 class="text-white font-weight-light text-uppercase font-weight-bold" data-aos="fade-up">CvSU-AREC IV</h1>
             <p class="mb-5" data-aos="fade-up" data-aos-delay="100">CAVITE STATE UNIVERSITY-AFFILIATED RENEWABLE ENERGY CENTER FOR REGION IV</p>
-            <p data-aos="fade-up" data-aos-delay="200"><a href="#section-introduction" class="btn btn-primary py-3 px-5 text-white">Get Started!</a></p>
+            <p data-aos="fade-up" data-aos-delay="200"><a href="#section-instroduction" class="btn btn-primary py-3 px-5 text-white">Get Started!</a></p>
 
           </div>
         </div>
       </div>
     </div> 
-    <div class="site-section" id="section-introduction">
+    <div class="site-section" id="section-instroduction">
       <div class="container">
         <div class="row mb-5">
           
@@ -246,7 +246,7 @@ else{
             <p>&nbsp;</p>
           <div class="col-md-12 order-md-1" data-aos="fade-up">
             <div class="text-left pb-1 border-primary mb-12">
-              <h2 class="text-primary">introduction</h2>
+              <h2 class="text-primary">Instroduction</h2>
             </div>
             <p>&nbsp;</p>
 
@@ -1964,7 +1964,7 @@ else{
       </div>
     </div>
 
-    <a onclick="topFunction()" id="myBtn" title="Go to top" href="#section-introduction"><i class="icon-arrow-up"></i></a>
+    <a onclick="topFunction()" id="myBtn" title="Go to top" href="#section-instroduction"><i class="icon-arrow-up"></i></a>
     <footer class="site-footer">
       <div class="container">
         <div class="row">

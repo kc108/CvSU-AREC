@@ -27,7 +27,7 @@
  <?php
     include("dash-head.php");
     ?>
-    
+
 <body class="theme-green ">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
@@ -76,86 +76,23 @@
                            <div class="card">
                                <div class="header">
                                    <h2>LIST OF PROJECT</h2>
-                                <style type="text/css">
-                                   .dropdown-menu a {
-                                      color: #212529;
-                                      text-decoration: none;
-                                      background-color: #0000;
-                                      -webkit-text-decoration-skip: objects;
-                                  }
-                                  /*.dropdown-menu *, ::after, ::before {
-                                      box-sizing: border-box;
-                                  }*/
-                                  user agent stylesheet
-                                  .dropdown-menu a:-webkit-any-link {
-                                      color: -webkit-link;
-                                      cursor: pointer;
-                                      text-decoration: underline;
-                                  }
-                                  .dropdown-menu a:hover{
-                                    text-decoration: none;
-                                  }
-                                  .dropdown-menu {
-                                      position: absolute;
-                                      top: 100%;
-                                      left: 0;
-                                      z-index: 1000;
-                                      display: none;
-                                      float: left;
-                                      min-width: 15rem;
-                                      padding: .5rem 0;
-                                      margin: .125rem 0 0;
-                                     /* font-size: 1rem;*/
-                                      color: #212529;
-                                      text-align: left;
-                                      list-style: none;
-                                      background-color: #fff;
-                                      background-clip: padding-box;
-                                      border: 1px solid #00000026;
-                                      border-radius: .25rem;
-                                      margin-top: 0px !important; 
-                                  }
-                                  .dropdown-item{
-                                    display: block;
-                                      width: 100%;
-                                      padding: .25rem 1.5rem;
-                                      clear: both;
-                                      font-weight: 400;
-                                      color: #212529;
-                                      text-align: inherit;
-                                      white-space: nowrap;
-                                      background-color: #0000;
-                                      border: 0;
-                                  }
-                                  .dropdown-item:hover{
-                                    background-color: #0000000d;
-                                     color: #212529;
-                                  }
-                                      </style>                           
-                                  <div class="btn-group pull-right" >
-                                      <div class="btn-group">
-                                      <button type="button" class="btn btn-info dropdown-toggle " data-toggle="dropdown" >
-                                         PROJECT PROGRESS <span class="caret"></span>
-                                      </button>
 
-                                      <div class="dropdown-menu" style="" >
-                                        <a class="dropdown-item" href="#" id="proj_filter" data-id="0">All</a>
-                                        <?php 
+                                   <div class="pull-right" >
+                                     <button type="button" class="btn btn-success waves-effect add_proj" data-toggle="modal" data-target="#project_modal" style="min-height: 36px;" id="add_proj">ADD PROJECT</button>
+                                   </div>
+                              <div style="width: 150px; border:1px solid; " class="pull-right">
+                                        <select name="proj_stat" id="proj_stat" class="form-control">
+                                         <option value="">Project Progress</option>
+                                         <?php 
                                          $query = "SELECT * FROM `status` ";
-                                         $result = mysqli_query($conn, $query);
+                                        $result = mysqli_query($conn, $query);
                                          while($row = mysqli_fetch_array($result))
                                          {
-                                          echo '<a class="dropdown-item" href="#" id="proj_filter" data-id="'.$row["status_ID"].'">'.$row["status_Name"].'</a>';
+                                          echo '<option value="'.$row["status_ID"].'">'.$row["status_Name"].'</option>';
                                          }
                                          ?>
-                                      </div>
-                                    </div>
-                                    <button type="button" class="btn btn-success" id="proj_add">ADD PROJECT</button>
-                                    <button type="button" class="btn btn-primary" id="proj_print">PRINT</button>
-                                  
-                                  </div>
-                                  <input type="hidden" name="filter_projStat" id="filter_projStat" value="3">
-                                  <input type="hidden" name="filter_projSearch" id="filter_projSearch" value="">
+                                        </select>
+                                    </div> 
                                    <br>
                                </div>
                                <div class="body">
@@ -338,7 +275,73 @@
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     <!-- /add modal -->
+         <!-- Modal -->
+<div id="report_project_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Project Report</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row clearfix">
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                <label for="loc_stat">Status</label>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                <div class="form-group">
+                    <div class="form-line">
+                             <select class="form-control"  id="fil_status">
+                             <option value="null">~~SELECT~~</option>
+                             <?php 
+                             $query = "SELECT * FROM `status` ";
+                            $result = mysqli_query($conn, $query);
+                             while($row = mysqli_fetch_array($result))
+                             {
+                              echo '<option value="'.$row["status_ID"].'">'.$row["status_Name"].'</option>';
+                             }
+                             ?>
+                           </select>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+           <div class="row clearfix">
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                <label for="loc_stat">Location</label>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                <div class="form-group">
+                    <div class="form-line">
+                             <select class="form-control" id="fil_location">
+                             <option value="null">~~SELECT~~</option>
+                             <?php 
+                             $query = "SELECT DISTINCT(proj_Location) FROM `project_monitoring`";
+                            $result = mysqli_query($conn, $query);
+                             while($row = mysqli_fetch_array($result))
+                             {
+                              echo '<option value="'.$row["proj_Location"].'">'.$row["proj_Location"].'</option>';
+                             }
+                             ?>
+                           </select>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="text-center">
+            <button type="button" class="btn btn-primary" onclick="print_project();">PRINT</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
     <!-- Jquery Core Js -->
     <script src="../assets/plugins/jquery/jquery.min.js"></script>
@@ -376,200 +379,235 @@
     <!-- Demo Js -->
     <script src="../assets/js/demo.js"></script>
     <script type="text/javascript" language="javascript" >
-   
-      $(document).on('click', '#proj_print', function(){
-          var projStat = $('#filter_projStat').val();
-          var projSearch = $('#filter_projSearch').val();
-        
-          window.open('../assets/fpdf181/print?report=Project&filter='+projSearch+'&status='+projStat);
-      });
-    load_data();
-    function load_data(filter)
-     {
-        var dataTable = $('#project_data').DataTable({
-          "processing":true,
-          "serverSide":true,
-          "order":[],
-          "ajax":{
-              url:"datatable/project/fetch.php",
-              type:"POST",
-              data:{proj_status:filter}
+$(document).ready(function(){
+
+  //select specific dropdown when updating 1 data
+  function setSelectedValue(dropDownList, valueToSet) {
+    var option = dropDownList.firstChild;
+    for (var i = 0; i < dropDownList.length; i++) {
+        if (option.text.trim().toLowerCase() == valueToSet.trim().toLowerCase()) {
+            option.selected = true;
+            return;
+        }
+        option = option.nextElementSibling;
+    }
+}
+
+
+
+
+
+   load_data();
+
+function load_data(filter)
+ {
+
+    var dataTable = $('#project_data').DataTable({
+    "processing":true,
+    "serverSide":true,
+    "order":[],
+    "ajax":{
+        url:"datatable/project/fetch.php",
+        type:"POST",
+        data:{proj_status:filter}
+      },
+      "columnDefs":[
+        {
+          "targets":[0],
+          "orderable":false,
+        },
+      ],
+       dom: 'Bfrtip',
+         "buttons": [
+        {
+            extend: 'print',
+            text: 'Print',
+            autoPrint: true,
+            exportOptions: {
+                columns: ':visible',
             },
-            "columnDefs":[
+            customize: function (win) {
+                $(win.document.body).find('table').addClass('display').css('font-size', '9px');
+                $(win.document.body).find('tr:nth-child(odd) td').each(function(index){
+                    $(this).css('background-color','#D0D0D0');
+                });
+                $(win.document.body).find('h1').css('text-align','center');
+                $(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
+            }
+        }
+    ],
+   
+
+    });
+    
+
+
+     $(document).on('submit', '#project_form', function(event){
+    event.preventDefault();
+    var project_title = $('#project_title').val();
+    var project_owner = $('#project_owner').val();
+    var project_location = $('#project_location').val();
+    var project_start = $('#project_start').val();
+    var project_end = $('#project_end').val();
+    var project_scope = $('#project_scope').val();
+    var project_head = $('#project_head').val();
+    var project_status = $('#project_status').val();
+
+
+    $.ajax({
+              url:"datatable/project/insert.php",
+              method:'POST',
+              data:new FormData(this),
+              contentType:false,
+              processData:false,
+              success:function(data)
               {
-                "targets":[0],
-                "orderable":false,
-              },
-            ],
-          //    dom: 'Bfrtip',
-          //      "buttons": [
-          //     {
-          //         extend: 'print',
-          //         text: 'Print',
-          //         autoPrint: true,
-          //         exportOptions: {
-          //             columns: ':visible',
-          //         },
-          //         customize: function (win) {
-          //             $(win.document.body).find('table').addClass('display').css('font-size', '9px');
-          //             $(win.document.body).find('tr:nth-child(odd) td').each(function(index){
-          //                 $(this).css('background-color','#D0D0D0');
-          //             });
-          //             $(win.document.body).find('h1').css('text-align','center');
-          //             $(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
-          //         }
-          //     }
-          // ],
-         
+                $('#action').val("Add");
+                $('#operation').val("Add");
 
-          });
-          $(document).on('submit', '#project_form', function(event){
-            event.preventDefault();
-            var project_title = $('#project_title').val();
-            var project_owner = $('#project_owner').val();
-            var project_location = $('#project_location').val();
-            var project_start = $('#project_start').val();
-            var project_end = $('#project_end').val();
-            var project_scope = $('#project_scope').val();
-            var project_head = $('#project_head').val();
-            var project_status = $('#project_status').val();
+                alert(data);
+                
+                document.getElementById("project_form").reset();
+                $('#project_modal').modal('hide');
+                dataTable.ajax.reload();
+              }
+            });
+  });
 
+$(document).on('click', '#add_proj', function(){
+        $('#action').val("Add");
+        $('#operation').val("Add");
+        $('.modal-title').text('Add Project');
+        $('#action').show();
+       
+        $('#project_title').val(' ');
+        $('#project_owner').val(' ');
+        $('#project_location').val(' ');
+        $('#project_start').val(' ');
+        $('#project_end').val(' ');
+        $('#project_scope').val(' ');
+        $('#project_head').val(' ');
+        $('#project_status').val(' ');
 
-            $.ajax({
-                      url:"datatable/project/insert.php",
-                      method:'POST',
-                      data:new FormData(this),
-                      contentType:false,
-                      processData:false,
-                      success:function(data)
-                      {
-                        $('#action').val("Add");
-                        $('#operation').val("Add");
+        $('#project_title').prop("disabled", false);
+        $('#project_owner').prop("disabled", false);
+        $('#project_location').prop("disabled", false);
+        $('#project_start').prop("disabled", false);
+        $('#project_end').prop("disabled", false);
+        $('#project_scope').prop("disabled", false);
+        $('#project_head').prop("disabled", false);
+        $('#project_status').prop("disabled", false);
+        document.getElementById("project_form").reset();
 
-                        alert(data);
-                        
-                        document.getElementById("project_form").reset();
-                        $('#project_modal').modal('hide');
-                        dataTable.ajax.reload();
-                      }
-                    });
-          });
-          $(document).on('click', '#proj_view', function(){
-             
-                 var proj_ID = $(this).attr("data-id");
+  });
+
+$(document).on('click', '.update', function(){
+    var proj_ID = $(this).attr("id");
+    
+    $.ajax({
+      url:"datatable/project/fetch_update.php",
+      type:"POST",
+      data:{proj_ID:proj_ID},
+      dataType:"html",
+      success:function(data)
+      {
+
+        $('.modal-body').html('');
+        $('#project_modal').modal('show');
+        $('.modal-body').html(data);
+        $('#action').val("Edit");
+        $('#operation').val("Edit");
+        $('#proj_ID').val(proj_ID);
+         $('.modal-title').text('Edit Project');
+         $('#action').show();
+        
+      }
+    });
+  });
+
+$(document).on('click', '.view', function(){
+    var proj_ID = $(this).attr("id");
     
       
-                $.ajax({
-                  url:"datatable/project/fetch_view.php",
-                  type:"POST",
-                  data:{proj_ID:proj_ID},
-                  dataType:"html",
-                  success:function(data)
-                  {
-                   
-                    $('.modal-title').text('View Project');
-                    $('#action').hide();
-                    $('.modal-body').html('');
-                    $('#project_modal').modal('show');
-                    $('.modal-body').html(data);
-                    $('#action').val("Edit");
-                    $('#operation').val("Edit");
-                    $('#proj_ID').val(proj_ID);
-                    $('#project_modal').modal('show');
-                    
-                  }
-                });
-          });
-          $(document).on('click', '#proj_add', function(){
-              $('#project_modal').modal('show');
-              $('#action').val("Add");
-              $('#operation').val("Add");
-              $('.modal-title').text('Add Project');
-              $('#action').show();
-            
-              $('#project_title').val('');
-              $('#project_owner').val('');
-              $('#project_location').val('');
-              // var project_start = $('#project_start').val('');
-              // var project_end = $('#project_end').val('');
-              $('#project_scope').val('');
-              $('#project_head').val('');
-              // var project_status = $('#project_status').val('');
-              // document.getElementById("project_form").reset();
-              // $('#project_form')[0].reset();
-              // $('#project_form').trigger("reset");
-          });
-          $(document).on('click', '#proj_edit', function(){
-             
-                var proj_ID = $(this).attr("data-id");
-                $.ajax({
-                  url:"datatable/project/fetch_update.php",
-                  type:"POST",
-                  data:{proj_ID:proj_ID},
-                  dataType:"html",
-                  success:function(data)
-                  {
+    $.ajax({
+      url:"datatable/project/fetch_view.php",
+      type:"POST",
+      data:{proj_ID:proj_ID},
+      dataType:"html",
+      success:function(data)
+      {
+       
+        $('.modal-title').text('View Project');
+        $('#action').hide();
+        $('.modal-body').html('');
+        $('#project_modal').modal('show');
+        $('.modal-body').html(data);
+        $('#action').val("Edit");
+        $('#operation').val("Edit");
+        $('#proj_ID').val(proj_ID);
 
-                    $('.modal-body').html('');
-                    $('#project_modal').modal('show');
-                    $('.modal-body').html(data);
-                    $('#action').val("Edit");
-                    $('#operation').val("Edit");
-                    $('#proj_ID').val(proj_ID);
-                    $('.modal-title').text('Edit Project');
-                    $('#action').show();
-                    $('#project_modal').modal('show');
-                    
-                  }
-                });
-          });
-
-          $(document).on('click', '#proj_delete', function(){
-            var proj_ID = $(this).attr("data-id");
-            if(confirm("Are you sure you want to delete this?"))
-            {
-              $.ajax({
-                url:"datatable/project/delete.php",
-                method:"POST",
-                data:{proj_ID:proj_ID},
-                success:function(data)
-                {
-                  alert(data);
-                  dataTable.ajax.reload();
-                }
-              });
-            }
-            else
-            {
-              return false; 
-            }
-          });
-
-          $('#project_data').on('search.dt', function() {
-              var value = $('.dataTables_filter input').val();
-              console.log(value);
-              $('#filter_projSearch').val(value);
-          });   
+        
+      }
+    });
+  });
 
 
-     }//end of function load_data()
 
-      $(document).on('click', '#proj_filter', function(){
-          var proj_stat = $(this).attr("data-id");
-          $('#filter_projStat').val(proj_stat);
-          
-          $('#project_data').DataTable().destroy();
-          if(proj_stat != '0')
-          {
-           load_data(proj_stat);
-          }
-          else
-          {
-           load_data();
-          }
+  $(document).on('click', '.delete', function(){
+    var proj_ID = $(this).attr("id");
+    if(confirm("Are you sure you want to delete this?"))
+    {
+      $.ajax({
+        url:"datatable/project/delete.php",
+        method:"POST",
+        data:{proj_ID:proj_ID},
+        success:function(data)
+        {
+          alert(data);
+          dataTable.ajax.reload();
+        }
       });
+    }
+    else
+    {
+      return false; 
+    }
+  });
 
-    </script>
+ }
+
+ $(document).on('change', '#proj_stat', function(){
+  var proj_stat = $(this).val();
+  $('#project_data').DataTable().destroy();
+  if(proj_stat != '')
+  {
+   load_data(proj_stat);
+  }
+  else
+  {
+   load_data();
+  }
+ });
+
+
+ 
+  
+  
+});
+$(document).on('change', '#fil_location', function(){
+  var fil_location = $(this).val();
+
+ });
+$(document).on('change', '#fil_status', function(){
+  var fil_status = $(this).val();
+
+ });
+function print_project(){
+     var fil_location = $('#fil_location').val();
+      var fil_status = $('#fil_status').val();
+     window.open('../assets/fpdf181/index.php?report=project&location='+fil_location+'&status='+fil_status);
+}
+</script>
 </body>
 
 </html>

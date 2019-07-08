@@ -188,7 +188,7 @@ function side_report(){
             <!-- Footer -->
             <div class="legal">
                 <div class="copyright">
-                    <a href="javascript:void(0);">Management Info - System <br>CvSU AREC</a>  &copy; <?php auto_copyright("2019"); ?> 
+                     &copy; <?php auto_copyright("2019"); ?> <a href="javascript:void(0);">CvSU AREC</a>
                 </div>
                 <!-- <div class="version">
                     <b>Version: </b> 1.0.5

@@ -90,7 +90,7 @@ include("inc/main-head.php");
                             <span class="input-group-addon">
                             </span>
                             <div class="form-line">
-                                <input type="text" class="form-control" name="r_contact" placeholder="Contact" id="r_contact"  required autofocus onkeyup="allowedChar(this);" maxlength="11">
+                                <input type="text" class="form-control" name="r_contact" placeholder="Contact" id="r_contact" required autofocus>
                             </div>
                         </div>
                         <div class="input-group">
@@ -146,17 +146,6 @@ include("inc/main-head.php");
     <?php
     include("inc/main-js.php");
     ?>
-    <script type="text/javascript">
-        function allowedChar(elem) {
-                var validChars = /[0-9]/;
-                var strIn = elem.value;
-                var strOut = '';
-                for(var i=0; i < strIn.length; i++) {
-                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
-                }
-                elem.value = strOut;
-            }
-    </script>
 </body>
 
 </html>

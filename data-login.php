@@ -75,9 +75,6 @@ if (isset($_POST['submit_register'])) {
 				register();
 				
 			}
-			else{
-				notmatch();
-			}
 			
 		}
 }
@@ -139,6 +136,7 @@ function register(){
 			$r_username = mysqli_real_escape_string($conn,$r_username);
 			$r_password = mysqli_real_escape_string($conn,$r_password);
 			$r_email = mysqli_real_escape_string($conn,$r_email);
+			
 			
  			$input = "$r_password";
 			$encrypted = encryptIt($input);

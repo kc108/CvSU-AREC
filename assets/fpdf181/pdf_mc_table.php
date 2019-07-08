@@ -131,7 +131,7 @@ class PDF_MC_Table extends FPDF {
     // Logo
 		$con = mysqli_connect("localhost", "root", "","cvsu_arec");
     	
-	$print_Date = 'As of :'.date(' jS \of F Y');
+	
 	if ($_REQUEST["report"] == "Account") {
 		$this->Image('../images/cvsu_arec.png',10,16,15);
 		$this->SetFont('Times','',16);
@@ -140,9 +140,7 @@ class PDF_MC_Table extends FPDF {
 		$this->Cell(80);
 		$this->Line(15, 45, 200, 45);
 		$this->Cell(30,10,'LIST OF ACCOUNT',0,1,'C');
-		$this->SetFont('Times','',9);
-		$this->Cell(330,5,$print_Date,0,1,'C');
-		$this->SetFont('Times','',16);
+		$this->Cell(30,10,'',0,1,'C');
 		$this->Cell(80);
 		$this->Cell(30,0,'',0,1,'C');
 		$this->Cell(80);
@@ -161,8 +159,7 @@ class PDF_MC_Table extends FPDF {
 		$this->Cell(80);
 		$this->Line(15, 45, 200, 45);
 		$this->Cell(30,10,'LIST OF NEWS',0,1,'C');
-		$this->SetFont('Times','',9);
-		$this->Cell(330,5,$print_Date,0,1,'C');
+		$this->Cell(30,10,'',0,1,'C');
 		$this->Cell(80);
 		$this->Cell(30,0,'',0,1,'C');
 		$this->Cell(80);
@@ -181,8 +178,7 @@ class PDF_MC_Table extends FPDF {
 		$this->Cell(80);
 		$this->Line(15, 45, 200, 45);
 		$this->Cell(30,10,'LIST OF SUGGESTION',0,1,'C');
-		$this->SetFont('Times','',9);
-		$this->Cell(330,5,$print_Date,0,1,'C');
+		$this->Cell(30,10,'',0,1,'C');
 		$this->Cell(80);
 		$this->Cell(30,0,'',0,1,'C');
 		$this->Cell(80);
@@ -201,8 +197,7 @@ class PDF_MC_Table extends FPDF {
 		$this->Cell(80);
 		$this->Line(15, 45, 200, 45);
 		$this->Cell(30,10,'LIST OF RESEARCH',0,1,'C');
-		$this->SetFont('Times','',9);
-		$this->Cell(330,5,$print_Date,0,1,'C');
+		$this->Cell(30,10,'',0,1,'C');
 		$this->Cell(80);
 		$this->Cell(30,0,'',0,1,'C');
 		$this->Cell(80);
@@ -221,8 +216,7 @@ class PDF_MC_Table extends FPDF {
 		$this->Cell(80);
 		$this->Line(15, 45, 200, 45);
 		$this->Cell(30,10,'LIST OF BIOGAS',0,1,'C');
-		$this->SetFont('Times','',9);
-		$this->Cell(330,5,$print_Date,0,1,'C');
+		$this->Cell(30,10,'',0,1,'C');
 		$this->Cell(80);
 		$this->Cell(30,0,'',0,1,'C');
 		$this->Cell(80);
@@ -241,8 +235,7 @@ class PDF_MC_Table extends FPDF {
 		$this->Cell(80);
 		$this->Line(15, 45, 200, 45);
 		$this->Cell(30,10,'LIST OF PROJECT',0,1,'C');
-		$this->SetFont('Times','',9);
-		$this->Cell(330,5,$print_Date,0,1,'C');
+		$this->Cell(30,10,'',0,1,'C');
 		$this->Cell(80);
 		$this->Cell(30,0,'',0,1,'C');
 		$this->Cell(80);
