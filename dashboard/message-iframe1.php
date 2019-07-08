@@ -262,10 +262,10 @@ img{ max-width:100%;}
             </div>
           </div>
         </div>
-        <h2>Files</h2>
+ <!--        <h2>Files</h2>
 <div class='alert alert-info'><strong>Hey.</strong> Upload a file!</div>
 <ul class='unordered files'>
-</ul>
+</ul> -->
       </div>
       
       
