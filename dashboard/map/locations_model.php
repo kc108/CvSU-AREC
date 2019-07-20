@@ -29,6 +29,13 @@ function add_location(){
         mysqli_real_escape_string($conn,$address));
 
     $result = mysqli_query($conn,$query);
+
+    session_start();
+    $msg = $_SESSION['user_Name']." Add New Biogas ".$title;
+    $mentry = "INSERT INTO `monitor_entry` (`mentry_ID`, `mentry_Msg`, `mentry_Date`) VALUES (NULL, '$msg', CURRENT_TIMESTAMP)";
+    mysqli_query($conn,$mentry);
+
+
     echo"Inserted Successfully";
     if (!$result) {
         die('Invalid query: ' . mysqli_error($conn));

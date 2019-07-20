@@ -3,15 +3,38 @@
   // include('../dbconfig.php');
   include('../session.php');
 ?>
-<link href="msg/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="msg/bootstrap.min.js"></script>
-<script src="msg/jquery.min.js"></script>
+<!-- <link href="msg/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+<!-- <script src="msg/bootstrap.min.js"></script> -->
+<!-- <script src="msg/jquery.min.js"></script> -->
 <link href="../assets/iconfont/roboto.css" rel="stylesheet" type="text/css">
 <link href="../assets/iconfont/material-icons.css" rel="stylesheet" type="text/css">
+   <!-- Bootstrap Core Css -->
+    <link href="../assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Jquery Core Js -->
+    <script src="../assets/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="../assets/plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="../assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="../assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+ 
+
+
+
+
+    <!-- Demo Js -->
+    <script src="../assets/js/demo.js"></script>
+
 <!------ Include the above in your HEAD tag ---------->
 
 <style type="text/css">
-	.container{max-width:1170px; margin:auto;}
+  .container{max-width:1170px; margin:auto;}
 img{ max-width:100%;}
 .inbox_people {
   background: #f8f8f8 none repeat scroll 0 0;
@@ -118,14 +141,14 @@ img{ max-width:100%;}
   float: right;
   width: 46%;
 }
-.input_msg_write input {
+/*.input_msg_write input {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   border: medium none;
   color: #4c4c4c;
   font-size: 15px;
   min-height: 48px;
   width: 100%;
-}
+}*/
 
 .type_msg {border-top: 1px solid #c4c4c4;position: relative;}
 .msg_send_btn {
@@ -153,11 +176,11 @@ img{ max-width:100%;}
 .h5_active{
   color: #ffffff !important;
 }
-.btn-file {
+/*.btn-file {
     position: relative;
     overflow: hidden;
-}
-.btn-file input[type=file] {
+}*/
+/*.btn-file input[type=file] {
     position: absolute;
     top: 0;
     right: 0;
@@ -170,7 +193,8 @@ img{ max-width:100%;}
     outline: none;   
     cursor: inherit;
     display: block;
-}
+}*/
+
 </style>
 <html>
 <head>
@@ -217,9 +241,9 @@ img{ max-width:100%;}
                   }
                     ?>
                  <!--    active_chat -->
-            <div class="chat_list" id="chat_list">
+            <div class="chat_list " id="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src="<?php echo $m_img?>" alt="sunil"> </div>
+                <div class="chat_img "> <img src="<?php echo $m_img?>" alt="sunil"> </div>
                 <div class="chat_ib research" id="<?php echo $row["user_ID"];?>">
                   <h5  class="h5_name"><?php echo $row["user_Name"];?></h5>
                   <p></p>
@@ -239,26 +263,42 @@ img{ max-width:100%;}
           </div>
           <div class="type_msg">
             <div class="input_msg_write">
-            <form class='uploader' action='/echo/json/'>
                  <!-- onkeypress="if(DetectEnterPressed(event)){LoadPage(1)}" -->
              
             
          
               <!-- <button class="msg_send_btn" type="button"><i class="material-icons" aria-hidden="true">send</i></button> -->
 
-             <div class="input-group">
-                <!-- <input type="text" class="form-control" aria-label="Text input with segmented dropdown button"> -->
-                 <input type="text" class="form-control write_msg" placeholder="Type a message" id="write_msg"   />
+            <!--  <div class="input-group">
+                 <input type="text" class="form-control write_msg" placeholder="Type a message" id="write_msg"   style="width: 300px;" />
                 <div class="input-group-append">
-                  
-                  <span class="btn btn-primary btn-file">
-                    <i class="material-icons" aria-hidden="true">attach_file</i> <input type="file" multiple='multiple'/>
-                  </span>
+                  <button type="button" class="btn btn-outline-primary attach_file" data-toggle="modal" data-target="#attach_file"><i class="material-icons" aria-hidden="true">attach_file</i></button>
                   <button type="button" class="btn btn-outline-secondary msg_send_btn"><i class="material-icons" aria-hidden="true">send</i></button>
                 </div>
-              </div>
+              </div> -->
 
-             </form>
+     <!--            <div class="col-lg-6">
+                    <div class="input-group">
+                     
+
+                      <div class="input-group-append" >
+                        <span class="input-group-btn">
+
+                          <button type="button" class="btn btn-outline-primary attach_file" data-toggle="modal" data-target="#attach_file"></button>
+                          <button type="button" class="btn btn-outline-secondary msg_send_btn"><i class="material-icons" aria-hidden="true">send</i></button>
+                        </span>
+                      </div>
+
+                  </div>
+                </div> -->
+
+<div class="input-group">
+ <input type="text" class="form-control write_msg" placeholder="Type a message" id="write_msg"  style="height: 50px;" />
+<!-- <span class="input-group-addon attach_file" data-toggle="modal" data-target="#attach_file"><i class="material-icons" aria-hidden="true">attach_file</i></span> -->
+<span class="input-group-addon msg_send_btn" ><i class="material-icons" aria-hidden="true">send</i></span>
+</div>
+
+            
             </div>
           </div>
         </div>
@@ -270,6 +310,52 @@ img{ max-width:100%;}
       
       
     </div></div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="attach_file" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Attachment file</h4>
+      </div>
+      <div class="modal-body">
+        <form  class="form-horizontal" action="#" method="POST" id="attachment_form" enctype="multipart/form-data">
+            <input type="hidden" name="r"  id="r" class="form-control">
+            <input type="hidden" name="s"  id="s" class="form-control">
+            <input type="hidden" name="c"  id="c" class="form-control">
+           <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="research_attachment">Attachment</label>
+                  </div>
+                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                              <input type="file" name="atc_file"  id="atc_file" class="form-control">
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5">
+                      <div class="form-group">
+                          <div class="">
+                              <div class="btn btn-danger" id="clear_file">X</div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <div class="btn-group">
+        <input type="submit" name="submit_file" id="submit_file" class="btn btn-success" value="Submit" />
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -290,9 +376,9 @@ $(document).ready(function(){
          
           $('.msg_history').html('');
           $('.msg_history').html(data);
-           setTimeout(function(){
-                sendRequest(); //this will send request again and again;
-            }, 5000);
+           // setTimeout(function(){
+           //      sendRequest(); //this will send request again and again;
+           //  }, 5000);
         }
       });
  
@@ -306,7 +392,11 @@ $(document).ready(function(){
      var message_content = $('.write_msg').val();
      var  receiver_ID = $('#conversation_ID').val();
      var sender_ID = <?php echo $_SESSION['login_id'];?>;
-
+      if (message_content == "") {
+       
+      }
+      else{
+       
      $.ajax({
        url:"message-sent.php",
        type:"POST",
@@ -317,7 +407,8 @@ $(document).ready(function(){
           $('.msg_history').load('message-content.php?receiver_ID='+receiver_ID);
           
        }
-     });  
+     }); 
+      }  
   });
 
     // msg_sendattach_btn
@@ -328,22 +419,54 @@ if(e.which == 13) {
     var message_content = $('.write_msg').val();
     var  receiver_ID = $('#conversation_ID').val();
     var sender_ID = <?php echo $_SESSION['login_id'];?>;
+      if (message_content == "") {
+       
+      }
+      else{
+       
+       
+       $.ajax({
+         url:"message-sent.php",
+         type:"POST",
+         data:{receiver_ID:receiver_ID,message_content:message_content,sender_ID:sender_ID},
+         dataType:"html",
+         success:function(data)
+         {
+            $('.msg_history').load('message-content.php?receiver_ID='+receiver_ID);
+            
+             $('.write_msg').val('');
+            
+         }
+       }); 
+      }
 
-     $.ajax({
-       url:"message-sent.php",
-       type:"POST",
-       data:{receiver_ID:receiver_ID,message_content:message_content,sender_ID:sender_ID},
-       dataType:"html",
-       success:function(data)
-       {
-          $('.msg_history').load('message-content.php?receiver_ID='+receiver_ID);
-          
-           $('.write_msg').val('');
-          
-       }
-     }); 
     }
 });
+  $(document).on('click', '#clear_file', function(){
+    $('#atc_file').val('');
+  });
+    $(document).on('submit', '#attachment_form', function(event){
+    event.preventDefault();
+    console.login('asd');
+    var  receiver_ID = $('#conversation_ID').val();
+    var sender_ID = <?php echo $_SESSION['login_id'];?>;
+    $('#r').val(receiver_ID);
+    $('#s').val(sender_ID);
+    $('#c').val(receiver_ID);
+
+    $('#attach_file').modal(hide);
+    // $.ajax({
+    //           url:"message-attachment.php",
+    //           method:'POST',
+    //           data:new FormData(this),
+    //           contentType:false,
+    //           processData:false,
+    //           success:function(data)
+    //           {
+
+    //           }
+    //         });
+    });
 // document.getElementById("file").onchange = function(event) {
 //     event.preventDefault();
 //       document.getElementById("attach_file").submit();
@@ -361,126 +484,89 @@ if(e.which == 13) {
 //         }
 //       });
 // }
-$('.upload').on('click', function() {
-    $('.uploader input:file').click();
-});
+// $('.upload').on('click', function() {
+//     $('.uploader input:file').click();
+// });
 
-$('.uploader input:file').on('change', function() {
-    $this = $(this);
+// $('.uploader input:file').on('change', function() {
+//     $this = $(this);
 
-    $('.alert').remove();
+//     $('.alert').remove();
 
-    $.each($this[0].files, function(key, file) {
-        var fnz = file.name;
-        $('.files').append('<li>' + file.name + '</li>');
+//     $.each($this[0].files, function(key, file) {
+//         var fnz = file.name;
+//         $('.files').append('<li>' + file.name + '</li>');
 
-        var data = new FormData();
-        data.append(file.name, file);
+//         var data = new FormData();
+//         data.append(file.name, file);
         
-        $.ajax({
-            url: $('.uploader').attr('action'),
-            type: 'POST',
-            dataType: 'json',
-            processData: false,
-            data: data
-        });
-    });
+//         $.ajax({
+//             url: $('.uploader').attr('action'),
+//             type: 'POST',
+//             dataType: 'json',
+//             processData: false,
+//             data: data
+//         });
+//     });
 
 
-    var  receiver_ID = $('#conversation_ID').val();
-    var sender_ID = <?php echo $_SESSION['login_id'];?>;
+//     var  receiver_ID = $('#conversation_ID').val();
+//     var sender_ID = <?php echo $_SESSION['login_id'];?>;
+//     $.ajax({
+//        url:"message-sent.php",
+//        type:"POST",
+//        data:{receiver_ID:receiver_ID,message_content:fnz,sender_ID:sender_ID},
+//        dataType:"html",
+//        success:function(data)
+//        {
+//           $('.msg_history').load('message-content.php?receiver_ID='+receiver_ID);
+          
+//            $('.write_msg').val('');
+          
+//        }
+//      }); 
+// });
+
+$('input[type=file]').change(function () {
+   
+   console.dir(this.value);
+   console.dir(this.files[0]);
+    var fileInput = document.getElementById('attach_file');
+    var file = fileInput.files[0];
+    var formData = new FormData();
+    formData.append('file', file);
+
     $.ajax({
-       url:"message-sent.php",
-       type:"POST",
-       data:{receiver_ID:receiver_ID,message_content:fnz,sender_ID:sender_ID},
-       dataType:"html",
-       success:function(data)
-       {
-          $('.msg_history').load('message-content.php?receiver_ID='+receiver_ID);
-          
-           $('.write_msg').val('');
-          
-       }
-     }); 
+      url:"blep.php",
+      type:'POST',
+      data:formData,
+      contentType:false,
+      processData:false,
+      success:function(data)
+      {
+        console.log('asd');
+      }
+    });
 });
+  // $(document).on('submit', '#news_form', function(event){
+  //   event.preventDefault();
 
-      // $(document).on('submit', '#attach_file', function(event){
-      //       event.preventDefault();
-      //       alert("submit");
-      //       // var project_title = $('#project_title').val();
-      //       // var project_owner = $('#project_owner').val();
-      //       // var project_location = $('#project_location').val();
-      //       // var project_start = $('#project_start').val();
-      //       // var project_end = $('#project_end').val();
-      //       // var project_scope = $('#project_scope').val();
-      //       // var project_head = $('#project_head').val();
-      //       // var project_status = $('#project_status').val();
+  //           $.ajax({
+  //             url:"belp.php",
+  //             type:'POST',
+  //             data:new FormData(this),
+  //             contentType:false,
+  //             processData:false,
+  //             success:function(data)
+  //             {
+  //               console.log('asd');
+  //             }
+  //           });
+
+  // });
 
 
-      //       // $.ajax({
-      //       //           url:"datatable/project/insert.php",
-      //       //           method:'POST',
-      //       //           data:new FormData(this),
-      //       //           contentType:false,
-      //       //           processData:false,
-      //       //           success:function(data)
-      //       //           {
-      //       //             $('#action').val("Add");
-      //       //             $('#operation').val("Add");
-
-      //       //             alert(data);
-                        
-      //       //             document.getElementById("project_form").reset();
-      //       //             $('#project_modal').modal('hide');
-      //       //             dataTable.ajax.reload();
-      //       //           }
-      //       //         });
-      //     });
- // $(document).on('click', '#proj_filter', function(){
- //          var proj_stat = $(this).attr("data-id");
- //          $('#filter_projStat').val(proj_stat);
-          
- //          $('#project_data').DataTable().destroy();
- //          if(proj_stat != '0')
- //          {
- //           load_data(proj_stat);
- //          }
- //          else
- //          {
- //           load_data();
- //          }
- //      });
-  // function LoadPage() {
-  //      var message_content = $('.write_msg').val();
-  //      var  receiver_ID = $('#conversation_ID').val();
-  //      var sender_ID = <?php echo $_SESSION['login_id'];?>;
-
-  //      $.ajax({
-  //        url:"message-sent.php",
-  //        type:"POST",
-  //        data:{receiver_ID:receiver_ID,message_content:message_content,sender_ID:sender_ID},
-  //        dataType:"html",
-  //        success:function(data)
-  //        {
-  //           $('.msg_history').load('message-content.php?receiver_ID='+receiver_ID);
-            
-  //        }
-  //      }); 
-  //   }
-  // function DetectEnterPressed(e) {
-  //       var characterCode
-  //       if (e && e.which) { // NN4 specific code
-  //           e = e
-  //           characterCode = e.which
-  //       }
-  //       else {
-  //           e = event
-  //           characterCode = e.keyCode // IE specific code
-  //       }
-  //       if (characterCode == 13) return true // Enter key is 13
-  //       else return false
-  //   }
-  
+ 
   
 });
 

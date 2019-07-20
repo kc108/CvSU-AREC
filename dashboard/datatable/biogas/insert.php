@@ -29,6 +29,12 @@ if(isset($_POST["operation"]))
 		);
 		if(!empty($result))
 		{
+			session_start();
+			$msg = $_SESSION['user_Name']." Update Biogas Info of ".$loc_title;
+			$mentry = "INSERT INTO `monitor_entry` (`mentry_ID`, `mentry_Msg`, `mentry_Date`) VALUES (NULL, '$msg', CURRENT_TIMESTAMP)";
+			$smentry = $conn->prepare($mentry);
+			$rmentry = $smentry->execute();
+
 			echo 'Data Updated';
 		}
 	}

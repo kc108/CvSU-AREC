@@ -106,6 +106,9 @@ function login(){
 				{
 					$_SESSION['login_user']=$username; // Initializing Session
 					header("location: dashboard/"); //go to dashboard
+					$msg = $username." is logged in";
+					$mentry = "INSERT INTO `monitor_entry` (`mentry_ID`, `mentry_Msg`, `mentry_Date`) VALUES (NULL, '$msg', CURRENT_TIMESTAMP)";
+					mysqli_query($conn,$mentry);
 					success();
 				} 
 
@@ -167,6 +170,25 @@ function register(){
 				VALUES (NULL, '$last_id', '$r_fname', '$r_lname', '$r_address','$r_contact');";
 				if(mysqli_query($conn,$sql))
 				{
+		
+		$sql = "SELECT user_ID FROM `user_accounts` where level_ID = 2";
+		
+		$rsql = mysqli_query($conn,$sql);
+			
+		while($row = mysqli_fetch_array($rsql)){
+
+			$r_user_ID = $row['user_ID'];
+
+			$sql3 = "INSERT INTO `notification` (`notif_ID`, `user_ID`, `notif_Msg`, `notif_Date`, `notif_Type`, `notif_State`) 
+				VALUES (NULL, $r_user_ID, '$r_username New Register', CURRENT_TIMESTAMP, 1, NULL);";
+
+			$rsql3 = mysqli_query($conn,$sql3);
+
+		}
+					$msg = $r_username." is successfully registered";
+					$mentry = "INSERT INTO `monitor_entry` (`mentry_ID`, `mentry_Msg`, `mentry_Date`) VALUES (NULL, '$msg', CURRENT_TIMESTAMP)";
+					mysqli_query($conn,$mentry);
+
 					success_register();
 				}
 

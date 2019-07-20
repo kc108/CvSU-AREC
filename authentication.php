@@ -28,9 +28,10 @@ include("inc/main-head.php");
                 <div id="sign_in" >
                     <div class="text-center msg">
                         
-                        <img src="assets/images/cvsu_arec.png" alt="CvSU Logo" style="width: 100px;">
-                        <h5>Cavite State Univeristy AREC</h5>
                         <h3>Management Information System</h3>
+                        <h5>CvSU</h5>
+                        <img src="assets/images/cvsu_arec.png" alt="CvSU Logo" style="width: 100px;"><br><br>
+                        
                         <small>Login here using your username and password</small>
                     </div>
                     <div class="tab-content">
@@ -115,7 +116,7 @@ include("inc/main-head.php");
                                 <i class="material-icons">lock</i>
                             </span>
                             <div class="form-line">
-                                <input type="password" class="form-control" name="r_cpassword" id="r_cpassword" placeholder="Password"  min="6"  required>
+                                <input type="password" class="form-control" name="r_cpassword" id="r_cpassword" placeholder="Confirm Password"  min="6"  required>
                             </div>
                         </div>
                         <div class="input-group">

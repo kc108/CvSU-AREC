@@ -14,6 +14,7 @@ if(isset($_POST["search"]["value"]))
 {
 
  $query .= '(research_Title LIKE "%'.$_POST["search"]["value"].'%" ';
+ $query .= 'OR research_Author LIKE "%'.$_POST["search"]["value"].'%" ';
  $query .= 'OR status_Name LIKE "%'.$_POST["search"]["value"].'%") ';
 }
 
@@ -57,7 +58,12 @@ foreach($result as $row)
 	}
 	$sub_array = array();
 	$sub_array[] = $row["research_ID"];
-	$sub_array[] = $row["user_Name"];
+	if (empty($row["research_Author"])) {
+		$sub_array[] = $row["user_Name"];
+	}
+	else{
+		$sub_array[] = $row["research_Author"].','.$row["user_Name"];
+	}
 	$sub_array[] = $row["research_Title"];
 	$sub_array[] = $row["rssn"];
 	$sub_array[] = $row["research_Created"];

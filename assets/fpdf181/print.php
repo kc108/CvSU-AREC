@@ -79,21 +79,21 @@ if ($report == "Research") {
 		if ($_REQUEST["stats"] == "1_2") {
 			$stat = "`rs`.`status_ID` = '1' OR `rs`.`status_ID` = '2'";
 		}
-		else{
+		if ($_REQUEST["stats"] == "3") {
 
-			$stat = "`rs`.`status_ID` = '3'";
+			$stat = "`rs`.`status_ID` = '3' ";
 		}
 			
 	}
 	
 
 		$query = "";
-		$query .= "SELECT `r`.*,`rs`.`status_Name`  `rssn`,`ua`.`user_Name`";
+		$query .= "SELECT `r`.research_Title,`r`.research_yrConduct,`r`.research_Content,`rs`.`status_Name`  `rssn`,`ua`.`user_Name` ";
 		$query .= " FROM `research` as `r` 
 		LEFT JOIN `research_status` as `rs` ON `r`.`status_ID` = `rs`.`status_ID`
-		LEFT JOIN `user_accounts` `ua` ON `r`.user_ID = `ua`.`user_ID`";
+		LEFT JOIN `user_accounts` `ua` ON `r`.user_ID = `ua`.`user_ID` ";
 
-	$query .= " WHERE  $stat AND";
+	$query .= " WHERE  $stat AND ";
 	
 	if(isset($_REQUEST["filter"]))
 	{
@@ -182,6 +182,7 @@ if ($report == "Account") {
 			
 		}
 	}
+	$print_name = "Account_Report";
 }
 if ($report == "News") {
 	$pdf->SetFont('Arial','B',10);
@@ -204,6 +205,7 @@ if ($report == "News") {
 			
 		}
 	}
+	$print_name = "News_Report";
 
 }
 if ($report == "Suggestion") {
@@ -227,6 +229,7 @@ if ($report == "Suggestion") {
 			
 		}
 	}
+	$print_name = "Suggestion_Report";
 
 }
 if ($report == "Research") {
@@ -240,19 +243,27 @@ if ($report == "Research") {
 	//reset font
 	$pdf->SetFont('Arial','',9);
 
-	if ($if_has_content != 0) {
-		//loop the data
-		foreach($data as $item){
-			//write data using Row() method containing array of values.
-			$pdf->Row(Array(
-				$item['research_Title'],
-				$item['research_yrConduct'],
-				$item['research_Content'],
-				$item['rssn'],
-			));
-			
+	
+
+
+	    if ($if_has_content != 0) {
+	    	if (is_array($data) || is_object($data))
+			{
+				//loop the data
+				foreach($data as $item){
+					//write data using Row() method containing array of values.
+					$pdf->Row(Array(
+						$item['research_Title'],
+						$item['research_yrConduct'],
+						$item['research_Content'],
+						$item['rssn'],
+					));
+					
+				}
+			}
 		}
-	}
+
+	$print_name = "Research_Report";
 
 }
 if ($report == "Biogas") {
@@ -276,6 +287,7 @@ if ($report == "Biogas") {
 			
 		}
 	}
+	$print_name = "Biogas_Report";
  
 }
 if ($report == "Project") {
@@ -310,11 +322,11 @@ if ($report == "Project") {
 			
 		}
 	}
- 
+ $print_name = "Project_Report";
 }
 
 //output the pdf
-$pdf->Output();
+$pdf->Output('I',$print_name.'.pdf');
 
 
 

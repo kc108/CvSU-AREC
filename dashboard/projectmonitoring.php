@@ -330,8 +330,10 @@
           <div class="modal-footer">
           <input type="hidden" name="proj_ID" id="proj_ID" />
           <input type="hidden" name="operation" id="operation" value="Add" />
-          <input type="submit" name="action" id="action" class="btn btn-success" value="Submit" />
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <div class="btn-group">
+            <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+            <input type="submit" name="action" id="action" class="btn btn-success btn-lg" value="Submit" />
+          </div>
           </div>
           </form> 
         </div><!-- /.modal-content -->
@@ -582,6 +584,85 @@
     
   
   });
+      
+
+ $(document).on('click', '#cl_acc', function(){
+      
+     $.ajax({
+        url:"notif_seen1.php",
+        type:"POST",
+        data:{account:1},
+        success:function(data)
+        {
+      
+        }
+      });
+  });
+   
+$(document).on('click', '#cl_news', function(){
+    
+    $.ajax({
+        url:"notif_seen1.php",
+        type:"POST",
+        data:{news:1},
+        success:function(data)
+        {
+      
+        }
+      });
+    
+
+  });
+$(document).on('click', '#cl_sugg', function(){
+    
+    $.ajax({
+        url:"notif_seen1.php",
+        type:"POST",
+        data:{suggest:1},
+        success:function(data)
+        {
+      
+        }
+      });
+  });
+$(document).on('click', '#cl_res', function(){
+    
+    $.ajax({
+        url:"notif_seen1.php",
+        type:"POST",
+        data:{research:1},
+        success:function(data)
+        {
+      
+        }
+      });
+  });
+$(document).on('click', '#cl_proj', function(){
+    $.ajax({
+        url:"notif_seen1.php",
+        type:"POST",
+        data:{project:1},
+        success:function(data)
+        {
+      
+        }
+      });
+  });
+$(document).on('click', '#cl_bio', function(){
+      $.ajax({
+        url:"notif_seen1.php",
+        type:"POST",
+        data:{biogas:1},
+        success:function(data)
+        {
+      
+        }
+      });
+  });
+
+
+
+
     </script>
 </body>
 

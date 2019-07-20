@@ -90,7 +90,7 @@ else{
                   </ul>
                 </li>
                 <li><a href="index.php" class="nav-link">Images</a></li>
-                <li><a href="index.php" class="nav-link">News</a></li>
+                <li><a href="index.php" class="nav-link active">News</a></li>
                 <li><a href="biogas.php" class="nav-link">Biogas</a></li>
                 <li><a href="projects.php" class="nav-link">Projects</a></li>
                 <li><a href="index.php" class="nav-link">Contact</a></li>
@@ -120,12 +120,13 @@ else{
 
             <h1 class="text-white font-weight-light text-uppercase font-weight-bold" data-aos="fade-up">CvSU-AREC IV</h1>
             <p class="mb-5" data-aos="fade-up" data-aos-delay="100">CAVITE STATE UNIVERSITY-AFFILIATED RENEWABLE ENERGY CENTER FOR REGION IV</p>
+            <p data-aos="fade-up" data-aos-delay="200"><a href="#section-news" class="btn btn-primary py-3 px-5 text-white">News</a></p>
 
           </div>
         </div>
       </div>
     </div> 
-     <div class="site-section" id="section-instroduction">
+     <div class="site-section" id="section-news">
       <div class="container">
         <div class="row mb-5">
           
@@ -175,7 +176,6 @@ else{
                   <tr>
                     <th  >News Title</th>
                     <th width="20%" >Date</th>
-                    <th width="10%" >News Title</th>
                   </tr>
                 </thead>
             

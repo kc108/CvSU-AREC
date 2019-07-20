@@ -200,6 +200,85 @@
     
   
   });
+      
+
+ $(document).on('click', '#cl_acc', function(){
+      
+     $.ajax({
+        url:"notif_seen1.php",
+        type:"POST",
+        data:{account:1},
+        success:function(data)
+        {
+      
+        }
+      });
+  });
+   
+$(document).on('click', '#cl_news', function(){
+    
+    $.ajax({
+        url:"notif_seen1.php",
+        type:"POST",
+        data:{news:1},
+        success:function(data)
+        {
+      
+        }
+      });
+    
+
+  });
+$(document).on('click', '#cl_sugg', function(){
+    
+    $.ajax({
+        url:"notif_seen1.php",
+        type:"POST",
+        data:{suggest:1},
+        success:function(data)
+        {
+      
+        }
+      });
+  });
+$(document).on('click', '#cl_res', function(){
+    
+    $.ajax({
+        url:"notif_seen1.php",
+        type:"POST",
+        data:{research:1},
+        success:function(data)
+        {
+      
+        }
+      });
+  });
+$(document).on('click', '#cl_proj', function(){
+    $.ajax({
+        url:"notif_seen1.php",
+        type:"POST",
+        data:{project:1},
+        success:function(data)
+        {
+      
+        }
+      });
+  });
+$(document).on('click', '#cl_bio', function(){
+      $.ajax({
+        url:"notif_seen1.php",
+        type:"POST",
+        data:{biogas:1},
+        success:function(data)
+        {
+      
+        }
+      });
+  });
+
+
+
+
     </script>
 
 </body>

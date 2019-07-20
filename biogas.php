@@ -80,7 +80,7 @@ else{
             <nav class="site-navigation position-relative text-right" role="navigation">
 
               <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
-                <li><a href="index.php" class="nav-link">Home</a></li>
+                <li><a href="index.php" class="nav-link ">Home</a></li>
                 <li class="has-children">
                   <a href="#section-about" class="nav-link">About Us</a>
                   <ul class="dropdown">
@@ -91,7 +91,7 @@ else{
                 </li>
                 <li><a href="index.php" class="nav-link">Images</a></li>
                 <li><a href="news.php" class="nav-link">News</a></li>
-                <li><a href="biogas.php" class="nav-link">Biogas</a></li>
+                <li><a href="biogas.php" class="nav-link active">Biogas</a></li>
                 <li><a href="projects.php" class="nav-link">Projects</a></li>
                 <li><a href="index.php" class="nav-link">Contact</a></li>
                 <li><?php echo $authentication_nav?></li>
@@ -119,13 +119,14 @@ else{
             
 
             <h1 class="text-white font-weight-light text-uppercase font-weight-bold" data-aos="fade-up">CvSU-AREC IV</h1>
-            <p class="mb-5" data-aos="fade-up" data-aos-delay="100">CAVITE STATE UNIVERSITY-AFFILIATED RENEWABLE ENERGY CENTER FOR REGION IV</p>
+            <p class="mb-5" data-aos="fade-up" data-aos-delay="100">CAVITE STATE UNIVERSITY-AFFILIATED RENEWABLE ENERGY CENTER FOR REGION IV</p> 
+            <p data-aos="fade-up" data-aos-delay="200"><a href="#section-map" class="btn btn-primary py-3 px-5 text-white">Biogas</a></p>
 
           </div>
         </div>
       </div>
     </div> 
-     <div class="site-section" id="section-instroduction">
+     <div class="site-section" id="section-map">
       <div class="container">
         <div class="row mb-5">
           

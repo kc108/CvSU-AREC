@@ -6,6 +6,7 @@ session_start();
 if(isset($_POST["operation"]))
 {
 	
+	$login_id = $_SESSION['login_id'];
 	if($_POST["operation"] == "Add")
 	{
 	$project_title = $_POST["project_title"];
@@ -61,8 +62,32 @@ if(isset($_POST["operation"]))
 
 				)
 			);
+
+
+			$zdasd = "SELECT user_ID FROM `user_accounts` where level_ID = 2";
+			$statementsdsd = $connection->prepare($zdasd);
+				
+			$statementsdsd->execute();
+			$resultds = $statementsdsd->fetchAll();
+			foreach($resultds as $row)
+			{
+				$r_user_ID = $row['user_ID'];
+
+				$asdasd = "INSERT INTO `notification` (`notif_ID`, `user_ID`, `notif_Msg`, `notif_Date`, `notif_Type`, `notif_State`) 
+					VALUES (NULL, $r_user_ID, '$project_title Added', CURRENT_TIMESTAMP, 5, NULL);";
+				$statementasdasd = $connection->prepare($asdasd);
+					
+				$statementasdasd->execute();
+
+			}
+
 		if(!empty($result))
 		{
+			
+			$msg = $_SESSION['user_Name']." Add Project: ".$project_title;
+			$mentry = "INSERT INTO `monitor_entry` (`mentry_ID`, `mentry_Msg`, `mentry_Date`) VALUES (NULL, '$msg', CURRENT_TIMESTAMP)";
+			$smentry = $conn->prepare($mentry);
+			$rmentry = $smentry->execute();
 			echo 'Successfully Project Add';
 		}
 		
@@ -115,6 +140,11 @@ if(isset($_POST["operation"]))
 			);
 		if(!empty($result))
 		{
+			
+			$msg = $_SESSION['user_Name']." Update Project Info Of ".$project_title;
+			$mentry = "INSERT INTO `monitor_entry` (`mentry_ID`, `mentry_Msg`, `mentry_Date`) VALUES (NULL, '$msg', CURRENT_TIMESTAMP)";
+			$smentry = $conn->prepare($mentry);
+			$rmentry = $smentry->execute();
 			echo 'Data Updated';
 		}
 	}

@@ -98,7 +98,7 @@ else{
                 <li><a href="index.php" class="nav-link">Images</a></li>
                 <li><a href="news.php" class="nav-link">News</a></li>
                 <li><a href="biogas.php" class="nav-link">Biogas</a></li>
-                <li><a href="projects.php" class="nav-link">Projects</a></li>
+                <li><a href="projects.php" class="nav-link active">Projects</a></li>
                 <li><a href="index.php" class="nav-link">Contact</a></li>
                 <li><?php echo $authentication_nav?></li>
               </ul>
@@ -126,13 +126,13 @@ else{
 
             <h1 class="text-white font-weight-light text-uppercase font-weight-bold" data-aos="fade-up">CvSU-AREC IV</h1>
             <p class="mb-5" data-aos="fade-up" data-aos-delay="100">CAVITE STATE UNIVERSITY-AFFILIATED RENEWABLE ENERGY CENTER FOR REGION IV</p>
-     
+             <p data-aos="fade-up" data-aos-delay="200"><a href="#section-project" class="btn btn-primary py-3 px-5 text-white">Project</a></p>
 
           </div>
         </div>
       </div>
     </div> 
-     <div class="site-section" id="section-instroduction">
+     <div class="site-section" id="section-project">
       <div class="container">
         <div class="row mb-5">
           

@@ -68,16 +68,16 @@
 
             <ol class="breadcrumb breadcrumb-bg-green">
                 <li><a href="index"><i class="material-icons">home</i> Home</a></li>
-                <li  class="active"><a href="javascript:void(0);"><i class="material-icons ">account_box</i> Account Management</a></li>
+                <li  class="active"><a href="javascript:void(0);"><i class="material-icons ">account_box</i> User Information</a></li>
             </ol>
             <div class="row clearfix">
                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                            <div class="card">
                                <div class="header">
-                                   <h2>LIST OF ACCOUNT</h2>
+                                   <h2>LIST OF USER INFORMATION</h2>
                                     <div class="btn-group pull-right" >
-                                      <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#account_modal">ADD ACCOUNT</button>
-                                    <button type="button" class="btn btn-primary" id="proj_print">PRINT</button>
+                             <!--          <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#account_modal">ADD ACCOUNT</button>
+                                    <button type="button" class="btn btn-primary" id="proj_print">PRINT</button> -->
                                   
                                   </div>
                                   <input type="hidden" name="filter_Search" id="filter_Search" value="null">
@@ -89,11 +89,9 @@
                                             <thead>
                                               <tr>
                                                 <th width="10%">ID</th>
-                                                <th width="10%">Level</th>
-                                                <th width="10%">Username</th>
-                                                <th width="10%">Status</th>
-                                                <th width="10%">Register</th>
-                                                <th width="10%">Action</th>
+                                                <th width="10%">First Name</th>
+                                                <th width="10%">Last Name</th>
+                                                <th width="10%">Address</th>
                                               </tr>
                                             </thead>
                                           </table>
@@ -416,7 +414,7 @@ $(document).on('click', '#proj_print', function(){
     "serverSide":true,
     "order":[],
     "ajax":{
-      url:"datatable/account/fetch.php",
+      url:"datatable/account/fetch_info.php",
       type:"POST"
     },
     "columnDefs":[

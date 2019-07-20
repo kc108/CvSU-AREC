@@ -12,10 +12,14 @@
 
     
     if ($login_level == 2) {
-        $sql ="SELECT * FROM `notification` WHERE user_ID = $login_id or notif_Type = 1 AND notif_State is null";
+        $sql ="SELECT notf.*,ua.level_ID FROM `notification`  `notf`
+LEFT JOIN user_accounts `ua` ON `ua`.user_ID = `notf`.user_ID
+WHERE ua.level_ID = 2  AND notif_State is null
+ORDER BY `notf`.`notif_Date` DESC limit 25";
     }
+
     else{
-        $sql ="SELECT * FROM `notification` WHERE user_ID = $login_id AND notif_Type = 2 AND notif_State is null";
+        $sql ="SELECT * FROM `notification` WHERE user_ID = $login_id AND notif_Type = 2 AND notif_State is null lIMIT 25";
     }
     $result = mysqli_query($conn, $sql);
     $notif_unseen_count = mysqli_num_rows($result) ;
@@ -50,13 +54,31 @@ function get_timeago( $ptime )
         }
     }
 }
-	function notif_li($label,$time){
+	function notif_li($label,$time,$notif_Type){
 		
+        if ($notif_Type == "1") {
+           $iconz = "person";
+        }
+        if ($notif_Type == "2") {
+            $iconz = "speaker_notes";
+        }
+        if ($notif_Type == "3") {
+             $iconz = "info";
+        }
+        if ($notif_Type == "4") {
+             $iconz = "search";
+        }
+        if ($notif_Type == "5") {
+             $iconz = "personal_video";
+        }
+        if ($notif_Type == "6") {
+             $iconz = "map";
+        }
     	?>
     	<li>
 	        <a href="javascript:void(0);">
 	            <div class="icon-circle bg-light-green">
-	                <i class="material-icons">person</i>
+	                <i class="material-icons"><?php echo $iconz?></i>
 	            </div>
 	            <div class="menu-info">
 	                <h4><?php echo $label?></h4>
@@ -82,37 +104,22 @@ function get_timeago( $ptime )
             <ul class="menu">
              
                 <?php
-				if ($login_level == 2) {
-					$sql ="SELECT * FROM `notification` WHERE user_ID = $login_id OR notif_Type = 1 ORDER BY `notification`.`notif_Date` DESC LIMIT 10";
-    				$result = mysqli_query($conn, $sql);
-    				while($row = mysqli_fetch_assoc($result)) {
 
-    					$notif_Msg = $row['notif_Msg'];
-    					$notif_Date = $row['notif_Date'];
-    					notif_li($notif_Msg,$notif_Date);
-    				}
-					?>
-					
-					<?php
-				}
-				else{
-					$sql ="SELECT * FROM `notification` WHERE user_ID = $login_id AND notif_Type = 2 ORDER BY `notification`.`notif_Date` DESC LIMIT 10";
+					$sql =" SELECT * FROM `notification` WHERE user_ID = $login_id ORDER BY `notification`.`notif_Date` DESC LIMIT 10";
                     $result = mysqli_query($conn, $sql);
                     while($row = mysqli_fetch_assoc($result)) {
 
                         $notif_Msg = $row['notif_Msg'];
                         $notif_Date = $row['notif_Date'];
-                        notif_li($notif_Msg,$notif_Date);
+                        $notif_Type = $row['notif_Type'];
+                        notif_li($notif_Msg,$notif_Date,$notif_Type);
                     }
-                    ?>
-                    
-                    <?php
-				}
+              
                 ?>
             </ul>
         </li>
         <li class="footer">
-            <a href="javascript:void(0);">View All Notifications</a>
+            <a href="notification">View All Notifications</a>
         </li>
     </ul>
 </li>

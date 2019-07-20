@@ -89,7 +89,6 @@ else{
                     <li><a href="index.php" class="nav-link">Our Team</a></li>
                   </ul>
                 </li>
-                <li><a href="index.php" class="nav-link">Services</a></li>
                 <li><a href="index.php" class="nav-link">Images</a></li>
                 <li><a href="index.php" class="nav-link">News</a></li>
                 <li><a href="biogas.php" class="nav-link">Biogas</a></li>

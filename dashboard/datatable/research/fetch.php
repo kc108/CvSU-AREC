@@ -21,6 +21,7 @@ if(isset($_POST["search"]["value"]))
 {
 
  $query .= '(research_Title LIKE "%'.$_POST["search"]["value"].'%" ';
+ $query .= 'OR research_Author LIKE "%'.$_POST["search"]["value"].'%" ';
  $query .= 'OR status_Name LIKE "%'.$_POST["search"]["value"].'%") ';
 }
 
@@ -52,7 +53,7 @@ foreach($result as $row)
 		<li><a href="#" id="'.$row["research_ID"].'" class="approve">Approve</a></li>
 		<li><a href="#" id="'.$row["research_ID"].'" class="delete">Delete</a></li>';
 	}
-	if ($row["rssn"] == "Approve") {
+	if ($row["rssn"] == "Approved") {
 		$asd = '<li><a href="#" id="'.$row["research_ID"].'" class="archive">Archive</a></li>';
 		$asd .= '<li><a href="#" id="'.$row["research_ID"].'" class="disapprove">Disapprove</a></li>';
 	}
@@ -71,15 +72,25 @@ foreach($result as $row)
 		$button = '<div class="dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Action<span class="caret"></span></button><ul class="dropdown-menu"><li><a href="#" id="'.$row["research_ID"].'" class="view">View</a></li>';
 			if ($row["user_ID"] == $_SESSION['login_id']) {
 			$button .='<li><a href="#" id="'.$row["research_ID"].'" class="update">Update</a></li>';
+			$button .='<li><a href="#" id="'.$row["research_ID"].'" class="delete">Delete</a></li>';
+			
 			}
 			$button .=$asd.'</ul></div>';
 	}
 	else{
 		
 	}
+	
 	$sub_array = array();
 	$sub_array[] = $row["research_ID"];
-	$sub_array[] = $row["user_Name"];
+	if (empty($row["research_Author"])) {
+		$sub_array[] = $row["user_Name"];
+	}
+	else{
+		$sub_array[] = $row["research_Author"].','.$row["user_Name"];
+	}
+	
+
 	$sub_array[] = $row["research_Title"];
 	$sub_array[] = $row["rssn"];
 	$sub_array[] = $row["research_yrConduct"];

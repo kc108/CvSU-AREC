@@ -32,7 +32,13 @@ foreach($result as $row)
 {
 
 	$news_ID = $row["news_ID"];
-    $news_Title = $row["news_Title"];
+	if (isset($_POST["admin"])) {
+		$news_Title = $row["news_Title"];
+	}
+	else{
+		$news_Title = '<a href="news?news_ID='.$news_ID.'">'.$row["news_Title"].'</a>';
+	}
+    
     $news_Content = $row["news_Content"];
     $news_Pub = $row["news_Pub"];
     $news_Pub = strtotime($news_Pub);
@@ -44,7 +50,7 @@ foreach($result as $row)
 		$sub_array[] = '<div class="dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Action<span class="caret"></span></button><ul class="dropdown-menu"><li><a href="#" id="'.$news_ID.'" class="view">View</a></li><li><a href="#" id="'.$news_ID.'" class="update">Update</a></li><li><a href="#" id="'.$news_ID.'" class="delete">Delete</a></li></ul></div>';
 	}
 	else{
-		$sub_array[] = '<a href="news?news_ID='.$news_ID.'" class="btn btn-primary btn-sm text-white">Read Me</a></p>';
+		// $sub_array[] = '<a href="news?news_ID='.$news_ID.'" class="btn btn-primary btn-sm text-white">Read Me</a></p>';
 	}
 	
 	$data[] = $sub_array;

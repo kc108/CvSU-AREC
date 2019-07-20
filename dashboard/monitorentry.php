@@ -3,7 +3,7 @@
     include('dash-global-function.php');
 
    
-    $pagename = "News Management";
+    $pagename = "Monitor Entry";
     $username = $_SESSION['user_Name'];
     $script_for_specific_page = "";
     $user_img = "../assets/images/user.png";
@@ -23,7 +23,7 @@
 
 <!DOCTYPE html>
 <html>
- 
+
  <?php
     include("dash-head.php");
     ?>
@@ -69,18 +69,17 @@
 
             <ol class="breadcrumb breadcrumb-bg-green">
                 <li><a href="index"><i class="material-icons">home</i> Home</a></li>
-                <li  class="active"><a href="javascript:void(0);"><i class="material-icons ">account_box</i> News Management</a></li>
+                <li  class="active"><a href="javascript:void(0);"><i class="material-icons ">remove_red_eye</i> Monitoring Entry</a></li>
             </ol>
             <div class="row clearfix">
                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                            <div class="card">
                                <div class="header">
-                                   <h2>LIST OF News</h2>
-                                    <div class="btn-group pull-right" >
-                                      <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#news_modal">ADD NEWS</button>
-                                      <button type="button" class="btn btn-primary" id="proj_print">PRINT</button>
+                                   <h2>List of Monitoring Entry</h2>
+                                   <div class="btn-group pull-right" >
                                   
-                                    </div>
+                                  
+                                  </div>
                                   <input type="hidden" name="filter_Search" id="filter_Search" value="null">
                                    <br>
                                </div>
@@ -89,9 +88,9 @@
                                           <table id="news_data" class="table table-bordered table-striped">
                                             <thead>
                                               <tr>
-                                                <th width="10%">Title</th>
+                                                <th width="10%">ID</th>
+                                                <th width="10%">Message</th>
                                                 <th width="10%">Date</th>
-                                                <th width="10%">Action</th>
                                               </tr>
                                             </thead>
                                           </table>
@@ -119,7 +118,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-plus-sign"></span> Add News</h4>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-plus-sign"></span> View Suggestion</h4>
           </div>
           
           <form class="form-horizontal" action="#" method="POST" id="news_form" enctype="multipart/form-data">
@@ -127,24 +126,23 @@
           <div class="modal-body news">
             <div class="row clearfix">
                   <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                      <label for="news_content">Title</label>
+                      <label for="news_content">Subject</label>
                   </div>
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
-                          <div class="form-line">
                              <input type="text" class="form-control" name="news_title" id="news_title">
-                          </div>
+                          
                       </div>
                   </div>
               </div>
               <div class="row clearfix">
                   <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                      <label for="news_content">News</label>
+                      <label for="news_content">Message</label>
                   </div>
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
                           <div class="form-line" id="znews_content1">
-                             <textarea class="form-control" name="news_content" id="news_content" style="min-height: 400px;"></textarea>
+                             <div class="form-control" name="news_content" id="news_content" style="min-height: 400px;"></div>
                             
                           </div>
                            <div id="znews_content"></div>
@@ -154,12 +152,9 @@
 
           </div>
           <div class="modal-footer">
-          <input type="hidden" name="news_ID" id="news_ID" />
+          <input type="hidden" name="s_ID" id="s_ID" />
           <input type="hidden" name="operation" id="operation" value="Add" />
-          <div class="btn-group">
-            <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
-            <input type="submit" name="action" id="action" class="btn btn-success  btn-lg" value="Submit" />
-          </div>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
           </form> 
         </div><!-- /.modal-content -->
@@ -207,17 +202,18 @@ $(document).ready(function(){
     $(this).val(this.getAttribute("value"));
   });
 $(document).on('click', '#proj_print', function(){
-        var filter_Search = $('#filter_Search').val();
-        window.open('../assets/fpdf181/print?report=News&filter='+filter_Search);
+          var filter_Search = $('#filter_Search').val();
+          window.open('../assets/fpdf181/print?report=Suggestion&filter='+filter_Search);
       });
 
   var dataTable = $('#news_data').DataTable({
 
     "processing":true,
     "serverSide":true,
+    "searching": false,
     "order":[],
     "ajax":{
-      url:"datatable/news/fetch.php",
+      url:"datatable/account/fetch_entry.php",
       type:"POST",
       data:{admin:1}
     },
@@ -227,155 +223,15 @@ $(document).on('click', '#proj_print', function(){
         "orderable":false,
       },
     ],
-    //    dom: 'Bfrtip',
-    //      "buttons": [
-    //     {
-    //         extend: 'print',
-    //         text: 'Print',
-    //         autoPrint: true,
-    //         exportOptions: {
-    //             columns: ':visible',
-    //         },
-    //         customize: function (win) {
-    //             $(win.document.body).find('table').addClass('display').css('font-size', '9px');
-    //             $(win.document.body).find('tr:nth-child(odd) td').each(function(index){
-    //                 $(this).css('background-color','#D0D0D0');
-    //             });
-    //             $(win.document.body).find('h1').css('text-align','center');
-    //             $(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
-    //         }
-    //     }
-    // ],
 
   });
 
-  $(document).on('submit', '#news_form', function(event){
-    event.preventDefault();
-    var news_title = $('#news_title').val();
-    var news_content = $('#news_content').val();
-    if(news_title != '' && news_content != '' )
-    {
-            $.ajax({
-              url:"datatable/news/insert.php",
-              type:'POST',
-              data:new FormData(this),
-              contentType:false,
-              processData:false,
-              success:function(data)
-              {
-                $('#action').val("Add");
-                $('#operation').val("Add");
 
-                alert(data);
-                $('#news_form')[0].reset();
-                $('#news_modal').modal('hide');
-                dataTable.ajax.reload();
-              }
-            });
-       
-    }
-    else
-    {
-      alert("Fields are Required");
-    }
-  });
-$(document).on('click', '.view', function(){
-    var news_ID = $(this).attr("id");
-    
-    $.ajax({
-      url:"datatable/news/fetch_single.php",
-      type:"POST",
-      data:{news_ID:news_ID},
-      dataType:"json",
-      success:function(data)
-      {
-        $("#news_title").prop("disabled", true);
-        $("#news_content").prop("disabled", true);
-        $('#news_modal').modal('show');
-        $('#news_title').val(data.news_Title);
-
-        $('#znews_content1').hide();
-        $('#znews_content').show();
-        $('#znews_content').text(data.news_Content);
-        $('#action').val("Edit");
-        $('#operation').val("Edit");
-        $('.modal-title').text("View News");
-         $('#news_ID').val(news_ID);
-         $('#action').hide();
-       
-
-   
-      }
-    });
-  });
-  $(document).on('click', '.update', function(){
-    var news_ID = $(this).attr("id");
-    
-    $.ajax({
-      url:"datatable/news/fetch_single.php",
-      type:"POST",
-      data:{news_ID:news_ID},
-      dataType:"json",
-      success:function(data)
-      {
-        $("#news_title").prop("disabled", false);
-        $("#news_content").prop("disabled", false);
-        $('#news_modal').modal('show');
-        $('#news_title').val(data.news_Title);
-        $('#news_content').val(data.news_Content);
-         $('#znews_content1').show();
-         $('#znews_content').hide();
-        $('#action').val("Edit");
-        $('#operation').val("Edit");
-        $('.modal-title').text("Update News");
-            $('#news_ID').val(news_ID);
-        $('#action').show();    
-   
-      }
-    });
-  });
-  $(document).on('click', '.add', function(){
-        $('.ztitle#news_title').val('');
-        $('#news_content').text('');
-        $('#action').val("Submit");
-        $('#operation').val("Add");
-        $('.modal-title').text("Add News");
-           $('#znews_content1').show();
-         $('#znews_content').hide();
-        $("#news_title").prop("disabled", false);
-        $("#news_content").prop("disabled", false);
-        document.getElementById("news_form").reset();
-        $('#action').show();
-        $('#news_form')[0].reset();
-  });
-  $(document).on('click', '.delete', function(){
-    var news_ID = $(this).attr("id");
-    if(confirm("Are you sure you want to delete this?"))
-    {
-      $.ajax({
-        url:"datatable/news/delete.php",
-        type:"POST",
-        data:{news_ID:news_ID},
-        success:function(data)
-        {
-          alert(data);
-          dataTable.ajax.reload();
-        }
-      });
-    }
-    else
-    {
-      return false; 
-    }
-  });
   
   
 });
- $('#news_data').on('search.dt', function() {
-              var value = $('.dataTables_filter input').val();
-              console.log(value);
-              $('#filter_Search').val(value);
-          }); 
+
+
        $(document).on('click', '#notif_seen', function(){
    
        

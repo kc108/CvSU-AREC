@@ -1,7 +1,7 @@
-<?php 
+﻿<?php 
     include('../session.php');
     include('dash-global-function.php');
- 
+
    
     $pagename = "Research";
     $username = $_SESSION['user_Name'];
@@ -11,14 +11,14 @@
     if(isset($_SESSION['login_level']) )
     {      
         $login_level = $_SESSION['login_level'];
-        // if ($login_level != 2) {
+        //if the user is not admin go to 404
+        if ($login_level != 2) {
          
-        //   header('location: error404.php');
-        // }
-         
+          // header('location: error404.php');
+        }
+          
     }
-
-   $login_level;
+ 
 ?>
 
 <!DOCTYPE html>
@@ -63,25 +63,24 @@
         <div class="container-fluid">
             <div class="block-header">
                 <h2>
-                    CVSU RESEARCH
                 </h2>
             </div>
 
             <ol class="breadcrumb breadcrumb-bg-green">
                 <li><a href="index"><i class="material-icons">home</i> Home</a></li>
-                <li  class="active"><a href="javascript:void(0);"><i class="material-icons ">search</i> Research Management</a></li>
+                <li  class="active"><a href="javascript:void(0);"><i class="material-icons ">account_box</i> Account Management</a></li>
             </ol>
             <div class="row clearfix">
                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                            <div class="card">
-                               <div class="header">
+                                <div class="header">
                                    <h2>LIST OF RESEARCH</h2>
 
                                     <div class="btn-group pull-right" >
                                         <?php 
                                         if ($login_level == 1) {
                                           ?>
-                                          <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#research1_modal">ADD RESEARCH</button>
+                                          <button type="button" class="btn btn-success waves-effect add" data-toggle="modal" data-target="#research_modal">ADD RESEARCH</button>
                                           <?php
                                         }
                                         else{
@@ -105,12 +104,12 @@
                                   <br>                                  
                                </div>
                                <div class="body">
-                                   <div class="table-responsive" style="overflow-x: hidden;">
+                                         <div class="table-responsive" style="overflow-x: hidden;">
                                           <table  id="research_data"  class="table table-bordered table-striped">
                                             <thead>
                                               <tr>
                                                 <th width="10%">ID</th>
-                                                <th width="10%">Researcher</th>
+                                                <th width="10%">Author's</th>
                                                 <th width="10%">Title</th>
                                                 <th width="10%">Status</th>
                                                 <th width="10%">Year Conduct</th>
@@ -124,18 +123,11 @@
                            </div>
                     </div>
             </div>   
-          <!--    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <iframe src="map/user-map.php" style=" display:block; width:100%; height: 800px;"></iframe>
-                    </div>
-                </div> -->
+
           
         </div>
 
     </section>
-
-
-
 <!-- add modal -->
     <div class="modal fade" tabindex="-1" role="dialog" id="archiveresearch_modal">
       <div class="modal-dialog modal-lg" role="document">
@@ -154,7 +146,7 @@
                                             <thead>
                                               <tr>
                                                 <th width="10%">ID</th>
-                                                <th width="10%">Researcher</th>
+                                                <th width="10%">Author's</th>
                                                 <th width="10%">Title</th>
                                                 <th width="10%">Status</th>
                                                 <th width="10%">Date Create</th>
@@ -173,10 +165,7 @@
     </div><!-- /.modal -->
     <!-- /add modal -->
 
-
-
-
- <!-- add modal -->
+<!-- add modal -->
     <div class="modal fade" tabindex="-1" role="dialog" id="research_modal">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -203,6 +192,19 @@
               <br>
                <div class="row clearfix">
                   <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                      <label for="research_Author">Research Author's</label>
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                      <div class="form-group">
+                          <div class="form-line">
+                              <input type="text" class="form-control" id="research_Author" name="research_Author" placeholder="Research Author's" required="">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <br>
+               <div class="row clearfix">
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                       <label for="research_Content">Content</label>
                   </div>
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
@@ -226,7 +228,18 @@
                       </div>
                   </div>
               </div>
+
               <br>
+              <?php 
+              if ($login_level == 1) {
+                $zzz = "researcher";
+              }
+              else{
+                $zzz = "admin";
+              }
+              ?>
+              <input type="hidden" name="stat_inp" id="stat_inp" value="<?php echo $zzz?>">
+              <div id="stat_inp1">
               <div class="row clearfix">
                   <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                       <label for="research_Status">Status</label>
@@ -234,7 +247,7 @@
                   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                       <div class="form-group">
                           <div class="form-line">
-                               <select class="form-control" name="research_Status" id="research_Status" required="">
+                               <select class="form-control" name="research_Status" id="research_Status" >
                                 <option value="">~~SELECT~~</option>
                                 <option value="1">Pending</option>
                                 <option value="2">Approve</option>
@@ -243,26 +256,48 @@
                       </div>
                   </div>
               </div>
+              </div>
                <br>
-              (<b>Optional :</b> <i> 1 Attachment Per Research </i>)
+              <div id="attch_add">
+                (<b>Optional :</b> <i> 1 Attachment Per Research </i>)
                <div class="row clearfix">
                   <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                       <label for="research_attachment">Attachment</label>
                   </div>
-                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-7">
                       <div class="form-group">
                           <div class="form-line">
                               <input type="file" name="research_Attachment"  id="research_Attachment" class="form-control">
                           </div>
                       </div>
                   </div>
+
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5">
+                      <div class="form-group">
+                          <div class="">
+                              <div class="btn btn-danger" id="clear_file">X</div>
+                          </div>
+                      </div>
+                  </div>
               </div>
+              </div>
+              <div id="attch_view">
+                
+                         
+              </div>
+              
+
+
           </div>
           <div class="modal-footer">
           <input type="hidden" name="research_ID" id="research_ID" />
           <input type="hidden" name="operation" id="operation" value="Add" />
-          <input type="submit" name="action" id="action" class="btn btn-success" value="Submit" />
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <div class="btn-group">
+            <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+             <input type="submit" name="action" id="action" class="btn btn-success btn-lg" value="Submit" />
+          </div>
+         
+           
           </div>
           </form> 
         </div><!-- /.modal-content -->
@@ -270,88 +305,6 @@
     </div><!-- /.modal -->
     <!-- /add modal -->
 
-
-
-    <!-- add modal -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="research1_modal">
-      <div class="modal-dialog " role="document" >
-        <div class="modal-content ">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-plus-sign"></span> Add Account</h4>
-          </div>
-          
-          <form class="form-horizontal" action="#" method="POST" id="research_form" enctype="multipart/form-data">
-
-          <div class="modal-body">
-              <div class="row clearfix">
-                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                      <label for="research_Title">Research Title</label>
-                  </div>
-                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                      <div class="form-group">
-                          <div class="form-line">
-                              <input type="text" class="form-control" id="research_Title" name="research_Title" placeholder="Research Title" required="">
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <br>
-               <div class="row clearfix">
-                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                      <label for="research_Content">Content</label>
-                  </div>
-                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                      <div class="form-group">
-                          <div class="form-line">
-                            <textarea  class="form-control " id="research_Content" name="research_Content" placeholder="Content" style="width: 482px;height: 237px;" required=""></textarea>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <br>
-
-                <div class="row clearfix">
-                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                      <label for="research_yrconduct">Year Conduct</label>
-                  </div>
-                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                      <div class="form-group">
-                          <div class="form-line">
-                              <input type="text" class="form-control" id="research_yrconduct" name="research_yrconduct" placeholder="Year Conduct">
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <br>
-              <input type="hidden" name="research_Status"  id="research_Status" class="form-control" value="1">
-               <br>
-              (<b>Optional :</b> <i> 1 Attachment Per Research </i>)
-               <div class="row clearfix">
-                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                      <label for="research_attachment">Attachment</label>
-                  </div>
-                  <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                      <div class="form-group">
-                          <div class="form-line">
-                              <input type="file" name="research_Attachment"  id="research_Attachment" class="form-control">
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="modal-footer">
-          <input type="hidden" name="research_ID" id="research_ID" />
-          <input type="hidden" name="operation" id="operation" value="Add" />
-          <input type="submit" name="action" id="action" class="btn btn-success" value="Submit" />
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-          </form> 
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-    <!-- /add modal -->
- 
 
     <!-- Jquery Core Js -->
     <script src="../assets/plugins/jquery/jquery.min.js"></script>
@@ -386,20 +339,8 @@
     <!-- Demo Js -->
     <script src="../assets/js/demo.js"></script>
     <script type="text/javascript" language="javascript" >
-$(document).ready(function(){
-
-  //select specific dropdown when updating 1 data
-  function setSelectedValue(dropDownList, valueToSet) {
-    var option = dropDownList.firstChild;
-    for (var i = 0; i < dropDownList.length; i++) {
-        if (option.text.trim().toLowerCase() == valueToSet.trim().toLowerCase()) {
-            option.selected = true;
-            return;
-        }
-        option = option.nextElementSibling;
-    }
-}
-$(document).on('click', '#proj_print', function(){
+      
+      $(document).on('click', '#proj_print', function(){
           var filter_Search = $('#filter_Search').val();
           var filter_Stats = "1_2";
 
@@ -412,44 +353,24 @@ $(document).on('click', '#proj_print1', function(){
           window.open('../assets/fpdf181/print?report=Research&filter='+filter_Search+'&stats='+filter_Stats);
       });
 
-  var dataTable = $('#research_data').DataTable({
-    "processing":true,
-    "serverSide":true,
-     "bAutoWidth": false,
-    "order":[],
-    "ajax":{
-      url:"datatable/research/fetch.php",
-      type:"POST"
-    },
-    "columnDefs":[
-      {
-        "targets":[0],
-        "orderable":false,
-      },
-    ],
-    //    dom: 'Bfrtip',
-    //      "buttons": [
-    //     {
-    //         extend: 'print',
-    //         text: 'Print',
-    //         autoPrint: true,
-    //         exportOptions: {
-    //             columns: ':visible',
-    //         },
-    //         customize: function (win) {
-    //             $(win.document.body).find('table').addClass('display').css('font-size', '9px');
-    //             $(win.document.body).find('tr:nth-child(odd) td').each(function(index){
-    //                 $(this).css('background-color','#D0D0D0');
-    //             });
-    //             $(win.document.body).find('h1').css('text-align','center');
-    //             $(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
-    //         }
-    //     }
-    // ],
+       var dataTable = $('#research_data').DataTable({
+        "processing":true,
+        "serverSide":true,
+         "bAutoWidth": false,
+        "order":[],
+        "ajax":{
+          url:"datatable/research/fetch.php",
+          type:"POST"
+        },
+        "columnDefs":[
+          {
+            "targets":[0],
+            "orderable":false,
+          },
+        ],
+      });
 
-  });
-
-   var archivedataTable = $('#archiveresearch_data').DataTable({
+        var archivedataTable = $('#archiveresearch_data').DataTable({
     "processing":true,
     "serverSide":true,
      "bAutoWidth": false,
@@ -464,38 +385,16 @@ $(document).on('click', '#proj_print1', function(){
         "orderable":false,
       },
     ],
-    //    dom: 'Bfrtip',
-    //      "buttons": [
-    //     {
-    //         extend: 'print',
-    //         text: 'Print',
-    //         autoPrint: true,
-    //         exportOptions: {
-    //             columns: ':visible',
-    //         },
-    //         customize: function (win) {
-    //             $(win.document.body).find('table').addClass('display').css('font-size', '9px');
-    //             $(win.document.body).find('tr:nth-child(odd) td').each(function(index){
-    //                 $(this).css('background-color','#D0D0D0');
-    //             });
-    //             $(win.document.body).find('h1').css('text-align','center');
-    //             $(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
-    //         }
-    //     }
-    // ],
 
   });
 
-  $(document).on('submit', '#research_form', function(event){
+
+    $(document).on('submit', '#research_form', function(event){
     event.preventDefault();
-    var research_Title = $('#research_Title').val();
-    var research_Content = $('#research_Content').val();
-    var research_Attachment = $('#research_Attachment').val();
-    var research_Status = $('#research_Status').val();
-   
-    
-    $("#research_Title").prop("disabled", false);
-    $("#research_Content").prop("disabled", false);
+    // var research_Title = $('#research_Title').val();
+    // var research_Content = $('#research_Content').val();
+    // var research_Attachment = $('#research_Attachment').val();
+    // var research_Status = $('#research_Status').val();
     $.ajax({
               url:"datatable/research/insert.php",
               method:'POST',
@@ -508,70 +407,134 @@ $(document).on('click', '#proj_print1', function(){
                 $('#operation').val("Add");
 
                 alert(data);
-                
+                $('#stat_inp1').html();
+                $('#stat_inp1').html('<div class="row clearfix"><div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label"><label for="research_Status">Status</label></div><div class="col-lg-10 col-md-10 col-sm-8 col-xs-7"><div class="form-group"><div class="form-line"><select class="form-control" name="research_Status" id="research_Status" required=""><option value="">~~SELECT~~</option><option value="1">Pending</option><option value="2">Approve</option></select></div></div></div></div>');  
+
                 $('#research_form')[0].reset();
                 $('#research_modal').modal('hide');
                 $('#research1_modal').modal('hide');
                 dataTable.ajax.reload();
               }
             });
-  });
+    });
 
-$(document).on('click', '.add', function(){
+    $(document).on('click', '.add', function(){
         $("#research_Title").prop("disabled", false);
+        $("#research_Author").prop("disabled", false);
         $("#research_Content").prop("disabled", false);
         $("#research_yrconduct").prop("disabled", false);
-        $('#research_Title').val('');
-        $('#research_Content').val('');
-        $('#research_yrconduct').val('');
-        $('#research_Attachment').val('');
-        $('#research_Status').val('');
+        
+         var stat_inp = $('#stat_inp').val();
+         if (stat_inp == "admin") {
+           
+            $("#research_Status").prop("disabled", false);  
+                     }
+         else{
+            
+            $('#stat_inp1').html('');
+            
+            // $('#research_Status').removeAttr(required);
+         }
+
+     
         document.getElementById("research_form").reset('');
+
         $('#action').val("Add");
         $('#operation').val("Add");
         $('#action').show();
-        $('.modal-title.mview').text(" Add Research");
+        $('#attch_add').show();
+        $('#attch_view').html('');
+        
+        $('.modal-title.mview').html('<span class="glyphicon glyphicon-plus-sign"></span> Add Research');
   });
-    $(document).on('click', '.view', function(){
+      $(document).on('click', '.view', function(){
     var research_ID = $(this).attr("id");
     
     $.ajax({
       url:"datatable/research/fetch_view.php",
       type:"POST",
       data:{research_ID:research_ID},
-      dataType:"html",
+      dataType:"json",
       success:function(data)
       {
-        $('.modal-body.mview').html('');
+
+        $('#research_Title').val(data.research_Title);
+        $('#research_Author').val(data.research_Author);
+        $('#research_Content').val(data.research_Content);
+        $('#research_yrconduct').val(data.research_yrConduct);
+        $('#research_Status').val(data.research_Status).change();
+        $('#research_ID').val(data.research_ID);
+
+        $("#research_Title").prop("disabled", true);
+        $("#research_Author").prop("disabled", true);
+        $("#research_Content").prop("disabled", true);
+        $("#research_yrconduct").prop("disabled", true);
+        $("#research_Status").prop("disabled", true);
+
+
+        $('#attch_add').hide();
+        $('#attch_view').html(data.research_view);
+        
+
         $('#research_modal').modal('show');
-        $('.modal-body.mview').html(data);
         $('.modal-title.mview').text("View Research Info");
         $('#action').hide();
       }
     });
   });
-$(document).on('click', '.update', function(){
+
+    $(document).on('click', '.update', function(){
     var research_ID = $(this).attr("id");
     
     $.ajax({
-      url:"datatable/research/fetch_update.php",
+      url:"datatable/research/fetch_view.php",
       type:"POST",
       data:{research_ID:research_ID},
-      dataType:"html",
+      dataType:"json",
       success:function(data)
       {
-        $('.modal-body.mview').html('');
-        $('#research_modal').modal('show');
-        $('.modal-body.mview').html(data);
-        $('.modal-title.mview').text("Edit Research Info");
+
+        $('#research_Title').val(data.research_Title);
+        $('#research_Author').val(data.research_Author);
+        $('#research_Content').val(data.research_Content);
+        $('#research_yrconduct').val(data.research_yrConduct);
+        $('#research_Status').val(data.research_Status).change();
+        $('#research_ID').val(data.research_ID);
+        
+
+        $("#research_Title").prop("disabled", false);
+        $("#research_Author").prop("disabled", false);
+        $("#research_Content").prop("disabled", false);
+        $("#research_yrconduct").prop("disabled", false);
+        
+         var stat_inp = $('#stat_inp').val();
+         if (stat_inp == "admin") {
+            $('#stat_inp1').show();
+            $("#research_Status").prop("disabled", false);    
+         }
+         else{
+            $('#stat_inp1').hide();
+            // $('#research_Status').removeAttr(required);
+         }
+
+        $('#attch_add').show();
+        $('#attch_view').html('');
+
         $('#action').val("Edit");
         $('#operation').val("Edit");
         $('#action').show();
+        $('#attch_add').show();
+
+
+
+        $('#research_modal').modal('show');
+        $('.modal-title.mview').text("Update Research Info");
         
       }
     });
   });
-$(document).on('click', '.approve', function(){
+
+  $(document).on('click', '.approve', function(){
 
 
   var research_ID = $(this).attr("id");
@@ -687,11 +650,12 @@ $(document).on('click', '.unarchive', function(){
       return false; 
     }
   });
+  $(document).on('click', '#clear_file', function(){
+    $('#research_Attachment').val('');
+  });
   
 
 
-
-});
  $('#research_data').on('search.dt', function() {
               var value = $('.dataTables_filter input').val();
               $('#filter_Search').val(value);
@@ -700,20 +664,85 @@ $(document).on('click', '.unarchive', function(){
               var value = $('.dataTables_filter input').val();
               $('#filter_Search1').val(value);
           }); 
-      $(document).on('click', '#notif_seen', function(){
-   
-       
-        $.ajax({
-          url:"notif_seen.php",
-          method:"POST",
-          success:function(data)
-          {
-            $('#label_count').html('0');
-          }
-        });
-    
-  
+
+
+ $(document).on('click', '#cl_acc', function(){
+      
+     $.ajax({
+        url:"notif_seen1.php",
+        type:"POST",
+        data:{account:1},
+        success:function(data)
+        {
+      
+        }
+      });
   });
+   
+$(document).on('click', '#cl_news', function(){
+    
+    $.ajax({
+        url:"notif_seen1.php",
+        type:"POST",
+        data:{news:1},
+        success:function(data)
+        {
+      
+        }
+      });
+    
+
+  });
+$(document).on('click', '#cl_sugg', function(){
+    
+    $.ajax({
+        url:"notif_seen1.php",
+        type:"POST",
+        data:{suggest:1},
+        success:function(data)
+        {
+      
+        }
+      });
+  });
+$(document).on('click', '#cl_res', function(){
+    
+    $.ajax({
+        url:"notif_seen1.php",
+        type:"POST",
+        data:{research:1},
+        success:function(data)
+        {
+      
+        }
+      });
+  });
+$(document).on('click', '#cl_proj', function(){
+    $.ajax({
+        url:"notif_seen1.php",
+        type:"POST",
+        data:{project:1},
+        success:function(data)
+        {
+      
+        }
+      });
+  });
+$(document).on('click', '#cl_bio', function(){
+      $.ajax({
+        url:"notif_seen1.php",
+        type:"POST",
+        data:{biogas:1},
+        success:function(data)
+        {
+      
+        }
+      });
+  });
+
+
+
+
 </script>
 
 </body>
